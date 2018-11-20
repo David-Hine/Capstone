@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# library_ITG-3701
+# puck_library_ITG-3701
 #
-DEF library_ITG-3701 U 0 40 Y Y 1 F N
+DEF puck_library_ITG-3701 U 0 40 Y Y 1 F N
 F0 "U" 300 700 50 H V C CNN
-F1 "library_ITG-3701" 450 600 50 H V C CNN
+F1 "puck_library_ITG-3701" 450 600 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -29,11 +29,11 @@ X VDD 9 700 -150 150 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# library_TE832-M1
+# puck_library_TE832-M1
 #
-DEF library_TE832-M1 U 0 40 Y Y 1 F N
+DEF puck_library_TE832-M1 U 0 40 Y Y 1 F N
 F0 "U" -450 300 50 H V C CNN
-F1 "library_TE832-M1" -450 200 50 H V C CNN
+F1 "puck_library_TE832-M1" -450 200 50 H V C CNN
 F2 "" -450 300 50 H I C CNN
 F3 "" -450 300 50 H I C CNN
 DRAW
