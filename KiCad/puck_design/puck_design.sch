@@ -106,17 +106,6 @@ F 3 "~" H 7500 4950 50  0001 C CNN
 	1    7500 4950
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:Battery_Cell BT1
-U 1 1 5C0B0FBE
-P 8100 4150
-F 0 "BT1" H 8218 4246 50  0000 L CNN
-F 1 "Battery_Cell" H 8218 4155 50  0000 L CNN
-F 2 "" V 8100 4210 50  0001 C CNN
-F 3 "~" V 8100 4210 50  0001 C CNN
-	1    8100 4150
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3200 4250 3200 5000
 Wire Wire Line
@@ -250,10 +239,10 @@ Wire Wire Line
 	3400 5550 3400 5300
 Connection ~ 3400 5300
 $Comp
-L puck_library:MCP73831-2 U4?
+L puck_library:MCP73831-2 U4
 U 1 1 5C1755A4
 P 11050 5950
-F 0 "U4?" H 9025 8315 50  0000 C CNN
+F 0 "U4" H 9025 8315 50  0000 C CNN
 F 1 "MCP73831-2" H 9025 8224 50  0000 C CNN
 F 2 "" H 9050 8350 50  0001 C CNN
 F 3 "" H 9050 8350 50  0001 C CNN
@@ -282,8 +271,6 @@ Wire Wire Line
 	4350 5750 4250 5750
 Wire Wire Line
 	4250 5750 4250 6650
-Wire Wire Line
-	4250 6650 6100 6650
 Wire Wire Line
 	4350 5850 3900 5850
 Wire Wire Line
@@ -317,7 +304,7 @@ F 3 "~" H 5150 6950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5150 6300 5150 6800
+	5150 6300 5150 6650
 Wire Wire Line
 	5150 7100 5150 7200
 Wire Wire Line
@@ -325,10 +312,6 @@ Wire Wire Line
 Wire Wire Line
 	6800 7200 6800 6300
 Connection ~ 6800 6300
-Wire Wire Line
-	9350 3850 9550 3850
-Wire Wire Line
-	9550 3850 9550 3350
 Connection ~ 7500 3350
 Wire Wire Line
 	7100 3350 7200 3350
@@ -348,29 +331,18 @@ Wire Wire Line
 	7200 3350 7500 3350
 Connection ~ 6100 5850
 Wire Wire Line
-	7500 3350 9550 3350
+	7500 3350 8750 3350
 Wire Wire Line
 	7100 3150 7900 3150
 Wire Wire Line
 	7900 3150 7900 5550
 Connection ~ 7900 5550
 Wire Wire Line
-	7900 5550 8100 5550
-Wire Wire Line
-	8100 3950 8100 3850
-Wire Wire Line
-	8100 3850 8700 3850
-Wire Wire Line
 	5600 4250 5600 4550
 Wire Wire Line
 	5600 4550 8700 4550
 Wire Wire Line
 	8700 4550 8700 4350
-Wire Wire Line
-	8100 4250 8100 5550
-Connection ~ 8100 5550
-Wire Wire Line
-	8100 5550 9650 5550
 $Comp
 L Device:R R1
 U 1 1 5C1C106E
@@ -404,4 +376,84 @@ Connection ~ 3400 6050
 Wire Wire Line
 	1900 1850 1900 2050
 Connection ~ 1900 1850
+Wire Wire Line
+	4250 6650 5150 6650
+Connection ~ 5150 6650
+Wire Wire Line
+	5150 6650 5150 6800
+Wire Wire Line
+	6100 6650 5150 6650
+$Comp
+L Device:C C4
+U 1 1 5C1DD497
+P 8450 4900
+F 0 "C4" H 8565 4946 50  0000 L CNN
+F 1 "0.1uF" H 8565 4855 50  0000 L CNN
+F 2 "" H 8488 4750 50  0001 C CNN
+F 3 "~" H 8450 4900 50  0001 C CNN
+	1    8450 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8450 5050 8450 5550
+Connection ~ 8450 5550
+Wire Wire Line
+	8450 5550 9650 5550
+$Comp
+L Connector:Barrel_Jack J1
+U 1 1 5C1E55FA
+P 8150 4050
+F 0 "J1" H 8205 4375 50  0000 C CNN
+F 1 "Barrel_Jack" H 8205 4284 50  0000 C CNN
+F 2 "" H 8200 4010 50  0001 C CNN
+F 3 "~" H 8200 4010 50  0001 C CNN
+	1    8150 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7900 5550 8450 5550
+Wire Wire Line
+	8450 4150 8450 4750
+Wire Wire Line
+	8450 3950 8450 3850
+Wire Wire Line
+	8450 3850 8700 3850
+$Comp
+L power:VCC #PWR?
+U 1 1 5C1F6E15
+P 8750 3100
+F 0 "#PWR?" H 8750 2950 50  0001 C CNN
+F 1 "VCC" H 8767 3273 50  0000 C CNN
+F 2 "" H 8750 3100 50  0001 C CNN
+F 3 "" H 8750 3100 50  0001 C CNN
+	1    8750 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8750 3350 8750 3100
+Connection ~ 8750 3350
+$Comp
+L Device:Battery_Cell BH1
+U 1 1 5C20407B
+P 10000 3650
+F 0 "BH1" H 10118 3746 50  0000 L CNN
+F 1 "Battery Holder" H 10118 3655 50  0000 L CNN
+F 2 "" V 10000 3710 50  0001 C CNN
+F 3 "~" V 10000 3710 50  0001 C CNN
+	1    10000 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10000 3350 10000 3450
+Wire Wire Line
+	8750 3350 10000 3350
+Wire Wire Line
+	10000 3850 10000 3750
+Wire Wire Line
+	9350 3850 10000 3850
+Wire Wire Line
+	9650 5550 10000 5550
+Wire Wire Line
+	10000 5550 10000 3850
+Connection ~ 10000 3850
 $EndSCHEMATC
