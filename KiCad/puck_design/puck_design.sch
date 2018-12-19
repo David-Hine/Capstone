@@ -282,17 +282,6 @@ Wire Wire Line
 	1900 1550 1900 1750
 Connection ~ 1900 1550
 $Comp
-L Device:C C4
-U 1 1 5C1DD497
-P 8250 3900
-F 0 "C4" H 8365 3946 50  0000 L CNN
-F 1 "0.1uF" H 8365 3855 50  0000 L CNN
-F 2 "" H 8288 3750 50  0001 C CNN
-F 3 "~" H 8250 3900 50  0001 C CNN
-	1    8250 3900
-	1    0    0    -1  
-$EndComp
-$Comp
 L Connector:Barrel_Jack J1
 U 1 1 5C1E55FA
 P 7950 3650
@@ -530,4 +519,6 @@ Wire Wire Line
 	9600 4400 10000 4400
 Wire Wire Line
 	10000 4400 10000 4200
+Wire Wire Line
+	8250 4050 8250 3750
 $EndSCHEMATC
