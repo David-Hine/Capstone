@@ -1,6 +1,27 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
+# Battery_Management_BQ297xy
+#
+DEF Battery_Management_BQ297xy U 0 40 Y Y 1 F N
+F0 "U" -250 250 50 H V C CNN
+F1 "Battery_Management_BQ297xy" 200 -250 50 H V C CNN
+F2 "Package_SON:WSON-6_1.5x1.5mm_P0.5mm" 0 350 50 H I C CNN
+F3 "" -250 200 50 H I C CNN
+$FPLIST
+ WSON*1.5x1.5mm*P0.5mm*
+$ENDFPLIST
+DRAW
+S -300 200 300 -200 0 1 10 f
+X NC 1 300 0 100 L 50 50 1 1 N N
+X Cout 2 400 100 100 L 50 50 1 1 O
+X Dout 3 400 -100 100 L 50 50 1 1 O
+X VSS 4 0 -300 100 U 50 50 1 1 W
+X BAT 5 -400 100 100 R 50 50 1 1 I
+X V- 6 -400 -100 100 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
 # Connector_Barrel_Jack
 #
 DEF Connector_Barrel_Jack J 0 40 Y Y 1 F N
@@ -360,6 +381,21 @@ X +Z ~ -150 -300 100 L 50 50 1 1 O
 X GND ~ -800 -300 100 R 50 50 1 1 I
 X NC ~ -800 -150 100 R 50 50 1 1 I
 X Vcc ~ -800 0 100 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# puck_library_VBAT
+#
+DEF puck_library_VBAT VBAT 0 40 Y Y 1 F N
+F0 "VBAT" 450 -450 50 H V C CNN
+F1 "puck_library_VBAT" 250 -250 50 H V C CNN
+F2 "" 450 -450 50 H I C CNN
+F3 "" 450 -450 50 H I C CNN
+DRAW
+C 450 -525 25 1 1 0 N
+C 450 -525 25 1 1 0 N
+P 2 1 1 0 450 -600 450 -550 N
+P 2 1 1 0 450 -600 450 -550 N
 ENDDRAW
 ENDDEF
 #
