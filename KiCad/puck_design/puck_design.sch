@@ -58,12 +58,6 @@ F 3 "~" H 7200 2800 50  0001 C CNN
 	1    7200 2800
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2750 3550 2750 4300
-Wire Wire Line
-	2850 4450 2850 3550
-Wire Wire Line
-	2950 4600 2950 3550
 $Comp
 L power:VCC #PWR0104
 U 1 1 5C0FA933
@@ -93,77 +87,46 @@ Wire Wire Line
 $Comp
 L Device:C CX3
 U 1 1 5C143212
-P 2950 5000
-F 0 "CX3" H 3065 5046 50  0000 L CNN
-F 1 "XuF" H 3065 4955 50  0000 L CNN
-F 2 "puck_footprints:CAPC2012X140N" H 2988 4850 50  0001 C CNN
-F 3 "~" H 2950 5000 50  0001 C CNN
-	1    2950 5000
+P 2850 5000
+F 0 "CX3" H 2965 5046 50  0000 L CNN
+F 1 "XuF" H 2965 4955 50  0000 L CNN
+F 2 "puck_footprints:CAPC2012X140N" H 2888 4850 50  0001 C CNN
+F 3 "~" H 2850 5000 50  0001 C CNN
+	1    2850 5000
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C CX2
 U 1 1 5C145DBB
-P 2500 5000
-F 0 "CX2" H 2615 5046 50  0000 L CNN
-F 1 "XuF" H 2615 4955 50  0000 L CNN
-F 2 "puck_footprints:CAPC2012X140N" H 2538 4850 50  0001 C CNN
-F 3 "~" H 2500 5000 50  0001 C CNN
-	1    2500 5000
+P 2400 5000
+F 0 "CX2" H 2515 5046 50  0000 L CNN
+F 1 "XuF" H 2515 4955 50  0000 L CNN
+F 2 "puck_footprints:CAPC2012X140N" H 2438 4850 50  0001 C CNN
+F 3 "~" H 2400 5000 50  0001 C CNN
+	1    2400 5000
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C CX1
 U 1 1 5C146CAE
-P 2050 5000
-F 0 "CX1" H 2165 5046 50  0000 L CNN
-F 1 "XuF" H 2165 4955 50  0000 L CNN
-F 2 "puck_footprints:CAPC2012X140N" H 2088 4850 50  0001 C CNN
-F 3 "~" H 2050 5000 50  0001 C CNN
-	1    2050 5000
+P 1950 5000
+F 0 "CX1" H 2065 5046 50  0000 L CNN
+F 1 "XuF" H 2065 4955 50  0000 L CNN
+F 2 "puck_footprints:CAPC2012X140N" H 1988 4850 50  0001 C CNN
+F 3 "~" H 1950 5000 50  0001 C CNN
+	1    1950 5000
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2050 5350 2500 5350
-Wire Wire Line
-	2500 5150 2500 5350
-Connection ~ 2500 5350
-Wire Wire Line
-	2500 5350 2950 5350
-Wire Wire Line
-	2750 4300 2050 4300
-Wire Wire Line
-	1850 4600 2950 4600
-Wire Wire Line
-	2950 5350 2950 5150
-Wire Wire Line
-	2050 5350 2050 5150
 Connection ~ 700  4600
 Wire Wire Line
 	700  4600 1200 4600
-Connection ~ 2050 5350
 Wire Wire Line
-	1850 4450 2500 4450
+	1850 4450 2400 4450
 Wire Wire Line
 	700  4600 700  5350
-Wire Wire Line
-	700  5350 2050 5350
 Connection ~ 700  5350
 Wire Wire Line
 	700  5350 700  5550
-Wire Wire Line
-	2050 4850 2050 4300
-Connection ~ 2050 4300
-Wire Wire Line
-	2050 4300 1850 4300
-Wire Wire Line
-	2500 4850 2500 4450
-Connection ~ 2500 4450
-Wire Wire Line
-	2500 4450 2850 4450
-Wire Wire Line
-	2950 4850 2950 4600
-Connection ~ 2950 4600
 $Comp
 L puck_library:MCP73831-2 U4
 U 1 1 5C1755A4
@@ -295,8 +258,6 @@ F 3 "" H 7400 3650 50  0001 C CNN
 	1    7400 3650
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5150 3550 5150 4000
 Wire Wire Line
 	8300 3650 8300 4000
 $Comp
@@ -647,8 +608,6 @@ F 3 "~" H 6850 3250 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5150 4000 8300 4000
-Wire Wire Line
 	6650 2450 6950 2450
 Wire Wire Line
 	6950 2450 6950 2000
@@ -904,4 +863,53 @@ F 9 "CP-2523SJCT-ND" H 9300 2050 50  0001 L BNN "Field9"
 	1    9300 2050
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	1650 2150 1450 2150
+Wire Wire Line
+	1450 2150 1450 3900
+Wire Wire Line
+	1450 3900 1950 3900
+Wire Wire Line
+	1650 2250 1550 2250
+Wire Wire Line
+	1550 2250 1550 3800
+Wire Wire Line
+	1850 4600 2850 4600
+Wire Wire Line
+	2850 3550 2850 4600
+Wire Wire Line
+	2850 4600 2850 4850
+Connection ~ 2850 4600
+Wire Wire Line
+	2850 5350 2850 5150
+Wire Wire Line
+	1950 4850 1950 4300
+Connection ~ 1950 4300
+Wire Wire Line
+	1950 4300 1850 4300
+Wire Wire Line
+	1950 3900 1950 4300
+Wire Wire Line
+	700  5350 1950 5350
+Wire Wire Line
+	1950 5150 1950 5350
+Connection ~ 1950 5350
+Wire Wire Line
+	1950 5350 2400 5350
+Wire Wire Line
+	2400 5150 2400 5350
+Connection ~ 2400 5350
+Wire Wire Line
+	2400 5350 2850 5350
+Wire Wire Line
+	2400 4850 2400 4450
+Wire Wire Line
+	2400 3800 2400 4450
+Connection ~ 2400 4450
+Wire Wire Line
+	1550 3800 2400 3800
+Wire Wire Line
+	5350 3550 5350 4000
+Wire Wire Line
+	5350 4000 8300 4000
 $EndSCHEMATC
