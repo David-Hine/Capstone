@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/nrf_ble_qwr.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\nrf_ble_qwr\nrf_ble_qwr.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\nrf_ble_qwr\nrf_ble_qwr.c \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
@@ -28,7 +28,7 @@ Output/ble_lightbulb\ Debug/Obj/nrf_ble_qwr.o: \
  ../nRF5_SDK_current/components/libraries/util/sdk_macros.h \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdlib.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\nrf_ble_qwr\nrf_ble_qwr.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\nrf_ble_qwr\nrf_ble_qwr.h \
  ../nRF5_SDK_current/components/libraries/util/nordic_common.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_svc.h \

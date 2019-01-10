@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/battery_voltage.o: \
- C:\Users\Leo\Documents\BLE\ Projects\ble_lightbulb\Battery\ Level\battery_voltage.c \
- C:\Users\Leo\Documents\BLE\ Projects\ble_lightbulb\Battery\ Level\battery_voltage.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_lightbulb\Battery\ Level\battery_voltage.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_lightbulb\Battery\ Level\battery_voltage.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  ../nRF5_SDK_current/integration/nrfx/legacy/nrf_drv_saadc.h \
  ../nRF5_SDK_current/modules/nrfx/drivers/include/nrfx_saadc.h \

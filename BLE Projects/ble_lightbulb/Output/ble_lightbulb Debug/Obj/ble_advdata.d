@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/ble_advdata.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\common\ble_advdata.c \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\common\ble_advdata.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\common\ble_advdata.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\common\ble_advdata.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/string.h \
@@ -40,7 +40,7 @@ Output/ble_lightbulb\ Debug/Obj/ble_advdata.o: \
  ../nRF5_SDK_current/components/libraries/util/sdk_macros.h \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gap.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\common\ble_srv_common.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\common\ble_srv_common.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_types.h \
  ../nRF5_SDK_current/components/libraries/util/app_util.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gatt.h

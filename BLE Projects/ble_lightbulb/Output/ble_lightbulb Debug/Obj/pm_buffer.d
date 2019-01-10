@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/pm_buffer.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\pm_buffer.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\pm_buffer.c \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
@@ -27,6 +27,6 @@ Output/ble_lightbulb\ Debug/Obj/pm_buffer.o: \
  ../nRF5_SDK_current/modules/nrfx/mdk/compiler_abstraction.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_macros.h \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\pm_buffer.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\pm_buffer.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_errors.h \
  ../nRF5_SDK_current/components/libraries/atomic_flags/nrf_atflags.h

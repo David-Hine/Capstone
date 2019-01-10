@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/nrfx_gpiote.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\modules\nrfx\drivers\src\nrfx_gpiote.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\modules\nrfx\drivers\src\nrfx_gpiote.c \
  ../nRF5_SDK_current/modules/nrfx/nrfx.h \
  ../nRF5_SDK_current/integration/nrfx/nrfx_config.h sdk_config.h \
  ../nRF5_SDK_current/modules/nrfx/drivers/nrfx_common.h \

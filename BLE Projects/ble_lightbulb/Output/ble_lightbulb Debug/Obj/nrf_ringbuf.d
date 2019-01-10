@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/nrf_ringbuf.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\ringbuf\nrf_ringbuf.c \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\ringbuf\nrf_ringbuf.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\ringbuf\nrf_ringbuf.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\ringbuf\nrf_ringbuf.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  ../nRF5_SDK_current/components/libraries/atomic/nrf_atomic.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \

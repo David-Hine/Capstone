@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/nrf_fprintf.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\external\fprintf\nrf_fprintf.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\external\fprintf\nrf_fprintf.c \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
@@ -29,5 +29,5 @@ Output/ble_lightbulb\ Debug/Obj/nrf_fprintf.o: \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdarg.h \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\external\fprintf\nrf_fprintf_format.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\external\fprintf\nrf_fprintf.h
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\external\fprintf\nrf_fprintf_format.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\external\fprintf\nrf_fprintf.h

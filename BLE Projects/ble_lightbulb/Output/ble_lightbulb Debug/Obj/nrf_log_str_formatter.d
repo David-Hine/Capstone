@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/nrf_log_str_formatter.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\log\src\nrf_log_str_formatter.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\log\src\nrf_log_str_formatter.c \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
@@ -50,7 +50,7 @@ Output/ble_lightbulb\ Debug/Obj/nrf_log_str_formatter.o: \
  ../nRF5_SDK_current/components/libraries/log/nrf_log_instance.h \
  ../nRF5_SDK_current/components/libraries/experimental_section_vars/nrf_section.h \
  ../nRF5_SDK_current/components/libraries/util/nordic_common.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\log\src\nrf_log_internal.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\log\src\nrf_log_internal.h \
  ../nRF5_SDK_current/components/libraries/log/nrf_log_types.h \
  ../nRF5_SDK_current/components/libraries/log/nrf_log_ctrl.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/ctype.h \

@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/security_manager.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\security_manager.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\security_manager.c \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
@@ -27,7 +27,7 @@ Output/ble_lightbulb\ Debug/Obj/security_manager.o: \
  ../nRF5_SDK_current/modules/nrfx/mdk/compiler_abstraction.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_macros.h \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\security_manager.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\security_manager.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_errors.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_svc.h \
@@ -42,7 +42,7 @@ Output/ble_lightbulb\ Debug/Obj/security_manager.o: \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gattc.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gatts.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gap.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\peer_manager_types.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\peer_manager_types.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_hci.h \
  ../nRF5_SDK_current/components/ble/common/ble_gatt_db.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gattc.h \
@@ -54,13 +54,13 @@ Output/ble_lightbulb\ Debug/Obj/security_manager.o: \
  ../nRF5_SDK_current/components/libraries/util/app_error.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdio.h \
  ../nRF5_SDK_current/components/libraries/util/app_error_weak.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\security_dispatcher.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\security_dispatcher.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_err.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\peer_database.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\peer_manager_internal.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\peer_database.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\peer_manager_internal.h \
  ../nRF5_SDK_current/components/ble/common/ble_conn_state.h \
  ../nRF5_SDK_current/components/libraries/atomic/nrf_atomic.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\id_manager.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\peer_manager\id_manager.h \
  ../nRF5_SDK_current/components/libraries/log/nrf_log.h \
  ../nRF5_SDK_current/components/libraries/experimental_section_vars/nrf_section.h \
  ../nRF5_SDK_current/components/libraries/util/nordic_common.h \

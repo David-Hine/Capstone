@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/crc16.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\crc16\crc16.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\crc16\crc16.c \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
@@ -27,5 +27,5 @@ Output/ble_lightbulb\ Debug/Obj/crc16.o: \
  ../nRF5_SDK_current/modules/nrfx/mdk/compiler_abstraction.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_macros.h \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\crc16\crc16.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\crc16\crc16.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdlib.h

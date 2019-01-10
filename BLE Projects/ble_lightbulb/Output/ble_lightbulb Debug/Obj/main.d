@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/main.o: \
- C:\Users\Leo\Documents\BLE\ Projects\ble_lightbulb\main.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_lightbulb\main.c \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/string.h \
@@ -112,5 +112,5 @@ Output/ble_lightbulb\ Debug/Obj/main.o: \
  ../nRF5_SDK_current/components/libraries/balloc/nrf_balloc.h \
  ../nRF5_SDK_current/components/libraries/log/nrf_log_default_backends.h \
  ../nRF5_SDK_current/components/ble/ble_services/ble_bas/ble_bas.h \
- C:\Users\Leo\Documents\BLE\ Projects\ble_lightbulb\services/led_service.h \
- C:\Users\Leo\Documents\BLE\ Projects\ble_lightbulb\Battery\ Level/battery_voltage.h
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_lightbulb\services/led_service.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_lightbulb\Battery\ Level/battery_voltage.h

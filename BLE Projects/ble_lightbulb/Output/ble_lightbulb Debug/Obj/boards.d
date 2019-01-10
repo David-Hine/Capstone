@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/boards.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\boards\boards.c \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\boards\boards.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\boards\boards.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\boards\boards.h \
  ../nRF5_SDK_current/modules/nrfx/hal/nrf_gpio.h \
  ../nRF5_SDK_current/modules/nrfx/nrfx.h \
  ../nRF5_SDK_current/integration/nrfx/nrfx_config.h sdk_config.h \
@@ -49,4 +49,4 @@ Output/ble_lightbulb\ Debug/Obj/boards.o: \
  ../nRF5_SDK_current/components/libraries/util/sdk_resources.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_sd_def.h \
  ../nRF5_SDK_current/modules/nrfx/drivers/nrfx_errors.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\boards\pca10056.h
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\boards\pca10056.h

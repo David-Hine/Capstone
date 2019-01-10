@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/nrf_atomic.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\atomic\nrf_atomic.c \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\atomic\nrf_atomic.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\atomic\nrf_atomic.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\atomic\nrf_atomic.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
@@ -28,4 +28,4 @@ Output/ble_lightbulb\ Debug/Obj/nrf_atomic.o: \
  ../nRF5_SDK_current/modules/nrfx/mdk/compiler_abstraction.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_macros.h \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\atomic\nrf_atomic_internal.h
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\atomic\nrf_atomic_internal.h

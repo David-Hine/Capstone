@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/app_error_weak.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_error_weak.c \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_error.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_error_weak.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_error.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdio.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/__crossworks.h \
@@ -17,10 +17,10 @@ Output/ble_lightbulb\ Debug/Obj/app_error_weak.o: \
  ../nRF5_SDK_current/modules/nrfx/mdk/nrf51_to_nrf52840.h \
  ../nRF5_SDK_current/modules/nrfx/mdk/nrf52_to_nrf52840.h \
  ../nRF5_SDK_current/modules/nrfx/mdk/compiler_abstraction.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\sdk_errors.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\sdk_errors.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_error.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\nordic_common.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_error_weak.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\nordic_common.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_error_weak.h \
  ../nRF5_SDK_current/components/libraries/log/nrf_log.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/string.h \
@@ -55,7 +55,7 @@ Output/ble_lightbulb\ Debug/Obj/app_error_weak.o: \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_error_soc.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_nvic.h \
  ../nRF5_SDK_current/components/libraries/util/app_error.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_util_platform.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_util_platform.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_sdm.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_error_sdm.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_soc.h

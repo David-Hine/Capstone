@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/ble_advertising.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\ble_advertising\ble_advertising.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\ble_advertising\ble_advertising.c \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
@@ -40,7 +40,7 @@ Output/ble_lightbulb\ Debug/Obj/ble_advertising.o: \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gatt.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gattc.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gatts.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\ble_advertising\ble_advertising.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\ble_advertising\ble_advertising.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gap.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_gattc.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_soc.h \

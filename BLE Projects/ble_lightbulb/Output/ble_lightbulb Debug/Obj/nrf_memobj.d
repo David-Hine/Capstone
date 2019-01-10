@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/nrf_memobj.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\memobj\nrf_memobj.c \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\memobj\nrf_memobj.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\memobj\nrf_memobj.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\memobj\nrf_memobj.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdlib.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/__crossworks.h \

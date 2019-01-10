@@ -79,6 +79,8 @@
   #include "arduino_primo.h"
 #elif defined (CUSTOM_BOARD_INC)
   #include STRINGIFY(CUSTOM_BOARD_INC.h)
+#elif defined(BOARD_BT840F)
+  #include "bt840f.h"
 #elif defined(BOARD_CUSTOM)
   #include "custom_board.h"
 #else

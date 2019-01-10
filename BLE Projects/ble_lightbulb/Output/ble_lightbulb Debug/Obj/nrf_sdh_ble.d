@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/nrf_sdh_ble.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\softdevice\common\nrf_sdh_ble.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\softdevice\common\nrf_sdh_ble.c \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
@@ -27,7 +27,7 @@ Output/ble_lightbulb\ Debug/Obj/nrf_sdh_ble.o: \
  ../nRF5_SDK_current/modules/nrfx/mdk/compiler_abstraction.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_macros.h \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\softdevice\common\nrf_sdh_ble.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\softdevice\common\nrf_sdh_ble.h \
  ../nRF5_SDK_current/components/libraries/util/app_util.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_svc.h \
@@ -46,7 +46,7 @@ Output/ble_lightbulb\ Debug/Obj/nrf_sdh_ble.o: \
  ../nRF5_SDK_current/components/libraries/util/nordic_common.h \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_errors.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\softdevice\common\nrf_sdh.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\softdevice\common\nrf_sdh.h \
  ../nRF5_SDK_current/components/libraries/util/app_error.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdio.h \
  ../nRF5_SDK_current/components/libraries/util/app_error_weak.h \

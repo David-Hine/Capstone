@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/bsp.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\bsp\bsp.c \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\bsp\bsp.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\bsp\bsp.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\bsp\bsp.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
  ../nRF5_SDK_current/components/boards/boards.h \
@@ -53,5 +53,5 @@ Output/ble_lightbulb\ Debug/Obj/bsp.o: \
  ../nRF5_SDK_current/components/boards/pca10056.h \
  ../nRF5_SDK_current/components/libraries/button/app_button.h \
  ../nRF5_SDK_current/components/libraries/util/app_error.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\bsp\bsp_config.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\bsp\bsp_config.h \
  ../nRF5_SDK_current/components/libraries/timer/app_timer.h

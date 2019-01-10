@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/nrfx_prs.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\modules\nrfx\drivers\src\prs\nrfx_prs.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\modules\nrfx\drivers\src\prs\nrfx_prs.c \
  ../nRF5_SDK_current/modules/nrfx/nrfx.h \
  ../nRF5_SDK_current/integration/nrfx/nrfx_config.h sdk_config.h \
  ../nRF5_SDK_current/modules/nrfx/drivers/nrfx_common.h \
@@ -47,7 +47,7 @@ Output/ble_lightbulb\ Debug/Obj/nrfx_prs.o: \
  ../nRF5_SDK_current/components/libraries/util/sdk_resources.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_sd_def.h \
  ../nRF5_SDK_current/modules/nrfx/drivers/nrfx_errors.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\modules\nrfx\drivers\src\prs\nrfx_prs.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\modules\nrfx\drivers\src\prs\nrfx_prs.h \
  ../nRF5_SDK_current/integration/nrfx/nrfx_log.h \
  ../nRF5_SDK_current/components/libraries/log/nrf_log.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \

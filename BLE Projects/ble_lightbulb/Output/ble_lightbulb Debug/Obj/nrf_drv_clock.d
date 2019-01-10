@@ -1,7 +1,7 @@
 Output/ble_lightbulb\ Debug/Obj/nrf_drv_clock.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\integration\nrfx\legacy\nrf_drv_clock.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\integration\nrfx\legacy\nrf_drv_clock.c \
  ../nRF5_SDK_current/components/libraries/util/nordic_common.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\integration\nrfx\legacy\nrf_drv_clock.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\integration\nrfx\legacy\nrf_drv_clock.h \
  ../nRF5_SDK_current/modules/nrfx/drivers/include/nrfx_clock.h \
  ../nRF5_SDK_current/modules/nrfx/nrfx.h \
  ../nRF5_SDK_current/integration/nrfx/nrfx_config.h sdk_config.h \

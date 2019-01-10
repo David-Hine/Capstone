@@ -1,5 +1,5 @@
 Output/ble_lightbulb\ Debug/Obj/fds.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\fds\fds.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\fds\fds.c \
  ../nRF5_SDK_current/components/libraries/util/sdk_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
@@ -27,7 +27,7 @@ Output/ble_lightbulb\ Debug/Obj/fds.o: \
  ../nRF5_SDK_current/modules/nrfx/mdk/compiler_abstraction.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_macros.h \
  ../nRF5_SDK_current/components/libraries/util/nrf_assert.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\fds\fds.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\fds\fds.h \
  ../nRF5_SDK_current/components/libraries/util/sdk_errors.h \
  ../nRF5_SDK_current/components/libraries/util/app_util_platform.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_soc.h \
@@ -38,7 +38,7 @@ Output/ble_lightbulb\ Debug/Obj/fds.o: \
  ../nRF5_SDK_current/components/libraries/util/app_error.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdio.h \
  ../nRF5_SDK_current/components/libraries/util/app_error_weak.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\fds\fds_internal_defs.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\fds\fds_internal_defs.h \
  ../nRF5_SDK_current/components/libraries/atomic/nrf_atomic.h \
  ../nRF5_SDK_current/components/libraries/atomic_fifo/nrf_atfifo.h \
  ../nRF5_SDK_current/components/libraries/util/nordic_common.h \

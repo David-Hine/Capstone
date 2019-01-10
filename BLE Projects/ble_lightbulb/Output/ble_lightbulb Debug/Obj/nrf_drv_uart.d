@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/nrf_drv_uart.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\integration\nrfx\legacy\nrf_drv_uart.c \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\integration\nrfx\legacy\nrf_drv_uart.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\integration\nrfx\legacy\nrf_drv_uart.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\integration\nrfx\legacy\nrf_drv_uart.h \
  ../nRF5_SDK_current/modules/nrfx/nrfx.h \
  ../nRF5_SDK_current/integration/nrfx/nrfx_config.h sdk_config.h \
  ../nRF5_SDK_current/modules/nrfx/drivers/nrfx_common.h \
