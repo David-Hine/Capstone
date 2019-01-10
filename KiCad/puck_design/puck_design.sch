@@ -196,17 +196,6 @@ F 3 "" H 7200 2650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:Battery_Cell BH1
-U 1 1 5C20407B
-P 10000 3450
-F 0 "BH1" H 10050 3450 50  0000 L CNN
-F 1 "BH" H 10050 3350 50  0000 L CNN
-F 2 "puck_footprints:BATTCON_24.5MM_PTH" V 10000 3510 50  0001 C CNN
-F 3 "~" V 10000 3510 50  0001 C CNN
-	1    10000 3450
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:VCC #PWR0107
 U 1 1 5C1763E4
 P 3750 4700
@@ -250,12 +239,12 @@ Wire Wire Line
 $Comp
 L power:GND #PWR0115
 U 1 1 5C1E4D3E
-P 7400 3650
-F 0 "#PWR0115" H 7400 3400 50  0001 C CNN
-F 1 "GND" H 7405 3477 50  0000 C CNN
-F 2 "" H 7400 3650 50  0001 C CNN
-F 3 "" H 7400 3650 50  0001 C CNN
-	1    7400 3650
+P 8500 2450
+F 0 "#PWR0115" H 8500 2200 50  0001 C CNN
+F 1 "GND" H 8505 2277 50  0000 C CNN
+F 2 "" H 8500 2450 50  0001 C CNN
+F 3 "" H 8500 2450 50  0001 C CNN
+	1    8500 2450
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -323,12 +312,12 @@ Wire Wire Line
 $Comp
 L Device:C C6
 U 1 1 5C1C0D7E
-P 8050 3350
-F 0 "C6" H 8165 3396 50  0000 L CNN
-F 1 "4.7uF" H 8165 3305 50  0000 L CNN
-F 2 "puck_footprints:CAPC2012X140N" H 8088 3200 50  0001 C CNN
-F 3 "~" H 8050 3350 50  0001 C CNN
-	1    8050 3350
+P 7850 3450
+F 0 "C6" H 7965 3496 50  0000 L CNN
+F 1 "4.7uF" H 7965 3405 50  0000 L CNN
+F 2 "puck_footprints:CAPC2012X140N" H 7888 3300 50  0001 C CNN
+F 3 "~" H 7850 3450 50  0001 C CNN
+	1    7850 3450
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -345,12 +334,12 @@ $EndComp
 $Comp
 L power:GND #PWR0119
 U 1 1 5C1CC93A
-P 8050 3550
-F 0 "#PWR0119" H 8050 3300 50  0001 C CNN
-F 1 "GND" H 8055 3377 50  0000 C CNN
-F 2 "" H 8050 3550 50  0001 C CNN
-F 3 "" H 8050 3550 50  0001 C CNN
-	1    8050 3550
+P 7850 3650
+F 0 "#PWR0119" H 7850 3400 50  0001 C CNN
+F 1 "GND" H 7855 3477 50  0000 C CNN
+F 2 "" H 7850 3650 50  0001 C CNN
+F 3 "" H 7850 3650 50  0001 C CNN
+	1    7850 3650
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -365,12 +354,7 @@ F 3 "" H 9550 3600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8050 3150 8050 3200
-Connection ~ 8050 3150
-Wire Wire Line
-	8050 3150 8300 3150
-Wire Wire Line
-	8050 3500 8050 3550
+	7850 3600 7850 3650
 Wire Wire Line
 	9550 3550 9550 3600
 Wire Wire Line
@@ -413,8 +397,6 @@ Wire Wire Line
 Wire Wire Line
 	9550 3150 10000 3150
 Connection ~ 9550 3150
-Wire Wire Line
-	10000 3150 10000 3250
 $Comp
 L puck_library:BQ29700DSER U5
 U 1 1 5C35E700
@@ -528,34 +510,32 @@ Wire Wire Line
 $Comp
 L Device:R R5
 U 1 1 5C3A4125
-P 10450 4900
-F 0 "R5" H 10520 4946 50  0000 L CNN
-F 1 "330" H 10520 4855 50  0000 L CNN
-F 2 "puck_footprints:0805-NO" V 10380 4900 50  0001 C CNN
-F 3 "~" H 10450 4900 50  0001 C CNN
-	1    10450 4900
+P 10650 4900
+F 0 "R5" H 10720 4946 50  0000 L CNN
+F 1 "330" H 10720 4855 50  0000 L CNN
+F 2 "puck_footprints:0805-NO" V 10580 4900 50  0001 C CNN
+F 3 "~" H 10650 4900 50  0001 C CNN
+	1    10650 4900
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C C8
 U 1 1 5C3A412C
-P 10450 5500
-F 0 "C8" H 10565 5546 50  0000 L CNN
-F 1 "0.1uF" H 10565 5455 50  0000 L CNN
-F 2 "puck_footprints:CAPC2012X140N" H 10488 5350 50  0001 C CNN
-F 3 "~" H 10450 5500 50  0001 C CNN
-	1    10450 5500
+P 10650 5500
+F 0 "C8" H 10765 5546 50  0000 L CNN
+F 1 "0.1uF" H 10765 5455 50  0000 L CNN
+F 2 "puck_footprints:CAPC2012X140N" H 10688 5350 50  0001 C CNN
+F 3 "~" H 10650 5500 50  0001 C CNN
+	1    10650 5500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10450 5650 10450 6150
+	10650 5650 10650 6150
 Wire Wire Line
-	10450 5050 10450 5150
+	10650 5050 10650 5150
+Connection ~ 10650 5150
 Wire Wire Line
-	9800 5150 10450 5150
-Connection ~ 10450 5150
-Wire Wire Line
-	10450 5150 10450 5350
+	10650 5150 10650 5350
 Wire Wire Line
 	8900 6150 10000 6150
 Connection ~ 8900 6150
@@ -565,44 +545,21 @@ Wire Wire Line
 	10000 5300 10000 6150
 Connection ~ 10000 6150
 Wire Wire Line
-	10000 6150 10450 6150
-Wire Wire Line
-	10000 3150 10450 3150
-Wire Wire Line
-	10450 3150 10450 4750
+	10650 3150 10650 4750
 Connection ~ 10000 3150
 Wire Wire Line
 	6750 4350 6750 6150
 Wire Wire Line
 	6750 6150 7150 6150
 Wire Wire Line
-	10000 4350 10000 3550
-Wire Wire Line
 	6750 4350 10000 4350
-$Comp
-L Connector:Conn_Coaxial_Power J1
-U 1 1 5C43F4A5
-P 7400 3350
-F 0 "J1" H 7488 3346 50  0000 L CNN
-F 1 "Coax_Jack" H 7488 3255 50  0000 L CNN
-F 2 "puck_footprints:CUI_SJ-2523-SMT-TR" H 7400 3300 50  0001 C CNN
-F 3 "~" H 7400 3300 50  0001 C CNN
-	1    7400 3350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7400 3250 7400 3150
-Wire Wire Line
-	7400 3150 8050 3150
-Wire Wire Line
-	7400 3550 7400 3650
 $Comp
 L pspice:INDUCTOR L1
 U 1 1 5C45F7CB
 P 6850 3250
 F 0 "L1" V 6804 3328 50  0000 L CNN
 F 1 "10uH" V 6895 3328 50  0000 L CNN
-F 2 "" H 6850 3250 50  0001 C CNN
+F 2 "puck_footprints:CAPC2012X135N" H 6850 3250 50  0001 C CNN
 F 3 "~" H 6850 3250 50  0001 C CNN
 	1    6850 3250
 	0    1    1    0   
@@ -635,7 +592,6 @@ Wire Wire Line
 Connection ~ 6850 2650
 Wire Wire Line
 	6850 2650 7200 2650
-Connection ~ 10450 6150
 $Comp
 L power:-BATT #PWR0101
 U 1 1 5C4D22EF
@@ -649,8 +605,6 @@ F 3 "" H 10800 6250 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	10800 6150 10800 6250
-Wire Wire Line
-	10450 6150 10800 6150
 $Comp
 L power:+BATT #PWR0102
 U 1 1 5C4FDB1B
@@ -663,10 +617,7 @@ F 3 "" H 10800 3050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10450 3150 10800 3150
-Wire Wire Line
 	10800 3150 10800 3050
-Connection ~ 10450 3150
 $Comp
 L power:+BATT #PWR0103
 U 1 1 5C50F1C9
@@ -835,33 +786,21 @@ Wire Wire Line
 Wire Wire Line
 	6850 3500 6850 3900
 $Comp
-L puck_library:BATTERY-24.5MM_PTH BT1
-U 1 1 5C3705F2
-P 8000 2000
-F 0 "BT1" H 8000 2410 45  0000 C CNN
-F 1 "BATTERY-24.5MM_PTH" H 8000 2326 45  0000 C CNN
-F 2 "puck_footprints:BATTCON_24.5MM_PTH" H 8000 2250 20  0001 C CNN
-F 3 "" H 8000 2000 50  0001 C CNN
-F 4 "PRT-08863" H 8000 2231 60  0000 C CNN "Field4"
-	1    8000 2000
-	1    0    0    -1  
-$EndComp
-$Comp
-L puck_library:SJ-2523-SMT-TR J2
+L puck_library:SJ-2523-SMT-TR J1
 U 1 1 5C370698
-P 9300 2050
-F 0 "J2" H 9405 2517 50  0000 C CNN
-F 1 "SJ-2523-SMT-TR" H 9405 2426 50  0000 C CNN
-F 2 "puck_footprints:CUI_SJ-2523-SMT-TR" H 9300 2050 50  0001 L BNN
-F 3 "SJ-2523-SMT-TR" H 9300 2050 50  0001 L BNN
-F 4 "None" H 9300 2050 50  0001 L BNN "Field4"
-F 5 "CUI Inc." H 9300 2050 50  0001 L BNN "Field5"
-F 6 "https://www.cui.com/product/interconnect/audio-connectors/jacks/2.5-mm-jacks/sj-252x-smt-series?utm_source=snapeda.com&utm_medium=referral&utm_campaign=snapedaBOM" H 7100 2600 50  0001 L BNN "Field6"
-F 7 "https://www.digikey.com/product-detail/en/cui-inc/SJ-2523-SMT-TR/CP-2523SJCT-ND/669702?utm_source=snapeda&utm_medium=aggregator&utm_campaign=symbol" H 7100 2600 50  0001 L BNN "Field7"
-F 8 "SJ Series 2.5 mm SMT Right Angle Stereo Audio Jack" H 7100 2600 50  0001 L BNN "Field8"
-F 9 "CP-2523SJCT-ND" H 9300 2050 50  0001 L BNN "Field9"
-	1    9300 2050
-	1    0    0    -1  
+P 9350 1950
+F 0 "J1" H 9455 2417 50  0000 C CNN
+F 1 "SJ-2523-SMT-TR" H 9455 2326 50  0000 C CNN
+F 2 "puck_footprints:CUI_SJ-2523-SMT-TR" H 9350 1950 50  0001 L BNN
+F 3 "SJ-2523-SMT-TR" H 9350 1950 50  0001 L BNN
+F 4 "None" H 9350 1950 50  0001 L BNN "Field4"
+F 5 "CUI Inc." H 9350 1950 50  0001 L BNN "Field5"
+F 6 "https://www.cui.com/product/interconnect/audio-connectors/jacks/2.5-mm-jacks/sj-252x-smt-series?utm_source=snapeda.com&utm_medium=referral&utm_campaign=snapedaBOM" H 7150 2500 50  0001 L BNN "Field6"
+F 7 "https://www.digikey.com/product-detail/en/cui-inc/SJ-2523-SMT-TR/CP-2523SJCT-ND/669702?utm_source=snapeda&utm_medium=aggregator&utm_campaign=symbol" H 7150 2500 50  0001 L BNN "Field7"
+F 8 "SJ Series 2.5 mm SMT Right Angle Stereo Audio Jack" H 7150 2500 50  0001 L BNN "Field8"
+F 9 "CP-2523SJCT-ND" H 9350 1950 50  0001 L BNN "Field9"
+	1    9350 1950
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
 	1650 2150 1450 2150
@@ -912,4 +851,63 @@ Wire Wire Line
 	5350 3550 5350 4000
 Wire Wire Line
 	5350 4000 8300 4000
+$Comp
+L puck_library:BATTERY-24.5MM_PTH BT1
+U 1 1 5C388373
+P 10000 3750
+F 0 "BT1" H 9950 4000 45  0000 L CNN
+F 1 "BATTERY-24.5MM_PTH" H 9700 4100 45  0000 L CNN
+F 2 "puck_footprints:BATTCON_24.5MM_PTH" H 9950 4050 20  0001 C CNN
+F 3 "" H 10000 3750 50  0001 C CNN
+	1    10000 3750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	10000 3150 10000 3550
+Wire Wire Line
+	10000 4350 10000 3950
+Wire Wire Line
+	8850 2150 8500 2150
+Wire Wire Line
+	8500 2150 8500 2450
+Wire Wire Line
+	8850 1850 8500 1850
+Wire Wire Line
+	8500 1850 8500 2150
+Connection ~ 8500 2150
+Wire Wire Line
+	7850 1750 7850 3150
+Wire Wire Line
+	7850 1750 8850 1750
+Wire Wire Line
+	7850 3150 7850 3300
+Wire Wire Line
+	7850 3150 8300 3150
+Connection ~ 7850 3150
+Connection ~ 10650 3150
+Wire Wire Line
+	10650 3150 10800 3150
+Connection ~ 10650 6150
+Wire Wire Line
+	10650 6150 10800 6150
+Wire Wire Line
+	10000 6150 10650 6150
+Wire Wire Line
+	10000 3150 10650 3150
+Wire Wire Line
+	9800 5150 10650 5150
+$Comp
+L power:GND #PWR0125
+U 1 1 5C40E50A
+P 6750 6300
+F 0 "#PWR0125" H 6750 6050 50  0001 C CNN
+F 1 "GND" H 6755 6127 50  0000 C CNN
+F 2 "" H 6750 6300 50  0001 C CNN
+F 3 "" H 6750 6300 50  0001 C CNN
+	1    6750 6300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6750 6300 6750 6150
+Connection ~ 6750 6150
 $EndSCHEMATC
