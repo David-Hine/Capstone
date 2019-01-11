@@ -697,6 +697,7 @@ int main(void)
     application_timers_start();
 
     // Start execution.
+    // Display in debug terminal 
     NRF_LOG_INFO("BLE Lightbulb example started.");
    
     advertising_start();
