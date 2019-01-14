@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/app_util_platform.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_util_platform.c \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_util_platform.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_util_platform.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_util_platform.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  ../nRF5_SDK_current/modules/nrfx/mdk/compiler_abstraction.h \
  ../nRF5_SDK_current/modules/nrfx/mdk/nrf.h \
@@ -20,12 +20,12 @@ Output/ble_lightbulb\ Debug/Obj/app_util_platform.o: \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_error.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_error_soc.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_nvic.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\nrf_assert.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_error.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\nrf_assert.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_error.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdio.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/__crossworks.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\sdk_errors.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\sdk_errors.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/nrf_error.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\nordic_common.h \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_error_weak.h
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\nordic_common.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\libraries\util\app_error_weak.h

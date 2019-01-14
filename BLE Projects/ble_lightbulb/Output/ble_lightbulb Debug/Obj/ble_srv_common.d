@@ -1,6 +1,6 @@
 Output/ble_lightbulb\ Debug/Obj/ble_srv_common.o: \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\common\ble_srv_common.c \
- C:\Users\Leo\Documents\BLE\ Projects\nRF5_SDK_current\components\ble\common\ble_srv_common.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\common\ble_srv_common.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\nRF5_SDK_current\components\ble\common\ble_srv_common.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdbool.h \
  ../nRF5_SDK_current/components/softdevice/s140/headers/ble_types.h \

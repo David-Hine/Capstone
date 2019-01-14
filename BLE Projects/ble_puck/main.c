@@ -73,6 +73,8 @@
 
 #include "Battery Level/battery_voltage.h"
 
+//#include "SAADC/saadc.h"
+
 
 #define DEVICE_NAME                     "BLE_Puck"                              /**< Name of device. Will be included in the advertising data. */
 #define MANUFACTURER_NAME               "NordicSemiconductor"                   /**< Manufacturer. Will be passed to Device Information Service. */
@@ -104,6 +106,7 @@
 #define SEC_PARAM_MAX_KEY_SIZE          16                                      /**< Maximum encryption key size. */
 
 #define DEAD_BEEF                       0xDEADBEEF                              /**< Value used as error code on stack dump, can be used to identify stack location on stack unwind. */
+
 
 /**< Battery timer. */
 APP_TIMER_DEF(m_battery_timer_id);
@@ -675,6 +678,8 @@ static void battery_level_update(void)
         APP_ERROR_HANDLER(err_code);
     }
 }
+
+
 
 /**@brief Function for application main entry.
  */
