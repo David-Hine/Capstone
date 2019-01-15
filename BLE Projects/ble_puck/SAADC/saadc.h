@@ -16,10 +16,10 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
-#define SAMPLES_IN_BUFFER 5
+#define SAMPLES_IN_BUFFER 6   // Buffer size is multiple of number of ADC channels (3)
 volatile uint8_t state = 1;
 
-static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(0);
+static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(4);   // Softdevice uses TIMER0 -> Use TIMER4 instead
 static nrf_saadc_value_t     m_buffer_pool[2][SAMPLES_IN_BUFFER];
 static nrf_ppi_channel_t     m_ppi_channel;
 static uint32_t              m_adc_evt_counter;
@@ -140,4 +140,5 @@ int perform_adc(void)
         nrf_pwr_mgmt_run();
         NRF_LOG_FLUSH();
     }
+    
 }

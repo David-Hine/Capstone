@@ -73,7 +73,7 @@
 
 #include "Battery Level/battery_voltage.h"
 
-//#include "SAADC/saadc.h"
+#include "SAADC/saadc.h"
 
 
 #define DEVICE_NAME                     "BLE_Puck"                              /**< Name of device. Will be included in the advertising data. */
@@ -712,4 +712,7 @@ int main(void)
     {
         idle_state_handle();
     }
+
+    // ADC
+    //perform_adc();
 }
