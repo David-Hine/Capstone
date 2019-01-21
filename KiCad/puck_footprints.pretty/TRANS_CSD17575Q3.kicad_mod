@@ -1,4 +1,4 @@
-(module CSD16406Q3 (layer F.Cu) (tedit 0)
+(module TRANS_CSD17575Q3 (layer F.Cu) (tedit 0)
   (attr smd)
   (fp_text reference TRANS_CSD17575Q3 (at -0.7808 -2.3048) (layer F.SilkS)
     (effects (font (size 0.48 0.48) (thickness 0.05)))
