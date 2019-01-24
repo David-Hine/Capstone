@@ -25,7 +25,9 @@
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb"/>
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;Application"/>
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;Battery Level"/>
+  <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;Board Definition"/>
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;nRF_Drivers"/>
+  <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;nRF_SoftDevice"/>
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;Services"/>
  </Project>
  <Register1>
@@ -59,7 +61,7 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="681" useTextEdit="1" useBinaryEdit="0" left="0" path="main.c" selected="1" top="669" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="681" useTextEdit="1" useBinaryEdit="0" left="0" path="main.c" selected="1" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="78" useTextEdit="1" useBinaryEdit="0" left="0" path="Services/led_service.h" selected="0" top="68" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="39" useTextEdit="1" useBinaryEdit="0" left="0" path="Services/led_service.c" selected="0" top="26" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="65" useTextEdit="1" useBinaryEdit="0" left="0" path="Battery Level/battery_voltage.h" selected="0" top="0" codecName="Default"/>

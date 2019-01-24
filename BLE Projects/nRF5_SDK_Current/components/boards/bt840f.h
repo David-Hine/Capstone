@@ -79,4 +79,4 @@ extern "C" {
 }
 #endif
 
-#endif // PCA10056_H
+#endif // BT840F_H

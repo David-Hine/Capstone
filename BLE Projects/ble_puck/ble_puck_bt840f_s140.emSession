@@ -26,6 +26,7 @@
   <ProjectSessionItem path="ble_puck_bt840f_s140;ble_puck;Application"/>
   <ProjectSessionItem path="ble_puck_bt840f_s140;ble_puck;Battery Level"/>
   <ProjectSessionItem path="ble_puck_bt840f_s140;ble_puck;nRF_Drivers"/>
+  <ProjectSessionItem path="ble_puck_bt840f_s140;ble_puck;nRF_SoftDevice"/>
   <ProjectSessionItem path="ble_puck_bt840f_s140;ble_puck;SAADC"/>
  </Project>
  <Register1>

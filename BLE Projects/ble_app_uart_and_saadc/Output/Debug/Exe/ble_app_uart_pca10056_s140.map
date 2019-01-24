@@ -15457,7 +15457,7 @@ Linker script and memory map
                 0x0000000000000001                . = ASSERT (((__tdata_run_start__ == __tdata_run_end__) || ((__tdata_run_end__ >= __RAM_segment_start__) && (__tdata_run_end__ <= __RAM_segment_end__))), error: .tdata_run is too large to fit in RAM memory segment)
                 0x0000000020002b30                __bss_load_start__ = ALIGN (__tdata_run_end__, 0x4)
 
-.bss            0x0000000020002b30     0x1250
+.bss            0x0000000020002b30     0x1244
                 0x0000000020002b30                __bss_start__ = .
  *(.bss .bss.* .gnu.linkonce.b.*)
  .bss.m_host_present
@@ -15586,87 +15586,87 @@ Linker script and memory map
  .bss.m_num_connections
                 0x0000000020003488        0x4 Output/ble_app_uart_pca10056_s140 Debug/Obj/bsp_btn_ble.o
  .bss.m_buffer_pool
-                0x000000002000348c       0x18 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+                0x000000002000348c        0xc Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
  .bss.m_ppi_channel
-                0x00000000200034a4        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
- *fill*         0x00000000200034a5        0x3 
+                0x0000000020003498        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+ *fill*         0x0000000020003499        0x3 
  .bss.m_adc_evt_counter
-                0x00000000200034a8        0x4 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+                0x000000002000349c        0x4 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
  .bss.m_nus_link_ctx_storage_ctx_data_pool
-                0x00000000200034ac        0x4 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
- .bss.m_gatt    0x00000000200034b0       0x14 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
- .bss.m_qwr     0x00000000200034c4        0xc Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+                0x00000000200034a0        0x4 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+ .bss.m_gatt    0x00000000200034a4       0x14 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+ .bss.m_qwr     0x00000000200034b8        0xc Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
  .bss.m_advertising
-                0x00000000200034d0      0x258 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+                0x00000000200034c4      0x258 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
  .bss.index.12747
-                0x0000000020003728        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
- *fill*         0x0000000020003729        0x3 
+                0x000000002000371c        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+ *fill*         0x000000002000371d        0x3 
  .bss.data_array.12746
-                0x000000002000372c       0xf4 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+                0x0000000020003720       0xf4 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
  .bss.rx_buf.12764
-                0x0000000020003820      0x100 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+                0x0000000020003814      0x100 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
  .bss.tx_buf.12765
-                0x0000000020003920      0x100 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
+                0x0000000020003914      0x100 Output/ble_app_uart_pca10056_s140 Debug/Obj/main.o
  .bss._SEGGER_RTT
-                0x0000000020003a20       0x78 Output/ble_app_uart_pca10056_s140 Debug/Obj/SEGGER_RTT.o
-                0x0000000020003a20                _SEGGER_RTT
+                0x0000000020003a14       0x78 Output/ble_app_uart_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+                0x0000000020003a14                _SEGGER_RTT
  .bss._acUpBuffer
-                0x0000000020003a98      0x200 Output/ble_app_uart_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+                0x0000000020003a8c      0x200 Output/ble_app_uart_pca10056_s140 Debug/Obj/SEGGER_RTT.o
  .bss._acDownBuffer
-                0x0000000020003c98       0x10 Output/ble_app_uart_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+                0x0000000020003c8c       0x10 Output/ble_app_uart_pca10056_s140 Debug/Obj/SEGGER_RTT.o
  .bss.m_timer_data
-                0x0000000020003ca8       0x20 Output/ble_app_uart_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000020003c9c       0x20 Output/ble_app_uart_pca10056_s140 Debug/Obj/ble_conn_params.o
  .bss.m_conn_params_instances
-                0x0000000020003cc8       0x14 Output/ble_app_uart_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000020003cbc       0x14 Output/ble_app_uart_pca10056_s140 Debug/Obj/ble_conn_params.o
  .bss.m_conn_params_config
-                0x0000000020003cdc       0x1c Output/ble_app_uart_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000020003cd0       0x1c Output/ble_app_uart_pca10056_s140 Debug/Obj/ble_conn_params.o
  .bss.m_preferred_conn_params
-                0x0000000020003cf8        0x8 Output/ble_app_uart_pca10056_s140 Debug/Obj/ble_conn_params.o
- .bss.m_bcs     0x0000000020003d00       0x78 Output/ble_app_uart_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x0000000020003cec        0x8 Output/ble_app_uart_pca10056_s140 Debug/Obj/ble_conn_params.o
+ .bss.m_bcs     0x0000000020003cf4       0x78 Output/ble_app_uart_pca10056_s140 Debug/Obj/ble_conn_state.o
  .bss.m_nrf_sdh_enabled
-                0x0000000020003d78        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000020003d6c        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh.o
  .bss.m_nrf_sdh_suspended
-                0x0000000020003d79        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000020003d6d        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh.o
  .bss.m_nrf_sdh_continue
-                0x0000000020003d7a        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000020003d6e        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh.o
  .bss.m_stack_is_enabled
-                0x0000000020003d7b        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+                0x0000000020003d6f        0x1 Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
  .bss.libc.__user_format_extender
-                0x0000000020003d7c        0x4 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000020003d7c                __user_format_extender
+                0x0000000020003d70        0x4 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000020003d70                __user_format_extender
  *(COMMON)
-                0x0000000020003d80                __bss_end__ = (__bss_start__ + SIZEOF (.bss))
-                0x0000000000001250                __bss_size__ = SIZEOF (.bss)
-                0x0000000020003d80                __bss_load_end__ = __bss_end__
+                0x0000000020003d74                __bss_end__ = (__bss_start__ + SIZEOF (.bss))
+                0x0000000000001244                __bss_size__ = SIZEOF (.bss)
+                0x0000000020003d74                __bss_load_end__ = __bss_end__
                 0x0000000000000001                . = ASSERT (((__bss_start__ == __bss_end__) || ((__bss_end__ >= __RAM_segment_start__) && (__bss_end__ <= __RAM_segment_end__))), error: .bss is too large to fit in RAM memory segment)
-                0x0000000020003d80                __tbss_load_start__ = ALIGN (__bss_end__, 0x4)
+                0x0000000020003d74                __tbss_load_start__ = ALIGN (__bss_end__, 0x4)
 
-.tbss           0x0000000020003d80        0x0
-                0x0000000020003d80                __tbss_start__ = .
+.tbss           0x0000000020003d74        0x0
+                0x0000000020003d74                __tbss_start__ = .
  *(.tbss .tbss.*)
-                0x0000000020003d80                __tbss_end__ = (__tbss_start__ + SIZEOF (.tbss))
+                0x0000000020003d74                __tbss_end__ = (__tbss_start__ + SIZEOF (.tbss))
                 0x0000000000000000                __tbss_size__ = SIZEOF (.tbss)
-                0x0000000020003d80                __tbss_load_end__ = __tbss_end__
+                0x0000000020003d74                __tbss_load_end__ = __tbss_end__
                 0x0000000000000001                . = ASSERT (((__tbss_start__ == __tbss_end__) || ((__tbss_end__ >= __RAM_segment_start__) && (__tbss_end__ <= __RAM_segment_end__))), error: .tbss is too large to fit in RAM memory segment)
-                0x0000000020003d80                __non_init_load_start__ = ALIGN (__tbss_end__, 0x4)
+                0x0000000020003d74                __non_init_load_start__ = ALIGN (__tbss_end__, 0x4)
 
-.non_init       0x0000000020003d80        0x0
-                0x0000000020003d80                __non_init_start__ = .
+.non_init       0x0000000020003d74        0x0
+                0x0000000020003d74                __non_init_start__ = .
  *(.non_init .non_init.*)
-                0x0000000020003d80                __non_init_end__ = (__non_init_start__ + SIZEOF (.non_init))
+                0x0000000020003d74                __non_init_end__ = (__non_init_start__ + SIZEOF (.non_init))
                 0x0000000000000000                __non_init_size__ = SIZEOF (.non_init)
-                0x0000000020003d80                __non_init_load_end__ = __non_init_end__
+                0x0000000020003d74                __non_init_load_end__ = __non_init_end__
                 0x0000000000000001                . = ASSERT (((__non_init_start__ == __non_init_end__) || ((__non_init_end__ >= __RAM_segment_start__) && (__non_init_end__ <= __RAM_segment_end__))), error: .non_init is too large to fit in RAM memory segment)
-                0x0000000020003d80                __heap_load_start__ = ALIGN (__non_init_end__, 0x4)
+                0x0000000020003d74                __heap_load_start__ = ALIGN (__non_init_end__, 0x4)
 
-.heap           0x0000000020003d80     0x2000
-                0x0000000020003d80                __heap_start__ = .
+.heap           0x0000000020003d74     0x2000
+                0x0000000020003d74                __heap_start__ = .
  *(.heap .heap.*)
-                0x0000000020005d80                . = ALIGN (MAX ((__heap_start__ + __HEAPSIZE__), .), 0x4)
- *fill*         0x0000000020003d80     0x2000 
-                0x0000000020005d80                __heap_end__ = (__heap_start__ + SIZEOF (.heap))
+                0x0000000020005d74                . = ALIGN (MAX ((__heap_start__ + __HEAPSIZE__), .), 0x4)
+ *fill*         0x0000000020003d74     0x2000 
+                0x0000000020005d74                __heap_end__ = (__heap_start__ + SIZEOF (.heap))
                 0x0000000000002000                __heap_size__ = SIZEOF (.heap)
-                0x0000000020005d80                __heap_load_end__ = __heap_end__
+                0x0000000020005d74                __heap_load_end__ = __heap_end__
                 0x0000000000000001                . = ASSERT (((__heap_start__ == __heap_end__) || ((__heap_end__ >= __RAM_segment_start__) && (__heap_end__ <= __RAM_segment_end__))), error: .heap is too large to fit in RAM memory segment)
                 0x000000002003e000                __stack_load_start__ = (__RAM_segment_end__ - 0x2000)
 
