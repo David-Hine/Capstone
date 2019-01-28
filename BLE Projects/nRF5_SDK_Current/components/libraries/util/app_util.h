@@ -1217,20 +1217,22 @@ static __INLINE uint64_t uint48_decode(const uint8_t * p_encoded_data)
              (((uint64_t)((uint8_t *)p_encoded_data)[5]) << 40 ));
 }
 
-/** @brief Function for converting the input voltage (in milli volts) into percentage of 3.0 Volts.
+/** @brief Function for converting the input voltage (in milli volts) into percentage of 3.6 Volts.
  *
  *  @details The calculation is based on a linearized version of the battery's discharge
- *           curve. 3.0V returns 100% battery level. The limit for power failure is 2.1V and
- *           is considered to be the lower boundary.
+ *           curve. >3.9V returns 100% battery level. 
+ *           
+ *           The lower boundary is set at 3V (cutoff votlage)
  *
- *           The discharge curve for CR2032 is non-linear. In this model it is split into
+ *           The discharge curve for LIR2450 is non-linear. In this model it is split into
  *           4 linear sections:
- *           - Section 1: 3.0V - 2.9V = 100% - 42% (58% drop on 100 mV)
- *           - Section 2: 2.9V - 2.74V = 42% - 18% (24% drop on 160 mV)
- *           - Section 3: 2.74V - 2.44V = 18% - 6% (12% drop on 300 mV)
- *           - Section 4: 2.44V - 2.1V = 6% - 0% (6% drop on 340 mV)
+ *           - Section 1: 3.9V - 3.55V = 100% - 68% (32% drop on 350 mV)
+ *           - Section 2: 3.55V - 3.4V = 68% - 36% (32% drop on 150 mV)
+ *           - Section 3: 3.4V - 3.3V = 36% - 20% (16% drop on 100 mV)
+ *           - Section 4: 3.3V - 3.0V = 20% - 0% (20% drop on 300 mV)
  *
- *           These numbers are by no means accurate. Temperature and
+ *           These numbers are an estimate
+ *           Temperature at -10C (worst case scenario)
  *           load in the actual application is not accounted for!
  *
  *  @param[in] mvolts The voltage in mV
@@ -1241,25 +1243,25 @@ static __INLINE uint8_t battery_level_in_percent(const uint16_t mvolts)
 {
     uint8_t battery_level;
 
-    if (mvolts >= 3000)
+    if (mvolts >= 3900)
     {
         battery_level = 100;
     }
-    else if (mvolts > 2900)
+    else if (mvolts > 3550)
     {
-        battery_level = 100 - ((3000 - mvolts) * 58) / 100;
+        battery_level = 100 - ((3900 - mvolts) * 32) / 350;
     }
-    else if (mvolts > 2740)
+    else if (mvolts > 3400)
     {
-        battery_level = 42 - ((2900 - mvolts) * 24) / 160;
+        battery_level = 68 - ((3550 - mvolts) * 32) / 150;
     }
-    else if (mvolts > 2440)
+    else if (mvolts > 3300)
     {
-        battery_level = 18 - ((2740 - mvolts) * 12) / 300;
+        battery_level = 36 - ((3400 - mvolts) * 16) / 100;
     }
-    else if (mvolts > 2100)
+    else if (mvolts > 3000)
     {
-        battery_level = 6 - ((2440 - mvolts) * 6) / 340;
+        battery_level = 20 - ((3300 - mvolts) * 20) / 300;
     }
     else
     {

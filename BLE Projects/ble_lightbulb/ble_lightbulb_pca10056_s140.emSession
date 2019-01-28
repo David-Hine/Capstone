@@ -26,6 +26,7 @@
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;Application"/>
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;Battery Level"/>
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;Board Definition"/>
+  <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;Board Support"/>
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;nRF_Drivers"/>
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;nRF_SoftDevice"/>
   <ProjectSessionItem path="ble_lightbulb_pca10056_s140;ble_lightbulb;Services"/>

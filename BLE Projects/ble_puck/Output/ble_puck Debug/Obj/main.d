@@ -114,7 +114,7 @@ Output/ble_puck\ Debug/Obj/main.o: \
  ../nRF5_SDK_current/components/ble/ble_services/ble_bas/ble_bas.h \
  C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\services/led_service.h \
  C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\Battery\ Level/battery_voltage.h \
- C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\SAADC/saadc.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\services/saadc.h \
  ../nRF5_SDK_current/integration/nrfx/legacy/nrf_drv_saadc.h \
  ../nRF5_SDK_current/modules/nrfx/drivers/include/nrfx_saadc.h \
  ../nRF5_SDK_current/modules/nrfx/hal/nrf_saadc.h \

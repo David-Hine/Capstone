@@ -86,7 +86,7 @@
 #include "nrf_drv_timer.h"
 
 
-#define SAMPLES_IN_BUFFER 3         // Buffer size a multiple of number of ADC channels (3)
+#define SAMPLES_IN_BUFFER 6         // Buffer size a multiple of number of ADC channels (3)
 volatile uint8_t state = 1;
 
 static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(4);     // SoftDevice uses TIMER0 -> use TIMER4 instead
@@ -728,8 +728,8 @@ void saadc_sampling_event_init(void)
     err_code = nrf_drv_timer_init(&m_timer, &timer_cfg, timer_handler);
     APP_ERROR_CHECK(err_code);
     
-    // setup m_timer for compare event every 0.01ms(sampling rate = 100kHz)
-    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 400);
+    // setup m_timer for compare event every 0.1ms(sampling rate = 10kHz)
+    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 500);
     nrf_drv_timer_extended_compare(&m_timer,
                                    NRF_TIMER_CC_CHANNEL0,
                                    ticks,
@@ -800,6 +800,11 @@ void saadc_init(void)
     //AIN2 (P0.04)
     nrf_saadc_channel_config_t channel_config_2 =
         NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN2);
+
+    // change acquisition times to 5us (default is 10us)
+    channel_config.acq_time = NRF_SAADC_ACQTIME_5US;
+    channel_config_1.acq_time = NRF_SAADC_ACQTIME_5US;
+    channel_config_2.acq_time = NRF_SAADC_ACQTIME_5US;
     
     err_code = nrf_drv_saadc_init(NULL, saadc_callback);
     APP_ERROR_CHECK(err_code);

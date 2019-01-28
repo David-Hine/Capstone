@@ -93,7 +93,7 @@ void saadc_sampling_event_init(void)
     err_code = nrf_drv_timer_init(&m_timer, &timer_cfg, timer_handler);
     APP_ERROR_CHECK(err_code);
 
-    /* setup m_timer for compare event every 400ms */
+    // setup m_timer for compare event every 400ms
     uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 400);
     nrf_drv_timer_extended_compare(&m_timer,
                                    NRF_TIMER_CC_CHANNEL0,
@@ -101,6 +101,7 @@ void saadc_sampling_event_init(void)
                                    NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK,
                                    false);
     nrf_drv_timer_enable(&m_timer);
+
 
     uint32_t timer_compare_event_addr = nrf_drv_timer_compare_event_address_get(&m_timer,
                                                                                 NRF_TIMER_CC_CHANNEL0);
@@ -113,6 +114,7 @@ void saadc_sampling_event_init(void)
     err_code = nrf_drv_ppi_channel_assign(m_ppi_channel,
                                           timer_compare_event_addr,
                                           saadc_sample_task_addr);
+
     APP_ERROR_CHECK(err_code);
 }
 
@@ -190,6 +192,7 @@ int main(void)
         nrf_pwr_mgmt_run();
         NRF_LOG_FLUSH();
     }
+
 }
 
 
