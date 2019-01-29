@@ -62,6 +62,7 @@
 "Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh.o"
 "Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh_ble.o"
 "Output/ble_app_uart_pca10056_s140 Debug/Obj/nrf_sdh_soc.o"
+"Output/ble_app_uart_pca10056_s140 Debug/Obj/saadc.o"
 "C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libdebugio_mempoll_v7em_fpv4_sp_d16_hard_t_le_eabi.a"
 "C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libm_v7em_fpv4_sp_d16_hard_t_le_eabi.a"
 "C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a"

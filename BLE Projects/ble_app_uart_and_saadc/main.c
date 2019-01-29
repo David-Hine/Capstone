@@ -85,6 +85,8 @@
 #include "nrf_drv_ppi.h"
 #include "nrf_drv_timer.h"
 
+#include "Services/saadc.h"
+
 
 #define SAMPLES_IN_BUFFER 6         // Buffer size a multiple of number of ADC channels (3)
 volatile uint8_t state = 1;
@@ -95,7 +97,6 @@ static nrf_ppi_channel_t     m_ppi_channel;
 static uint32_t              m_adc_evt_counter;
 
 
-//#include "SAADC/saadc.h"
 
 #define APP_BLE_CONN_CFG_TAG            1                                           /**< A tag identifying the SoftDevice BLE configuration. */
 
@@ -133,6 +134,11 @@ static ble_uuid_t m_adv_uuids[]          =                                      
 {
     {BLE_UUID_NUS_SERVICE, NUS_SERVICE_UUID_TYPE}
 };
+
+
+// < Structure used to identify the SAADC service. 
+BLE_SAADC_SERVICE_DEF(m_saadc_service);
+static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_saadc_service, uint8_t saadc_state);
 
 
 /**@brief Function for assert macro callback.
@@ -250,10 +256,19 @@ static void services_init(void)
     ble_nus_init_t     nus_init;
     nrf_ble_qwr_init_t qwr_init = {0};
 
+    ble_saadc_service_init_t saadc_init;    // For SAADC service
+
     // Initialize Queued Write Module.
     qwr_init.error_handler = nrf_qwr_error_handler;
 
     err_code = nrf_ble_qwr_init(&m_qwr, &qwr_init);
+    APP_ERROR_CHECK(err_code);
+
+
+    // Initialize the SAADC service
+    saadc_init.saadc_write_handler = saadc_write_handler;
+ 
+    err_code = ble_saadc_service_init(&m_saadc_service, &saadc_init); 
     APP_ERROR_CHECK(err_code);
 
     // Initialize NUS.
@@ -830,6 +845,52 @@ void saadc_init(void)
 }
 
 
+// SAADC SERVICE
+
+// Functions for starting and stopping SAADC
+void start_adc()
+{
+    saadc_sampling_event_init();
+    saadc_init();
+    saadc_sampling_event_enable();
+}
+
+void stop_adc()
+{
+    nrf_drv_timer_disable(&m_timer);
+    nrf_drv_timer_uninit(&m_timer);
+    nrf_drv_ppi_channel_disable(m_ppi_channel);
+    nrf_drv_ppi_uninit();
+    nrf_drv_saadc_abort();
+    nrf_drv_saadc_uninit();
+    while(nrf_drv_saadc_is_busy());
+}
+
+/**@brief Function for handling write events to the SAADC characteristic.
+ *
+ * @param[in] p_saadc_service  Instance of SAADC Service to which the write applies.
+ * @param[in] saadc_state      Written/desired state of the SAADC. (on/off)
+ */
+static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_saadc_service, uint8_t saadc_state)
+{
+    if (saadc_state)
+    {
+        // Start SAADC if user sends 1
+        start_adc();
+
+        NRF_LOG_INFO("SAADC Sampling!");
+                
+    }
+    else
+    {
+        // Stop SAADC if user sends 0
+        stop_adc();
+
+        NRF_LOG_INFO("SAADC OFF!");
+    }
+}
+
+
 
 
 /**@brief Application main function.
@@ -856,14 +917,12 @@ int main(void)
     NRF_LOG_INFO("Debug logging for UART over RTT started.");
     advertising_start();
 
-    // SAADC
+    /* SAADC initialization
     saadc_init();
     saadc_sampling_event_init();
     saadc_sampling_event_enable();
-    NRF_LOG_INFO("SAADC simple example started.");
-    
-    
-    //perform_adc();
+    nrf_saadc_disable();            // Disable SAADC until user chooses to start it (using SAADC service)
+    */
 
     // Enter main loop.
     for (;;)

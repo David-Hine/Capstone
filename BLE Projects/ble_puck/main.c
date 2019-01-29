@@ -73,8 +73,6 @@
 
 #include "Battery Level/battery_voltage.h"
 
-#include "services/saadc.h"
-
 
 #define DEVICE_NAME                     "BLE_Puck"                              /**< Name of device. Will be included in the advertising data. */
 #define MANUFACTURER_NAME               "NordicSemiconductor"                   /**< Manufacturer. Will be passed to Device Information Service. */
@@ -138,11 +136,6 @@ static ble_gap_adv_data_t m_adv_data =
 
     }
 };
-
-
-/**< Structure used to identify the SAADC service. */
-BLE_SAADC_SERVICE_DEF(m_saadc_service);
-static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_saadc_service, uint8_t saadc_state);
 
 
 /**< Structure used to identify the battery service. */
@@ -269,18 +262,12 @@ static void services_init(void)
     ble_bas_init_t     bas_init;
     ble_led_service_init_t led_init;
     nrf_ble_qwr_init_t qwr_init = {0};
-    ble_saadc_service_init_t saadc_init;
 
     // Initialize Queued Write Module.
     qwr_init.error_handler = nrf_qwr_error_handler;
 
     err_code = nrf_ble_qwr_init(&m_qwr, &qwr_init);
-    APP_ERROR_CHECK(err_code);
-
-    // Initialize the SAADC service
-    saadc_init.saadc_write_handler = saadc_write_handler;
- 
-    err_code = ble_saadc_service_init(&m_saadc_service, &saadc_init);    
+    APP_ERROR_CHECK(err_code); 
 
     // Initialize the LED service
     led_init.led_write_handler = led_write_handler;
@@ -500,25 +487,6 @@ static void led_write_handler(uint16_t conn_handle, ble_led_service_t * p_led_se
     }
 }
 
-/**@brief Function for handling write events to the SAADC characteristic.
- *
- * @param[in] p_saadc_service  Instance of SAADC Service to which the write applies.
- * @param[in] saadc_state      Written/desired state of the SAADC. (on/off)
- */
-static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_saadc_service, uint8_t saadc_state)
-{
-    if (saadc_state)
-    {
-        //bsp_board_led_on(LIGHTBULB_LED);
-        NRF_LOG_INFO("SAADC Sampling!");
-        //turn on sampling here
-    }
-    else
-    {
-        //bsp_board_led_off(LIGHTBULB_LED);
-        NRF_LOG_INFO("SAADC OFF!");
-    }
-}
 
 /**@brief Function for handling advertising events.
  *
@@ -711,6 +679,7 @@ static void battery_level_update(void)
         APP_ERROR_HANDLER(err_code);
     }
 }
+
 
 
 

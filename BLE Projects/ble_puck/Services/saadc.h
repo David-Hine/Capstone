@@ -250,7 +250,7 @@ uint32_t ble_saadc_service_init(ble_saadc_service_t * p_saadc_service, const ble
 
 
 
-// FROM SAADC EXAMPLE (not service)
+/* FROM SAADC EXAMPLE (not service)
 
 
 #define SAMPLES_IN_BUFFER 6   // Buffer size is multiple of number of ADC channels (3)
@@ -280,7 +280,7 @@ void saadc_sampling_event_init(void)
     err_code = nrf_drv_timer_init(&m_timer, &timer_cfg, timer_handler);
     APP_ERROR_CHECK(err_code);
 
-    /* setup m_timer for compare event every 400ms */
+    // setup m_timer for compare event every 400ms
     uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 400);
     nrf_drv_timer_extended_compare(&m_timer,
                                    NRF_TIMER_CC_CHANNEL0,
@@ -293,7 +293,7 @@ void saadc_sampling_event_init(void)
                                                                                 NRF_TIMER_CC_CHANNEL0);
     uint32_t saadc_sample_task_addr   = nrf_drv_saadc_sample_task_get();
 
-    /* setup ppi channel so that timer compare event is triggering sample task in SAADC */
+    // setup ppi channel so that timer compare event is triggering sample task in SAADC
     err_code = nrf_drv_ppi_channel_alloc(&m_ppi_channel);
     APP_ERROR_CHECK(err_code);
 
@@ -352,11 +352,11 @@ void saadc_init(void)
     APP_ERROR_CHECK(err_code);
 
 }
-
+*/
 
 /**
  * @brief Function for main application entry.
- */
+
 int perform_adc(void)
 {
     uint32_t err_code = NRF_LOG_INIT(NULL);
@@ -379,5 +379,6 @@ int perform_adc(void)
     }
     
 }
+*/
 
 #endif /* SAADC_SERVICE_H */

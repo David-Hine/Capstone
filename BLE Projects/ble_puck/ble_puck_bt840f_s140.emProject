@@ -134,7 +134,6 @@
     <folder Name="Services">
       <file file_name="Services/led_service.c" />
       <file file_name="Services/led_service.h" />
-      <file file_name="Services/saadc.h" />
     </folder>
     <folder Name="Battery Level">
       <file file_name="Battery Level/battery_voltage.c" />

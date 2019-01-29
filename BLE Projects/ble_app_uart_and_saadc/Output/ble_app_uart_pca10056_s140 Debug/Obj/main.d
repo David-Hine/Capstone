@@ -118,4 +118,5 @@ Output/ble_app_uart_pca10056_s140\ Debug/Obj/main.o: \
  ../nRF5_SDK_Current/modules/nrfx/hal/nrf_ppi.h \
  ../nRF5_SDK_Current/integration/nrfx/legacy/nrf_drv_timer.h \
  ../nRF5_SDK_Current/modules/nrfx/drivers/include/nrfx_timer.h \
- ../nRF5_SDK_Current/modules/nrfx/hal/nrf_timer.h
+ ../nRF5_SDK_Current/modules/nrfx/hal/nrf_timer.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_app_uart_and_saadc\Services/saadc.h
