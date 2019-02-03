@@ -84,8 +84,11 @@
 #include "nrf_drv_saadc.h"
 #include "nrf_drv_ppi.h"
 #include "nrf_drv_timer.h"
-
 #include "Services/saadc.h"
+
+// <Includes for Battery Service>
+#include "ble_bas.h"
+#include "Battery Level/battery_voltage.h"
 
 
 #define SAMPLES_IN_BUFFER 6         // Buffer size a multiple of number of ADC channels (3)
@@ -109,7 +112,7 @@ static uint32_t              m_adc_evt_counter;
 
 #define APP_ADV_DURATION                18000                                       /**< The advertising duration (180 seconds) in units of 10 milliseconds. */
 
-#define MIN_CONN_INTERVAL               MSEC_TO_UNITS(20, UNIT_1_25_MS)             /**< Minimum acceptable connection interval (20 ms), Connection interval uses 1.25 ms units. */
+#define MIN_CONN_INTERVAL               MSEC_TO_UNITS(7.5, UNIT_1_25_MS)             /**< Minimum acceptable connection interval (20 ms), Connection interval uses 1.25 ms units. */
 #define MAX_CONN_INTERVAL               MSEC_TO_UNITS(75, UNIT_1_25_MS)             /**< Maximum acceptable connection interval (75 ms), Connection interval uses 1.25 ms units. */
 #define SLAVE_LATENCY                   0                                           /**< Slave latency. */
 #define CONN_SUP_TIMEOUT                MSEC_TO_UNITS(4000, UNIT_10_MS)             /**< Connection supervisory timeout (4 seconds), Supervision Timeout uses 10 ms units. */
@@ -121,6 +124,10 @@ static uint32_t              m_adc_evt_counter;
 
 #define UART_TX_BUF_SIZE                256                                         /**< UART TX buffer size. */
 #define UART_RX_BUF_SIZE                256                                         /**< UART RX buffer size. */
+
+/**< Battery timer. */
+APP_TIMER_DEF(m_battery_timer_id);
+#define BATTERY_LEVEL_MEAS_INTERVAL     APP_TIMER_TICKS(5000)                       /**< Battery level measurement interval (ticks). Update once per 60 sec */
 
 
 BLE_NUS_DEF(m_nus, NRF_SDH_BLE_TOTAL_LINK_COUNT);                                   /**< BLE NUS service instance. */
@@ -139,6 +146,12 @@ static ble_uuid_t m_adv_uuids[]          =                                      
 // < Structure used to identify the SAADC service. 
 BLE_SAADC_SERVICE_DEF(m_saadc_service);
 static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_saadc_service, uint8_t saadc_state);
+
+/**< Structure used to identify the battery service. */
+BLE_BAS_DEF(m_bas);
+// Battery Service declarations
+static void battery_level_meas_timeout_handler(void * p_context);
+static void battery_level_update(void);
 
 
 /**@brief Function for assert macro callback.
@@ -162,6 +175,13 @@ void assert_nrf_callback(uint16_t line_num, const uint8_t * p_file_name)
 static void timers_init(void)
 {
     ret_code_t err_code = app_timer_init();
+    APP_ERROR_CHECK(err_code);
+
+    // Create timers.
+    err_code = app_timer_create(&m_battery_timer_id,
+                                APP_TIMER_MODE_REPEATED,
+                                battery_level_meas_timeout_handler);
+    
     APP_ERROR_CHECK(err_code);
 }
 
@@ -255,8 +275,8 @@ static void services_init(void)
     uint32_t           err_code;
     ble_nus_init_t     nus_init;
     nrf_ble_qwr_init_t qwr_init = {0};
-
     ble_saadc_service_init_t saadc_init;    // For SAADC service
+    ble_bas_init_t     bas_init;            // For Battery service
 
     // Initialize Queued Write Module.
     qwr_init.error_handler = nrf_qwr_error_handler;
@@ -267,16 +287,29 @@ static void services_init(void)
 
     // Initialize the SAADC service
     saadc_init.saadc_write_handler = saadc_write_handler;
- 
     err_code = ble_saadc_service_init(&m_saadc_service, &saadc_init); 
     APP_ERROR_CHECK(err_code);
 
     // Initialize NUS.
     memset(&nus_init, 0, sizeof(nus_init));
-
     nus_init.data_handler = nus_data_handler;
-
     err_code = ble_nus_init(&m_nus, &nus_init);
+    APP_ERROR_CHECK(err_code);
+
+    // Initialize Battery Service.
+    memset(&bas_init, 0, sizeof(bas_init));
+
+    bas_init.evt_handler          = NULL;
+    bas_init.support_notification = true;
+    bas_init.p_report_ref         = NULL;
+    bas_init.initial_batt_level   = 100;
+
+    // Here the sec level for the Battery Service can be changed/increased.
+    bas_init.bl_rd_sec        = SEC_OPEN;
+    bas_init.bl_cccd_wr_sec   = SEC_OPEN;
+    bas_init.bl_report_rd_sec = SEC_OPEN;
+
+    err_code = ble_bas_init(&m_bas, &bas_init);
     APP_ERROR_CHECK(err_code);
 }
 
@@ -744,7 +777,7 @@ void saadc_sampling_event_init(void)
     APP_ERROR_CHECK(err_code);
     
     // setup m_timer for compare event every 0.1ms(sampling rate = 10kHz)
-    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 500);
+    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 100);
     nrf_drv_timer_extended_compare(&m_timer,
                                    NRF_TIMER_CC_CHANNEL0,
                                    ticks,
@@ -790,7 +823,7 @@ void saadc_callback(nrf_drv_saadc_evt_t const * p_event)
             //NRF_LOG_INFO("%d", p_event->data.done.p_buffer[i]);
             printf("%d\r\n", p_event->data.done.p_buffer[i]);
         }
-        uint16_t length = 8;
+        uint16_t length = 6;
         err_code = ble_nus_data_send(&m_nus, (uint8_t*)p_event->data.done.p_buffer, &length, m_conn_handle);
         if((err_code != NRF_ERROR_INVALID_STATE) && (err_code != NRF_ERROR_NOT_FOUND))
         {
@@ -806,23 +839,28 @@ void saadc_init(void)
     //AIN0 (P0.02)
     ret_code_t err_code;
     nrf_saadc_channel_config_t channel_config =
-        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN0);
+        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN0);  //X
 
     //AIN1 (P0.03)
     nrf_saadc_channel_config_t channel_config_1 =
-        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN1);
+        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN1);  //Y
 
-    //AIN2 (P0.04)
+    //AIN3 (P0.05)
     nrf_saadc_channel_config_t channel_config_2 =
-        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN2);
+        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN3);  //Z
 
     // change acquisition times to 5us (default is 10us)
     channel_config.acq_time = NRF_SAADC_ACQTIME_5US;
     channel_config_1.acq_time = NRF_SAADC_ACQTIME_5US;
     channel_config_2.acq_time = NRF_SAADC_ACQTIME_5US;
     
-    err_code = nrf_drv_saadc_init(NULL, saadc_callback);
-    APP_ERROR_CHECK(err_code);
+    //initialize if not already done
+    if(!nrf_saadc_enable_check())
+    {
+        err_code = nrf_drv_saadc_init(NULL, saadc_callback);
+        APP_ERROR_CHECK(err_code);
+    }
+    
     
     //AIN0
     err_code = nrf_drv_saadc_channel_init(0, &channel_config);
@@ -843,6 +881,87 @@ void saadc_init(void)
     APP_ERROR_CHECK(err_code);
     
 }
+
+
+
+
+
+// BATTERY SERVICE
+
+/**@brief Function for handling the Battery measurement timer timeout.
+ *
+ * @details This function will be called each time the battery level measurement timer expires.
+ *
+ * @param[in] p_context  Pointer used for passing some arbitrary information (context) from the
+ *                       app_start_timer() call to the timeout handler.
+ */
+static void battery_level_meas_timeout_handler(void * p_context)
+{
+    UNUSED_PARAMETER(p_context);
+    NRF_LOG_INFO("Battery Level timeout event");
+
+    // Only send the battery level update if we are connected
+    if (m_conn_handle != BLE_CONN_HANDLE_INVALID)
+    {
+        battery_level_update();
+    }
+}
+
+/**@brief Function for updating the Battery Level measurement*/
+static void battery_level_update(void)
+{
+    ret_code_t err_code;
+
+    uint8_t  battery_level;
+    uint16_t vbatt;              // Variable to hold voltage reading
+    battery_voltage_get(&vbatt); // Get new battery voltage
+
+    battery_level = battery_level_in_percent(vbatt);          //Transform the millivolts value into battery level percent.
+    printf("Battery ADC result in percent: %d\r\n", battery_level);
+
+    err_code = ble_bas_battery_level_update(&m_bas, battery_level, m_conn_handle);
+    if ((err_code != NRF_SUCCESS) &&
+        (err_code != NRF_ERROR_INVALID_STATE) &&
+        (err_code != NRF_ERROR_RESOURCES) &&
+        (err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+       )
+    {
+        APP_ERROR_HANDLER(err_code);
+    }
+}
+
+/**@brief Function for starting application timers.
+ */
+static void application_timers_start(void)
+{
+    uint32_t err_code;
+
+    // Start application timers.
+    err_code = app_timer_start(m_battery_timer_id, BATTERY_LEVEL_MEAS_INTERVAL, NULL);
+    APP_ERROR_CHECK(err_code);
+}
+
+// Functions for starting and stopping Battery service
+void start_bat()
+{
+    battery_voltage_init();
+    application_timers_start();
+}
+
+void stop_bat()
+{
+    uint32_t err_code;
+
+    err_code = app_timer_stop(m_battery_timer_id);
+    APP_ERROR_CHECK(err_code);
+
+    nrf_drv_ppi_channel_disable(m_ppi_channel);
+    nrf_drv_ppi_uninit();
+    nrf_drv_saadc_abort();
+    nrf_drv_saadc_uninit();
+    while(nrf_drv_saadc_is_busy());
+}
+
 
 
 // SAADC SERVICE
@@ -873,11 +992,17 @@ void stop_adc()
  */
 static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_saadc_service, uint8_t saadc_state)
 {
+
+    //uint32_t err_code;
+
     if (saadc_state)
     {
+        // First, stop battery timer
+        stop_bat();
+        NRF_LOG_INFO("Battery service stopped");
+
         // Start SAADC if user sends 1
         start_adc();
-
         NRF_LOG_INFO("SAADC Sampling!");
                 
     }
@@ -885,8 +1010,11 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
     {
         // Stop SAADC if user sends 0
         stop_adc();
-
         NRF_LOG_INFO("SAADC OFF!");
+
+        // Restart battery timer
+        start_bat();
+        NRF_LOG_INFO("Battery service restarted");
     }
 }
 
@@ -903,6 +1031,7 @@ int main(void)
     uart_init();
     log_init();
     timers_init();
+    battery_voltage_init();
     buttons_leds_init(&erase_bonds);
     power_management_init();
     ble_stack_init();
@@ -911,18 +1040,12 @@ int main(void)
     services_init();
     advertising_init();
     conn_params_init();
+    application_timers_start();
 
     // Start execution.
     printf("\r\nUART started.\r\n");
     NRF_LOG_INFO("Debug logging for UART over RTT started.");
     advertising_start();
-
-    /* SAADC initialization
-    saadc_init();
-    saadc_sampling_event_init();
-    saadc_sampling_event_enable();
-    nrf_saadc_disable();            // Disable SAADC until user chooses to start it (using SAADC service)
-    */
 
     // Enter main loop.
     for (;;)
