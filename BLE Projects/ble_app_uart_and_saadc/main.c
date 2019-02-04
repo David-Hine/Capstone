@@ -1,51 +1,13 @@
-/**
- * Copyright (c) 2014 - 2018, Nordic Semiconductor ASA
+/*
+ * Copyright (c) 2019, Team2
  *
- * All rights reserved.
+ * This is the main file.
+ * 
+ * This file is based on the source code for a sample application that uses the Nordic UART service.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
- *
- * 2. Redistributions in binary form, except as embedded into a Nordic
- *    Semiconductor ASA integrated circuit in a product or a software update for
- *    such product, must reproduce the above copyright notice, this list of
- *    conditions and the following disclaimer in the documentation and/or other
- *    materials provided with the distribution.
- *
- * 3. Neither the name of Nordic Semiconductor ASA nor the names of its
- *    contributors may be used to endorse or promote products derived from this
- *    software without specific prior written permission.
- *
- * 4. This software, with or without modification, must only be used with a
- *    Nordic Semiconductor ASA integrated circuit.
- *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
- *
- * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
- * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
- * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- */
-/** @file
- *
- * @defgroup ble_sdk_uart_over_ble_main main.c
- * @{
- * @ingroup  ble_sdk_app_nus_eval
- * @brief    UART over BLE application main file.
- *
- * This file contains the source code for a sample application that uses the Nordic UART service.
- * This application uses the @ref srvlib_conn_params module.
+ * It uses 3 BLE services: 1) Nordic UART service --- for transmitting over BLE
+ *                         2) Battery service ------- for monitoring battery voltage
+ *                         3) SAADC service --------- for gathering data from the accelerometer and gyro
  */
 
 
@@ -91,10 +53,10 @@
 #include "Battery Level/battery_voltage.h"
 
 
-#define SAMPLES_IN_BUFFER 6         // Buffer size a multiple of number of ADC channels (3)
+#define SAMPLES_IN_BUFFER 6         // Buffer size a multiple of number of ADC channels (3) for accelerometer
 volatile uint8_t state = 1;
 
-static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(4);     // SoftDevice uses TIMER0 -> use TIMER4 instead
+static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(4);     // SoftDevice uses TIMER0 -> use TIMER4 for SAADC instead
 static nrf_saadc_value_t     m_buffer_pool[2][SAMPLES_IN_BUFFER];
 static nrf_ppi_channel_t     m_ppi_channel;
 static uint32_t              m_adc_evt_counter;
@@ -127,7 +89,7 @@ static uint32_t              m_adc_evt_counter;
 
 /**< Battery timer. */
 APP_TIMER_DEF(m_battery_timer_id);
-#define BATTERY_LEVEL_MEAS_INTERVAL     APP_TIMER_TICKS(5000)                       /**< Battery level measurement interval (ticks). Update once per 60 sec */
+#define BATTERY_LEVEL_MEAS_INTERVAL     APP_TIMER_TICKS(5000)                       /**< Battery level measurement interval (ticks). Update once per 5 sec (to be changed to 60sec) */
 
 
 BLE_NUS_DEF(m_nus, NRF_SDH_BLE_TOTAL_LINK_COUNT);                                   /**< BLE NUS service instance. */
@@ -143,15 +105,16 @@ static ble_uuid_t m_adv_uuids[]          =                                      
 };
 
 
-// < Structure used to identify the SAADC service. 
+// Structure used to identify the SAADC service. 
 BLE_SAADC_SERVICE_DEF(m_saadc_service);
 static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_saadc_service, uint8_t saadc_state);
 
-/**< Structure used to identify the battery service. */
+// Structure used to identify the battery service.
 BLE_BAS_DEF(m_bas);
 // Battery Service declarations
 static void battery_level_meas_timeout_handler(void * p_context);
 static void battery_level_update(void);
+
 
 
 /**@brief Function for assert macro callback.
@@ -849,17 +812,14 @@ void saadc_init(void)
     nrf_saadc_channel_config_t channel_config_2 =
         NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN3);  //Z
 
-    // change acquisition times to 5us (default is 10us)
+    /* change acquisition times to 5us (default is 10us)
     channel_config.acq_time = NRF_SAADC_ACQTIME_5US;
     channel_config_1.acq_time = NRF_SAADC_ACQTIME_5US;
     channel_config_2.acq_time = NRF_SAADC_ACQTIME_5US;
+    */
     
-    //initialize if not already done
-    if(!nrf_saadc_enable_check())
-    {
-        err_code = nrf_drv_saadc_init(NULL, saadc_callback);
-        APP_ERROR_CHECK(err_code);
-    }
+    err_code = nrf_drv_saadc_init(NULL, saadc_callback);
+    APP_ERROR_CHECK(err_code);
     
     
     //AIN0
@@ -941,7 +901,7 @@ static void application_timers_start(void)
     APP_ERROR_CHECK(err_code);
 }
 
-// Functions for starting and stopping Battery service
+// Functions for starting and stopping Battery ADC measurement
 void start_bat()
 {
     battery_voltage_init();
@@ -966,7 +926,7 @@ void stop_bat()
 
 // SAADC SERVICE
 
-// Functions for starting and stopping SAADC
+// Functions for starting and stopping SAADC for accelerometer
 void start_adc()
 {
     saadc_sampling_event_init();
@@ -992,9 +952,6 @@ void stop_adc()
  */
 static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_saadc_service, uint8_t saadc_state)
 {
-
-    //uint32_t err_code;
-
     if (saadc_state)
     {
         // First, stop battery timer
@@ -1003,9 +960,9 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
 
         // Start SAADC if user sends 1
         start_adc();
-        NRF_LOG_INFO("SAADC Sampling!");
-                
+        NRF_LOG_INFO("SAADC Sampling!");         
     }
+
     else
     {
         // Stop SAADC if user sends 0

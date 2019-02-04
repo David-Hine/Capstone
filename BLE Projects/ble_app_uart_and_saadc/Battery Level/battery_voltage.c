@@ -80,6 +80,7 @@ void battery_voltage_init(void)
 
     nrf_saadc_channel_config_t config =
         NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_VDD);
+        //NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(SAADC_CH_PSELP_PSELP_VDDHDIV5);
     err_code = nrf_drv_saadc_channel_init(0, &config);
     APP_ERROR_CHECK(err_code);
 
