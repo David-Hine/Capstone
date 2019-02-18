@@ -1217,23 +1217,12 @@ static __INLINE uint64_t uint48_decode(const uint8_t * p_encoded_data)
              (((uint64_t)((uint8_t *)p_encoded_data)[5]) << 40 ));
 }
 
-/** @brief Function for converting the input voltage (in milli volts) into percentage of 3.6 Volts.
+/** @brief Function for converting the input voltage (in milli volts) into percentage of 3.0 Volts.
  *
- *  @details The calculation is based on a linearized version of the battery's discharge
- *           curve. >3.9V returns 100% battery level. 
- *           
- *           The lower boundary is set at 3V (cutoff votlage)
- *
- *           The discharge curve for LIR2450 is non-linear. In this model it is split into
- *           4 linear sections:
- *           - Section 1: 3.9V - 3.55V = 100% - 68% (32% drop on 350 mV)
- *           - Section 2: 3.55V - 3.4V = 68% - 36% (32% drop on 150 mV)
- *           - Section 3: 3.4V - 3.3V = 36% - 20% (16% drop on 100 mV)
- *           - Section 4: 3.3V - 3.0V = 20% - 0% (20% drop on 300 mV)
- *
- *           These numbers are an estimate
- *           Temperature at -10C (worst case scenario)
- *           load in the actual application is not accounted for!
+ *  @details The cutoff voltage for the LIR2450 is 2.8V (from bq29700 protection circuit)
+ *           If the battery voltage is above 3.2V, send 100%
+ *           If the battery voltage is 3.2 - 3.0V, send 50%
+ *           If the battery voltage drops below 3.0V, send 0%
  *
  *  @param[in] mvolts The voltage in mV
  *
@@ -1243,25 +1232,13 @@ static __INLINE uint8_t battery_level_in_percent(const uint16_t mvolts)
 {
     uint8_t battery_level;
 
-    if (mvolts >= 3900)
+    if (mvolts >= 3200)
     {
         battery_level = 100;
     }
-    else if (mvolts > 3550)
-    {
-        battery_level = 100 - ((3900 - mvolts) * 32) / 350;
-    }
-    else if (mvolts > 3400)
-    {
-        battery_level = 68 - ((3550 - mvolts) * 32) / 150;
-    }
-    else if (mvolts > 3300)
-    {
-        battery_level = 36 - ((3400 - mvolts) * 16) / 100;
-    }
     else if (mvolts > 3000)
     {
-        battery_level = 20 - ((3300 - mvolts) * 20) / 300;
+        battery_level = 100 - ((3200 - mvolts) * 50) / 100;
     }
     else
     {

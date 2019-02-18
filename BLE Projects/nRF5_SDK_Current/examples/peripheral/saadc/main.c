@@ -94,7 +94,7 @@ void saadc_sampling_event_init(void)
     APP_ERROR_CHECK(err_code);
 
     // setup m_timer for compare event every 400ms
-    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 400);
+    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 0.5);
     nrf_drv_timer_extended_compare(&m_timer,
                                    NRF_TIMER_CC_CHANNEL0,
                                    ticks,

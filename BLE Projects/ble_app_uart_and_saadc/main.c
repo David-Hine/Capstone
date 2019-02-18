@@ -53,7 +53,7 @@
 #include "Battery Level/battery_voltage.h"
 
 
-#define SAMPLES_IN_BUFFER 6         // Buffer size a multiple of number of ADC channels (3) for accelerometer
+#define SAMPLES_IN_BUFFER 3         // Buffer size a multiple of number of ADC channels (3) for accelerometer
 volatile uint8_t state = 1;
 
 static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(4);     // SoftDevice uses TIMER0 -> use TIMER4 for SAADC instead
@@ -103,6 +103,10 @@ static ble_uuid_t m_adv_uuids[]          =                                      
 {
     {BLE_UUID_NUS_SERVICE, NUS_SERVICE_UUID_TYPE}
 };
+
+// array that temporarily holds ADC values
+uint8_t temp_adc[120];
+uint16_t temp_adc_size = 0;
 
 
 // Structure used to identify the SAADC service. 
@@ -440,6 +444,9 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
                                              BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);
             APP_ERROR_CHECK(err_code);
             break;
+        
+        //case BLE_EVT_TX_COMPLETE:
+
 
         default:
             // No implementation needed.
@@ -720,6 +727,30 @@ static void advertising_start(void)
 
 
 
+
+/* function for sending data over BLE
+void send_data(uint8_t   * src, uint8_t   * dest)
+{
+        ret_code_t err_code;
+        
+        memcpy(src, dest, 6);
+        temp_adc_size += 6;
+        if ((int)temp_adc_size == 120)
+            {
+                //send data
+                err_code = ble_nus_data_send(&m_nus, temp_adc, &temp_adc_size, m_conn_handle);
+                temp_adc_size = 0;
+            }
+
+
+        if((err_code != NRF_ERROR_INVALID_STATE) && (err_code != NRF_ERROR_NOT_FOUND))
+        {
+            APP_ERROR_CHECK(err_code);
+        }
+        m_adc_evt_counter++;
+}
+*/
+
 // <INCLUDED FOR SAADC>
 
 void timer_handler(nrf_timer_event_t event_type, void * p_context)
@@ -739,8 +770,8 @@ void saadc_sampling_event_init(void)
     err_code = nrf_drv_timer_init(&m_timer, &timer_cfg, timer_handler);
     APP_ERROR_CHECK(err_code);
     
-    // setup m_timer for compare event every 0.1ms(sampling rate = 10kHz)
-    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 100);
+    // setup m_timer for compare event every 500us(sampling rate = 5 kHz) --- need 100us (10kHz)
+    uint32_t ticks = nrf_drv_timer_us_to_ticks(&m_timer, 500);
     nrf_drv_timer_extended_compare(&m_timer,
                                    NRF_TIMER_CC_CHANNEL0,
                                    ticks,
@@ -786,13 +817,29 @@ void saadc_callback(nrf_drv_saadc_evt_t const * p_event)
             //NRF_LOG_INFO("%d", p_event->data.done.p_buffer[i]);
             printf("%d\r\n", p_event->data.done.p_buffer[i]);
         }
-        uint16_t length = 6;
-        err_code = ble_nus_data_send(&m_nus, (uint8_t*)p_event->data.done.p_buffer, &length, m_conn_handle);
+        //uint16_t length = 6;
+        //err_code = ble_nus_data_send(&m_nus, (uint8_t*)p_event->data.done.p_buffer, &length, m_conn_handle);
+
+        // copy 6 bytes (2 for each of 3 acc. axes) to temp buffer
+        // when temp buffer is half full (120 bytes, other 120 bytes for gyro), send all data in one notification
+        memcpy(&temp_adc[temp_adc_size], (uint8_t*)p_event->data.done.p_buffer, 6);
+        temp_adc_size += 6;
+        if ((int)temp_adc_size == 120)
+            {
+                //send data
+                err_code = ble_nus_data_send(&m_nus, temp_adc, &temp_adc_size, m_conn_handle);
+                temp_adc_size = 0;
+            }
+
+
         if((err_code != NRF_ERROR_INVALID_STATE) && (err_code != NRF_ERROR_NOT_FOUND))
         {
             APP_ERROR_CHECK(err_code);
         }
         m_adc_evt_counter++;
+        
+
+        //send_data(&temp_adc[temp_adc_size], (uint8_t*)p_event->data.done.p_buffer);
     }
 }
 
@@ -812,11 +859,11 @@ void saadc_init(void)
     nrf_saadc_channel_config_t channel_config_2 =
         NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN3);  //Z
 
-    /* change acquisition times to 5us (default is 10us)
+    // change acquisition times to 5us w/ max sampling rate = 1/(5+2us)=142 kHz (default is 10us)
     channel_config.acq_time = NRF_SAADC_ACQTIME_5US;
     channel_config_1.acq_time = NRF_SAADC_ACQTIME_5US;
     channel_config_2.acq_time = NRF_SAADC_ACQTIME_5US;
-    */
+    
     
     err_code = nrf_drv_saadc_init(NULL, saadc_callback);
     APP_ERROR_CHECK(err_code);
@@ -943,6 +990,7 @@ void stop_adc()
     nrf_drv_saadc_abort();
     nrf_drv_saadc_uninit();
     while(nrf_drv_saadc_is_busy());
+    m_adc_evt_counter = 0;  //Reset adc counter
 }
 
 /**@brief Function for handling write events to the SAADC characteristic.
@@ -981,6 +1029,7 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
 /**@brief Application main function.
  */
 int main(void)
+
 {
     bool erase_bonds;
 
