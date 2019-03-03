@@ -105,7 +105,7 @@
 // <4294967295=> Not connected 
 
 #ifndef SPI_SCK_PIN
-#define SPI_SCK_PIN 3
+#define SPI_SCK_PIN 27
 #endif
 
 // <o> SPI_MISO_PIN  - Pin number
@@ -161,7 +161,7 @@
 // <4294967295=> Not connected 
 
 #ifndef SPI_MISO_PIN
-#define SPI_MISO_PIN 28
+#define SPI_MISO_PIN 40
 #endif
 
 // <o> SPI_MOSI_PIN  - Pin number
@@ -217,7 +217,7 @@
 // <4294967295=> Not connected 
 
 #ifndef SPI_MOSI_PIN
-#define SPI_MOSI_PIN 4
+#define SPI_MOSI_PIN 36
 #endif
 
 // <o> SPI_SS_PIN  - Pin number
@@ -273,7 +273,7 @@
 // <4294967295=> Not connected 
 
 #ifndef SPI_SS_PIN
-#define SPI_SS_PIN 29
+#define SPI_SS_PIN 35
 #endif
 
 // <o> SPI_IRQ_PRIORITY  - Interrupt priority
@@ -1375,7 +1375,7 @@
 // <e> NRF_LOG_BACKEND_RTT_ENABLED - nrf_log_backend_rtt - Log RTT backend
 //==========================================================
 #ifndef NRF_LOG_BACKEND_RTT_ENABLED
-#define NRF_LOG_BACKEND_RTT_ENABLED 0
+#define NRF_LOG_BACKEND_RTT_ENABLED 1
 #endif
 // <o> NRF_LOG_BACKEND_RTT_TEMP_BUFFER_SIZE - Size of buffer for partially processed strings. 
 // <i> Size of the buffer is a trade-off between RAM usage and processing.

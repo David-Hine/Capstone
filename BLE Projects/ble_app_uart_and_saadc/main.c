@@ -65,7 +65,7 @@ static uint32_t              m_adc_evt_counter;
 
 #define APP_BLE_CONN_CFG_TAG            1                                           /**< A tag identifying the SoftDevice BLE configuration. */
 
-#define DEVICE_NAME                     "Nordic_UART_and_SAADC"                     /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "BLE_Puck"                                  /**< Name of device. Will be included in the advertising data. */
 #define NUS_SERVICE_UUID_TYPE           BLE_UUID_TYPE_VENDOR_BEGIN                  /**< UUID type for the Nordic UART Service (vendor specific). */
 
 #define APP_BLE_OBSERVER_PRIO           3                                           /**< Application's BLE observer priority. You shouldn't need to modify this value. */
@@ -107,6 +107,10 @@ static ble_uuid_t m_adv_uuids[]          =                                      
 // array that temporarily holds ADC values
 uint8_t temp_adc[120];
 uint16_t temp_adc_size = 0;
+
+// Battery variables
+uint8_t  battery_level;
+uint16_t vbatt;
 
 
 // Structure used to identify the SAADC service. 
@@ -726,31 +730,6 @@ static void advertising_start(void)
 
 
 
-
-
-/* function for sending data over BLE
-void send_data(uint8_t   * src, uint8_t   * dest)
-{
-        ret_code_t err_code;
-        
-        memcpy(src, dest, 6);
-        temp_adc_size += 6;
-        if ((int)temp_adc_size == 120)
-            {
-                //send data
-                err_code = ble_nus_data_send(&m_nus, temp_adc, &temp_adc_size, m_conn_handle);
-                temp_adc_size = 0;
-            }
-
-
-        if((err_code != NRF_ERROR_INVALID_STATE) && (err_code != NRF_ERROR_NOT_FOUND))
-        {
-            APP_ERROR_CHECK(err_code);
-        }
-        m_adc_evt_counter++;
-}
-*/
-
 // <INCLUDED FOR SAADC>
 
 void timer_handler(nrf_timer_event_t event_type, void * p_context)
@@ -919,8 +898,10 @@ static void battery_level_update(void)
 {
     ret_code_t err_code;
 
+    /*
     uint8_t  battery_level;
     uint16_t vbatt;              // Variable to hold voltage reading
+    */
     battery_voltage_get(&vbatt); // Get new battery voltage
 
     battery_level = battery_level_in_percent(vbatt);          //Transform the millivolts value into battery level percent.
@@ -1006,6 +987,11 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
         stop_bat();
         NRF_LOG_INFO("Battery service stopped");
 
+        // Then transmit VDD value (for calculations)
+        ret_code_t err_code;
+        uint16_t length = 1;
+        err_code = ble_nus_data_send(&m_nus, &battery_level, &length, m_conn_handle);
+
         // Start SAADC if user sends 1
         start_adc();
         NRF_LOG_INFO("SAADC Sampling!");         
@@ -1024,13 +1010,23 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
 }
 
 
-
+/*function for enabling DC/DC converter
+void enable_dcdc()
+{
+    uint32_t err_code;
+    err_code = sd_power_dcdc_mode_set(NRF_POWER_DCDC_ENABLE);
+}
+*/
 
 /**@brief Application main function.
  */
 int main(void)
 
 {
+
+    //enable dc/dc
+    //enable_dcdc();
+
     bool erase_bonds;
 
     // Initialize.

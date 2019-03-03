@@ -49,9 +49,9 @@
 #include "nrf_log_default_backends.h"
 
 #define NRFX_SPIM_SCK_PIN  3
-#define NRFX_SPIM_MOSI_PIN 4
-#define NRFX_SPIM_MISO_PIN 28
-#define NRFX_SPIM_SS_PIN   29
+#define NRFX_SPIM_MOSI_PIN 36
+#define NRFX_SPIM_MISO_PIN 40
+#define NRFX_SPIM_SS_PIN   35
 #define NRFX_SPIM_DCX_PIN  30
 
 #define SPI_INSTANCE  3                                           /**< SPI instance index. */
@@ -114,6 +114,6 @@ int main(void)
         NRF_LOG_FLUSH();
 
         bsp_board_led_invert(BSP_BOARD_LED_0);
-        nrf_delay_ms(200);
+        nrf_delay_ms(1000);
     }
 }

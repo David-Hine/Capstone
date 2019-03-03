@@ -106,6 +106,8 @@ int main(void)
             __WFE();
         }
 
+        //NRF_LOG_INFO("Read %X", m_rx_buf);
+
         NRF_LOG_FLUSH();
 
         bsp_board_led_invert(BSP_BOARD_LED_0);
