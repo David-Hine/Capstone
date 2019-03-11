@@ -95,6 +95,7 @@ static void on_connect(ble_nus_t * p_nus, ble_evt_t const * p_ble_evt)
     err_code = sd_ble_gatts_value_get(p_ble_evt->evt.gap_evt.conn_handle,
                                       p_nus->rx_handles.cccd_handle,
                                       &gatts_val);
+    NRF_LOG_INFO(p_nus->rx_handles.cccd_handle);
 
     if ((err_code == NRF_SUCCESS)     &&
         (p_nus->data_handler != NULL) &&

@@ -27,6 +27,7 @@
   <ProjectSessionItem path="ble_app_uart_pca10056_s140;ble_app_uart_pca10056_s140;Battery Level"/>
   <ProjectSessionItem path="ble_app_uart_pca10056_s140;ble_app_uart_pca10056_s140;nRF_BLE"/>
   <ProjectSessionItem path="ble_app_uart_pca10056_s140;ble_app_uart_pca10056_s140;nRF_BLE_Services"/>
+  <ProjectSessionItem path="ble_app_uart_pca10056_s140;ble_app_uart_pca10056_s140;nRF_Libraries"/>
   <ProjectSessionItem path="ble_app_uart_pca10056_s140;ble_app_uart_pca10056_s140;Services"/>
  </Project>
  <Register1>
@@ -60,14 +61,15 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1024" useTextEdit="1" useBinaryEdit="0" left="0" path="main.c" selected="1" top="1021" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1024" useTextEdit="1" useBinaryEdit="0" left="0" path="main.c" selected="1" top="1012" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1230" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/libraries/util/app_util.h" selected="0" top="1224" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/ble/ble_services/ble_nus/ble_nus.h" selected="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="247" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/ble/ble_services/ble_nus/ble_nus.c" selected="0" top="245" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="38" useTextEdit="1" useBinaryEdit="0" left="0" path="Services/saadc.h" selected="0" top="5" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="78" useTextEdit="1" useBinaryEdit="0" left="0" path="Services/saadc.c" selected="0" top="61" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="78" useTextEdit="1" useBinaryEdit="0" left="0" path="Services/saadc.c" selected="0" top="67" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="280" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/softdevice/s140/headers/ble_gatts.h" selected="0" top="269" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="50" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/ble/common/ble_srv_common.c" selected="0" top="39" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="99" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/libraries/util/app_error_weak.c" selected="0" top="87" codecName=""/>
  </Files>
  <ARMCrossStudioWindow activeProject="ble_app_uart_pca10056_s140" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/Leo/Documents/Capstone/BLE Projects/nRF5_SDK_Current/components/ble/ble_services/ble_bas" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>
