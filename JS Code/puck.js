@@ -48,7 +48,6 @@ function enable_bat_notif(adapter, device){
 				//enable battery notifications
 				adapter.writeDescriptorValue(descriptor.instanceId, [1, 0], false, err => {
 					if (err) {
-						//console.log(`Error enabling notifications on the hrm characteristic: ${err}.`);
 						reject(Error(`Error enabling notifications on the BATTERY characteristic: ${err}.`));
 						process.exit(1);
 					}
@@ -83,7 +82,6 @@ function enable_nus_notif(adapter, device){
 				//enable battery notifications
 				adapter.writeDescriptorValue(descriptor.instanceId, [1, 0], false, err => {
 					if (err) {
-						//console.log(`Error enabling notifications on the hrm characteristic: ${err}.`);
 						reject(Error(`Error enabling notifications on the NUS characteristic: ${err}.`));
 						process.exit(1);
 					}
@@ -123,10 +121,10 @@ function find_saadc_char(adapter, device){
 }
 
 // function to wirte to SAADC char
-function write_saadc_char(adapter, characteristic){
-	adapter.writeCharacteristicValue(characteristic.instanceId, [1], false, err => {
+function write_saadc_char(adapter, characteristic, value){
+	adapter.writeCharacteristicValue(characteristic.instanceId, value, false, err => {
         if (err) {
-            console.log(`Error enabling notifications on the hrm characteristic: ${err}.`);
+            console.log(`Error writing to SAADC characteristic: ${err}.`);
             process.exit(1);
         }
 
@@ -137,18 +135,18 @@ function write_saadc_char(adapter, characteristic){
 
 
 /**
- * Discovers the heart rate service in the BLE peripheral's GATT attribute table.
+ * Discovers a service by UUID in the BLE peripheral's GATT attribute table.
  *
  * @param {Adapter} adapter Adapter being used.
  * @param {Device} device Bluetooth central device being used.
- * @returns {Promise} Resolves on successfully discovering the heart rate service.
+ * @returns {Promise} Resolves on successfully discovering the service.
  *                    If an error occurs, rejects with the corresponding error.
  */
 function discoverService(adapter, device, UUID) {
     return new Promise((resolve, reject) => {
         adapter.getServices(device.instanceId, (err, services) => {
             if (err) {
-                reject(Error(`Error discovering the heart rate service: ${err}.`));
+                reject(Error(`Error discovering the service: ${err}.`));
                 return;
             }
 
@@ -159,24 +157,24 @@ function discoverService(adapter, device, UUID) {
                 }
             }
 
-            reject(Error('Did not discover the heart rate service in peripheral\'s GATT attribute table.'));
+            reject(Error('Did not discover the service in peripheral\'s GATT attribute table.'));
         });
     });
 }
 
 /**
- * Discovers the heart rate measurement characteristic in the BLE peripheral's GATT attribute table.
+ * Discovers a characteristic by UUID in the BLE peripheral's GATT attribute table.
  *
  * @param {Adapter} adapter Adapter being used.
- * @param {Service} heartRateService The heart rate service to discover characteristics from
- * @returns {Promise} Resolves on successfully discovering the heart rate measurement characteristic.
+ * @param {Service} Service The service to discover characteristics from
+ * @returns {Promise} Resolves on successfully discovering the characteristic.
  *                    If an error occurs, rejects with the corresponding error.
  */
-function discoverCharacteristic(adapter, heartRateService, UUID) {
+function discoverCharacteristic(adapter, Service, UUID) {
     return new Promise((resolve, reject) => {
-        adapter.getCharacteristics(heartRateService.instanceId, (err, characteristics) => {
+        adapter.getCharacteristics(Service.instanceId, (err, characteristics) => {
             if (err) {
-                reject(Error(`Error discovering the heart rate service's characteristics: ${err}.`));
+                reject(Error(`Error discovering the service's characteristics: ${err}.`));
                 return;
             }
 
@@ -188,24 +186,24 @@ function discoverCharacteristic(adapter, heartRateService, UUID) {
                 }
             }
 
-            reject(Error('Did not discover the heart rate measurement chars in peripheral\'s GATT attribute table.'));
+            reject(Error('Did not discover the characteristic in peripheral\'s GATT attribute table.'));
         });
     });
 }
 
 /**
- * Discovers the heart rate measurement characteristic's CCCD in the BLE peripheral's GATT attribute table.
+ * Discovers a characteristic's CCCD by UUID in the BLE peripheral's GATT attribute table.
  *
  * @param {Adapter} adapter Adapter being used.
- * @param {Characteristic} heartRateMeasurementCharacteristic The characteristic to discover CCCD from.
- * @returns {Promise} Resolves on successfully discovering the heart rate measurement characteristic's CCCD.
+ * @param {Characteristic} Characteristic The characteristic to discover CCCD from.
+ * @returns {Promise} Resolves on successfully discovering the characteristic's CCCD.
  *                    If an error occurs, rejects with the corresponding error.
  */
-function discoverCharCCCD(adapter, heartRateMeasurementCharacteristic, UUID) {
+function discoverCharCCCD(adapter, Characteristic, UUID) {
     return new Promise((resolve, reject) => {
-        adapter.getDescriptors(heartRateMeasurementCharacteristic.instanceId, (err, descriptors) => {
+        adapter.getDescriptors(Characteristic.instanceId, (err, descriptors) => {
             if (err) {
-                reject(Error(`Error discovering the heart rate characteristic's CCCD: ${err}.`));
+                reject(Error(`Error discovering the characteristic's CCCD: ${err}.`));
                 return;
             }
 
@@ -216,13 +214,13 @@ function discoverCharCCCD(adapter, heartRateMeasurementCharacteristic, UUID) {
                 }
             }
 
-            reject(Error('Did not discover the hrm chars CCCD in peripheral\'s GATT attribute table.'));
+            reject(Error('Did not discover the CCCD in peripheral\'s GATT attribute table.'));
         });
     });
 }
 
 /**
- * Allow user to toggle notifications on the hrm char with a key press, as well as cleanly exiting the application.
+ * Allow user to toggle SAADC with a key press, as well as cleanly exiting the application.
  *
  * @param {Adapter} adapter Adapter being used.
  * @param {Descriptor} cccdDescriptor The descriptor for enabling/disabling enable/disable notifications.
@@ -373,7 +371,7 @@ function addAdapterListener(adapter) {
 			enable_nus_notif(adapter, device).then(function(){
 				find_saadc_char(adapter, device).then(function(){
 					//console.log(saadc_char);
-					//write_saadc_char(adapter, saadc_char);
+					//write_saadc_char(adapter, saadc_char, [1]);
 					console.log('Press any key to toggle SAADC. ' +
                             'Press `q` or `Q` to disconnect from the BLE peripheral and quit application.');
 					addUserInputListener(adapter, saadc_char.instanceId);

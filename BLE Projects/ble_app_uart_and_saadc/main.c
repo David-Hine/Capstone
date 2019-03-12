@@ -1010,23 +1010,36 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
 }
 
 
-/*function for enabling DC/DC converter
-void enable_dcdc()
-{
-    uint32_t err_code;
-    err_code = sd_power_dcdc_mode_set(NRF_POWER_DCDC_ENABLE);
+
+
+
+/** Configures and enables the LPCOMP (for wakeup from sleep)
+ */
+void LPCOMP_init(void)
+{	
+	/* Enable interrupt on LPCOMP CROSS event */		
+	NRF_LPCOMP->INTENSET = LPCOMP_INTENSET_CROSS_Msk;
+	NVIC_EnableIRQ(LPCOMP_IRQn);	
+	
+	/* Configure LPCOMP - set input source to AVDD*6/8 */
+	NRF_LPCOMP->REFSEL |= (LPCOMP_REFSEL_REFSEL_Ref6_8Vdd << LPCOMP_REFSEL_REFSEL_Pos); //if z-axis voltage=VDD*(6/8), wake up
+	/* Configure LPCOMP - set reference input source to AIN pin 6, i.e. P0.5 */
+	NRF_LPCOMP->PSEL |= (LPCOMP_PSEL_PSEL_AnalogInput3 << LPCOMP_PSEL_PSEL_Pos);  //AIN3 = z-axis of acceletometer
+	
+	/* Enable and start the low power comparator */
+	NRF_LPCOMP->ENABLE = LPCOMP_ENABLE_ENABLE_Enabled;	
+	NRF_LPCOMP->TASKS_START = 1;
 }
-*/
+
+
+
+
 
 /**@brief Application main function.
  */
 int main(void)
 
 {
-
-    //enable dc/dc
-    //enable_dcdc();
-
     bool erase_bonds;
 
     // Initialize.
@@ -1043,6 +1056,9 @@ int main(void)
     advertising_init();
     conn_params_init();
     application_timers_start();
+
+    //Initialize LPCOMP for wakeup
+    LPCOMP_init();
 
     // Start execution.
     printf("\r\nUART started.\r\n");
