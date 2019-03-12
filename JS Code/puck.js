@@ -8,7 +8,6 @@
  * This application scans for the Puck and reads its data.
  */
 
-
 'use strict';
 
 const api = require('../index');
@@ -16,83 +15,183 @@ const path = require('path');
 
 const adapterFactory = api.AdapterFactory.getInstance(undefined, { enablePolling: false });
 
-// UUIDs for Puck servives(enable notifications for UART and Battery only)
+//Battery service
+const BLE_UUID_BAT_SERVICE = '180F';
+const BLE_UUID_BAT_CHAR = '2A19';
+const BLE_UUID_CCCD = '2902';	//For both BAT and NUS services
+
+//Nordic UART service (NUS)
+const BLE_UUID_NUS_SREVICE = '6E400001B5A3F393E0A9E50E24DCCA9E';
+const BLE_UUID_NUS_TX_CHARACTERISTIC = '6E400003B5A3F393E0A9E50E24DCCA9E';
+
 //SAADC service	
 const BLE_UUID_SAADC_SERVICE_UUID = 'CC1D000173764BFAAEEA1D69C99BB7F5';
 const BLE_UUID_SAADC_VALUES_CHAR_UUID = 'CC1D000273764BFAAEEA1D69C99BB7F5';
-//Nordic UART service (NUS)
-const BLE_UUID_NUS_SREVICE = '6E400001B5A3F393E0A9E50E24DCCA9E';
-const BLE_UUID_NUS_TX_CHARACTERISTIC = '6E400002B5A3F393E0A9E50E24DCCA9E';
-const BLE_UUID_NUS_RX_CHARACTERISTIC = '6E400003B5A3F393E0A9E50E24DCCA9E';
-//Battery service	
-const BLE_UUID_BATTERY_SERVICE = '180F';
-const BLE_UUID_CCCD = '2902';
+const BLE_UUID_SAADC_CCCD = '2901';	//Different CCCD for SAADC service
+var saadc_char;
 
+
+// Function for enabling battery notifications
+function enable_bat_notif(adapter, device){
+	return new Promise((resolve, reject) => {
+	discoverService(adapter, device, BLE_UUID_BAT_SERVICE).then(service => {
+            console.log('Discovered the BATTERY service.');
+
+            return discoverCharacteristic(adapter, service, BLE_UUID_BAT_CHAR)
+            .then(characteristic => {
+                console.log('Discovered the BATTERY characteristic.');
+                return discoverCharCCCD(adapter, characteristic, BLE_UUID_CCCD);				
+            })
+            .then(descriptor => {
+                console.log('Discovered the BATTERY characteristic\'s CCCD.');
+				
+				//enable battery notifications
+				adapter.writeDescriptorValue(descriptor.instanceId, [1, 0], false, err => {
+					if (err) {
+						//console.log(`Error enabling notifications on the hrm characteristic: ${err}.`);
+						reject(Error(`Error enabling notifications on the BATTERY characteristic: ${err}.`));
+						process.exit(1);
+					}
+
+					console.log('Notifications enabled on the BATTERY characteristic.');
+					resolve('Done bat');
+				});
+            });
+        }).catch(error => {
+            console.log(error);
+            process.exit(1);
+        });
+		
+	});
+}
+
+
+//enable NUS notifications
+function enable_nus_notif(adapter, device){
+	return new Promise((resolve, reject) => {
+    discoverService(adapter, device, BLE_UUID_NUS_SREVICE).then(service => {
+            console.log('Discovered the NUS service.');
+
+            return discoverCharacteristic(adapter, service, BLE_UUID_NUS_TX_CHARACTERISTIC)
+            .then(characteristic => {
+                console.log('Discovered the TX characteristic.');
+                return discoverCharCCCD(adapter, characteristic, BLE_UUID_CCCD);
+            })
+            .then(descriptor => {
+                console.log('Discovered the TX characteristic\'s CCCD.');
+				
+				//enable battery notifications
+				adapter.writeDescriptorValue(descriptor.instanceId, [1, 0], false, err => {
+					if (err) {
+						//console.log(`Error enabling notifications on the hrm characteristic: ${err}.`);
+						reject(Error(`Error enabling notifications on the NUS characteristic: ${err}.`));
+						process.exit(1);
+					}
+
+					console.log('Notifications enabled on the NUS characteristic.');
+					resolve('Done NUS');
+				});
+				
+            });
+        }).catch(error => {
+            console.log(error);
+            process.exit(1);
+        });
+	});
+}
+
+//find SAADC characteristic
+function find_saadc_char(adapter, device){
+	return new Promise((resolve, reject) => {
+    discoverService(adapter, device, BLE_UUID_SAADC_SERVICE_UUID).then(service => {
+            console.log('Discovered the SAADC service.');
+
+            return discoverCharacteristic(adapter, service, BLE_UUID_SAADC_VALUES_CHAR_UUID)
+            .then(characteristic => {
+                console.log('Discovered the SAADC characteristic.');
+				saadc_char=characteristic;	//save SAADC characteristic to variable
+				//console.log(saadc_char);
+                //return discoverCharCCCD(adapter, characteristic, BLE_UUID_SAADC_CCCD);
+				resolve('Done SAADC');
+				
+            });
+        }).catch(error => {
+            console.log(error);
+            process.exit(1);
+        });
+	});
+}
+
+// function to wirte to SAADC char
+function write_saadc_char(adapter, characteristic){
+	adapter.writeCharacteristicValue(characteristic.instanceId, [1], false, err => {
+        if (err) {
+            console.log(`Error enabling notifications on the hrm characteristic: ${err}.`);
+            process.exit(1);
+        }
+
+        console.log('SAADC enabled.');
+		console.log(characteristic);
+    });
+}
 
 
 /**
- * Discovers the SAADC service in the BLE peripheral's GATT attribute table.
+ * Discovers the heart rate service in the BLE peripheral's GATT attribute table.
  *
  * @param {Adapter} adapter Adapter being used.
  * @param {Device} device Bluetooth central device being used.
- * @returns {Promise} Resolves on successfully discovering the SAADC service.
+ * @returns {Promise} Resolves on successfully discovering the heart rate service.
  *                    If an error occurs, rejects with the corresponding error.
  */
-function discoverSAADCService(adapter, device) {
+function discoverService(adapter, device, UUID) {
     return new Promise((resolve, reject) => {
         adapter.getServices(device.instanceId, (err, services) => {
             if (err) {
-                reject(Error(`Error discovering the SAADC service: ${err}.`));
+                reject(Error(`Error discovering the heart rate service: ${err}.`));
                 return;
             }
-			
-			//list services
-			console.log(services);
 
             for (const service in services) {
-                if (services[service].uuid === BLE_UUID_SAADC_SERVICE_UUID) {
+                if (services[service].uuid === UUID) {
                     resolve(services[service]);
                     return;
                 }
             }
 
-            reject(Error('Did not discover the SAADC service in peripheral\'s GATT attribute table.'));
+            reject(Error('Did not discover the heart rate service in peripheral\'s GATT attribute table.'));
         });
     });
 }
 
 /**
- * Discovers the SAADC values characteristic in the BLE peripheral's GATT attribute table.
+ * Discovers the heart rate measurement characteristic in the BLE peripheral's GATT attribute table.
  *
  * @param {Adapter} adapter Adapter being used.
- * @param {Service} SAADCService The SAADC service to discover characteristics from
- * @returns {Promise} Resolves on successfully discovering the SAADC measurement characteristic.
+ * @param {Service} heartRateService The heart rate service to discover characteristics from
+ * @returns {Promise} Resolves on successfully discovering the heart rate measurement characteristic.
  *                    If an error occurs, rejects with the corresponding error.
  */
-function discoverSAADCCharacteristic(adapter, SAADCService) {
+function discoverCharacteristic(adapter, heartRateService, UUID) {
     return new Promise((resolve, reject) => {
-        adapter.getCharacteristics(SAADCService.instanceId, (err, characteristics) => {
+        adapter.getCharacteristics(heartRateService.instanceId, (err, characteristics) => {
             if (err) {
-                reject(Error(`Error discovering the SAADC's characteristics: ${err}.`));
+                reject(Error(`Error discovering the heart rate service's characteristics: ${err}.`));
                 return;
             }
-			
-			//print characteristics
-			console.log(characteristics);
 
             // eslint-disable-next-line guard-for-in
             for (const characteristic in characteristics) {
-                if (characteristics[characteristic].uuid === BLE_UUID_SAADC_VALUES_CHAR_UUID) {
+                if (characteristics[characteristic].uuid === UUID) {
                     resolve(characteristics[characteristic]);
                     return;
                 }
             }
 
-            reject(Error('Did not discover the SAADC measurement chars in peripheral\'s GATT attribute table.'));
+            reject(Error('Did not discover the heart rate measurement chars in peripheral\'s GATT attribute table.'));
         });
     });
 }
-
 
 /**
  * Discovers the heart rate measurement characteristic's CCCD in the BLE peripheral's GATT attribute table.
@@ -102,7 +201,7 @@ function discoverSAADCCharacteristic(adapter, SAADCService) {
  * @returns {Promise} Resolves on successfully discovering the heart rate measurement characteristic's CCCD.
  *                    If an error occurs, rejects with the corresponding error.
  */
-function discoverHRMCharCCCD(adapter, heartRateMeasurementCharacteristic) {
+function discoverCharCCCD(adapter, heartRateMeasurementCharacteristic, UUID) {
     return new Promise((resolve, reject) => {
         adapter.getDescriptors(heartRateMeasurementCharacteristic.instanceId, (err, descriptors) => {
             if (err) {
@@ -111,7 +210,7 @@ function discoverHRMCharCCCD(adapter, heartRateMeasurementCharacteristic) {
             }
 
             for (const descriptor in descriptors) {
-                if (descriptors[descriptor].uuid === BLE_UUID_CCCD) {
+                if (descriptors[descriptor].uuid === UUID) {
                     resolve(descriptors[descriptor]);
                     return;
                 }
@@ -123,17 +222,17 @@ function discoverHRMCharCCCD(adapter, heartRateMeasurementCharacteristic) {
 }
 
 /**
- * Allow user to toggle notifications on the SAADC char with a key press, as well as cleanly exiting the application.
+ * Allow user to toggle notifications on the hrm char with a key press, as well as cleanly exiting the application.
  *
  * @param {Adapter} adapter Adapter being used.
  * @param {Descriptor} cccdDescriptor The descriptor for enabling/disabling enable/disable notifications.
  * @returns {undefined}
  */
-function addUserInputListener(adapter, cccdDescriptor) {
+function addUserInputListener(adapter, characteristic) {
     process.stdin.setEncoding('utf8');
     process.stdin.setRawMode(true);
 
-    const notificationsEnabled = [0, 0];
+    const saadcEnabled = [0, 0];
 
     process.stdin.on('readable', () => {
         const chunk = process.stdin.read();
@@ -149,25 +248,37 @@ function addUserInputListener(adapter, cccdDescriptor) {
                 process.exit(1);
             });
         } else {
-            if (notificationsEnabled[0]) {
-                notificationsEnabled[0] = 0;
-                console.log('Disabling notifications on the SAADC measurement characteristic.');
-            } else {
-                notificationsEnabled[0] = 1;
-                console.log('Enabling notifications on the SAADC measurement characteristic.');
+            if (saadcEnabled[0]) {
+                saadcEnabled[0] = 0;
+                console.log('Disabling SAADC.');
 				
+				// write 0 to characteristic to enable SAADC
+				adapter.writeCharacteristicValue(characteristic, [0], false, err => {
+					if (err) {
+						console.log(`Error disabling SAADC characteristic: ${err}.`);
+						process.exit(1);
+					}
+
+					console.log('SAADC toggled.');
+				});
+				
+				
+            } else {
+                saadcEnabled[0] = 1;
+                console.log('Enabling SAADC.');
+				
+				// write 1 to characteristic to enable SAADC
+				adapter.writeCharacteristicValue(characteristic, [1], false, err => {
+					if (err) {
+						console.log(`Error enabling SAADC characteristic: ${err}.`);
+						process.exit(1);
+					}
+
+					console.log('SAADC toggled.');
+				});
             }
 
-            
-			adapter.writeDescriptorValue(cccdDescriptor.instanceId, notificationsEnabled, false, err => {
-                if (err) {
-                    console.log(`Error enabling notifications on the SAADC characteristic: ${err}.`);
-                    process.exit(1);
-                }
 
-                console.log('Notifications toggled on the SAADC measurement characteristic.');
-            });
-			
         }
     });
 }
@@ -257,25 +368,19 @@ function addAdapterListener(adapter) {
     adapter.on('deviceConnected', device => {
         console.log(`Device ${device.address}/${device.addressType} connected.`);
 
-        discoverSAADCService(adapter, device).then(service => {
-            console.log('Discovered the SAADC service.');
-
-            return discoverSAADCCharacteristic(adapter, service)
-            .then(characteristic => {
-                console.log('Discovered the SAADC measurement characteristic.');
-                return discoverHRMCharCCCD(adapter, characteristic);
-            })
-            .then(descriptor => {
-                console.log('Discovered the heart rate measurement characteristic\'s CCCD.');
-
-                console.log('Press any key to toggle notifications on the SAADC characteristic. ' +
+		//enable notifications
+		enable_bat_notif(adapter, device).then(function(){
+			enable_nus_notif(adapter, device).then(function(){
+				find_saadc_char(adapter, device).then(function(){
+					//console.log(saadc_char);
+					//write_saadc_char(adapter, saadc_char);
+					console.log('Press any key to toggle SAADC. ' +
                             'Press `q` or `Q` to disconnect from the BLE peripheral and quit application.');
-                addUserInputListener(adapter, descriptor);
-            });
-        }).catch(error => {
-            console.log(error);
-            process.exit(1);
-        });
+					addUserInputListener(adapter, saadc_char.instanceId);
+				});
+			});
+		});		
+		
     });
 
     adapter.on('deviceDisconnected', device => {
@@ -307,9 +412,12 @@ function addAdapterListener(adapter) {
     });
 
     adapter.on('characteristicValueChanged', attribute => {
-        if (attribute.uuid === BLE_UUID_SAADC_VALUES_CHAR_UUID) {
-            console.log(`Received SAADC measurement: ${attribute.value}.`);
+        if (attribute.uuid === BLE_UUID_BAT_CHAR) {
+            console.log(`Received battery measurement: ${attribute.value}.`);
         }
+		else if(attribute.uuid === BLE_UUID_NUS_TX_CHARACTERISTIC){
+			console.log(`Received SAADC measurement: ${attribute.value}.`);
+		}
     });
 }
 
