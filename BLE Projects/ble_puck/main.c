@@ -341,6 +341,41 @@ static void conn_params_init(void)
 }
 
 
+// FUNCTIONS FOR SLEEP WAKE UP
+
+/** Configures and enables the LPCOMP (for wakeup from sleep)
+ */
+void LPCOMP_init(void)
+{	
+	// Enable interrupt on LPCOMP CROSS event		
+	NRF_LPCOMP->INTENSET = LPCOMP_INTENSET_CROSS_Msk;
+	NVIC_EnableIRQ(LPCOMP_IRQn);	
+	
+	// Configure LPCOMP - set input source to AVDD*9/16
+	NRF_LPCOMP->REFSEL |= (LPCOMP_REFSEL_REFSEL_Ref9_16Vdd << LPCOMP_REFSEL_REFSEL_Pos); //if z-axis voltage=VDD*(9/16), wake up
+	// Configure LPCOMP - set reference input source to AIN pin 6, i.e. P0.5 
+	NRF_LPCOMP->PSEL |= (LPCOMP_PSEL_PSEL_AnalogInput2 << LPCOMP_PSEL_PSEL_Pos);  //AIN3/P0.05 = z-axis of acceletometer
+	
+	// Enable and start the low power comparator
+	NRF_LPCOMP->ENABLE = LPCOMP_ENABLE_ENABLE_Enabled;	
+	NRF_LPCOMP->TASKS_START = 1;
+}
+
+// Interrupt handler for LPCOMP (for wakeup from sleep)
+void LPCOMP_COMP_IRQHandler(void)
+{
+	// Clear event
+	NRF_LPCOMP->EVENTS_CROSS = 0;
+	
+	// Sample the LPCOMP stores its state in the RESULT register. 
+	// RESULT==0 means lower than reference voltage, 
+	// RESULT==1 means higher than reference voltage
+	NRF_LPCOMP->TASKS_SAMPLE = 1;
+	//nrf_gpio_pin_write(RESULT_PIN, NRF_LPCOMP->RESULT);
+}
+
+
+
 /**@brief Function for putting the chip into sleep mode.
  *
  * @note This function will not return.
@@ -354,9 +389,13 @@ static void sleep_mode_enter(void)
     err_code = bsp_btn_ble_sleep_mode_prepare();
     APP_ERROR_CHECK(err_code);
 
+    // Initialize LPCOMP
+    LPCOMP_init();
+
     //Wait for LPCOMP to be ready (for wakeup)
     while(NRF_LPCOMP->EVENTS_READY == 0);
     NRF_LPCOMP->EVENTS_READY = 0;
+    
 
     // Go to system-off mode (this function will not return; wakeup will cause a reset).
     err_code = sd_power_system_off();
@@ -908,6 +947,7 @@ static void battery_level_update(void)
     */
 
     battery_voltage_get(&vbatt); // Get new battery voltage
+    printf("Battery voltage result: %d\r\n", vbatt);
 
     battery_level = battery_level_in_percent(vbatt);          //Transform the millivolts value into battery level percent.
     printf("Battery ADC result in percent: %d\r\n", battery_level);
@@ -1016,42 +1056,6 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
 
 
 
-// FUNCTIONS FOR SLEEP WAKE UP
-
-/** Configures and enables the LPCOMP (for wakeup from sleep)
- */
-void LPCOMP_init(void)
-{	
-	// Enable interrupt on LPCOMP CROSS event		
-	NRF_LPCOMP->INTENSET = LPCOMP_INTENSET_CROSS_Msk;
-	NVIC_EnableIRQ(LPCOMP_IRQn);	
-	
-	// Configure LPCOMP - set input source to AVDD*6/8
-	NRF_LPCOMP->REFSEL |= (LPCOMP_REFSEL_REFSEL_Ref4_8Vdd << LPCOMP_REFSEL_REFSEL_Pos); //if z-axis voltage=VDD*(6/8), wake up
-	// Configure LPCOMP - set reference input source to AIN pin 6, i.e. P0.5 
-	NRF_LPCOMP->PSEL |= (LPCOMP_PSEL_PSEL_AnalogInput2 << LPCOMP_PSEL_PSEL_Pos);  //AIN3 = z-axis of acceletometer
-	
-	// Enable and start the low power comparator
-	NRF_LPCOMP->ENABLE = LPCOMP_ENABLE_ENABLE_Enabled;	
-	NRF_LPCOMP->TASKS_START = 1;
-}
-
-// Interrupt handler for LPCOMP (for wakeup from sleep)
-void LPCOMP_COMP_IRQHandler(void)
-{
-	// Clear event
-	NRF_LPCOMP->EVENTS_CROSS = 0;
-	
-	// Sample the LPCOMP stores its state in the RESULT register. 
-	// RESULT==0 means lower than reference voltage, 
-	// RESULT==1 means higher than reference voltage
-	NRF_LPCOMP->TASKS_SAMPLE = 1;
-	//nrf_gpio_pin_write(RESULT_PIN, NRF_LPCOMP->RESULT);
-}
-
-
-
-
 
 /**@brief Application main function.
  */
@@ -1076,7 +1080,7 @@ int main(void)
     application_timers_start();
 
     //Initialize LPCOMP for wakeup
-    LPCOMP_init();
+    //LPCOMP_init();
 
     // Start execution.
     printf("\r\nUART started.\r\n");

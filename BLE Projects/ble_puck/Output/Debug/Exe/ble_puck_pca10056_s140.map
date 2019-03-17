@@ -13973,7 +13973,7 @@ FLASH            0x0000000000000000 0x0000000000100000 xw
 
 Linker script and memory map
 
-                0x0000000000035724                __vfprintf = __vfprintf_long
+                0x0000000000035748                __vfprintf = __vfprintf_long
                 0x0000000000000000                __vfscanf = __vfscanf_int
                 0x0000000020000000                __RAM_segment_start__ = 0x20000000
                 0x0000000020040000                __RAM_segment_end__ = 0x20040000
@@ -14113,7 +14113,7 @@ Linker script and memory map
                 0x0000000000000001                . = ASSERT (((__init_rodata_start__ == __init_rodata_end__) || ((__init_rodata_end__ >= __FLASH_segment_start__) && (__init_rodata_end__ <= __FLASH_segment_end__))), error: .init_rodata is too large to fit in FLASH memory segment)
                 0x00000000000263d8                __text_load_start__ = ALIGN (__init_rodata_end__, 0x4)
 
-.text           0x00000000000263d8     0xfa7c
+.text           0x00000000000263d8     0xfaa0
                 0x00000000000263d8                __text_start__ = .
  *(.text .text.* .glue_7t .glue_7 .gnu.linkonce.t.* .gcc_except_table .ARM.extab* .gnu.linkonce.armextab.*)
  .glue_7        0x00000000000263d8        0x0 linker stubs
@@ -15175,590 +15175,590 @@ Linker script and memory map
  .text.sd_ble_gatts_sys_attr_set
                 0x000000000002fcc0        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.battery_level_in_percent
-                0x000000000002fcc8       0x4c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002fcc8       0x60 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.sd_power_system_off
-                0x000000000002fd14        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002fd28        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.nrf_drv_saadc_init
-                0x000000000002fd1c       0x28 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002fd30       0x28 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.nrf_timer_event_address_get
-                0x000000000002fd44       0x18 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002fd58       0x18 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.nrf_timer_frequency_get
-                0x000000000002fd5c       0x12 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002fd70       0x12 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.nrf_timer_compare_event_get
-                0x000000000002fd6e       0x16 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002fd82       0x16 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.nrf_timer_us_to_ticks
-                0x000000000002fd84       0x3c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002fd98       0x3c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.nrfx_timer_compare_event_address_get
-                0x000000000002fdc0       0x40 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002fdd4       0x40 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.nrfx_timer_us_to_ticks
-                0x000000000002fe00       0x26 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- *fill*         0x000000000002fe26        0x2 
+                0x000000000002fe14       0x26 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ *fill*         0x000000000002fe3a        0x2 
  .text.assert_nrf_callback
-                0x000000000002fe28       0x28 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x000000000002fe28                assert_nrf_callback
+                0x000000000002fe3c       0x28 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002fe3c                assert_nrf_callback
  .text.timers_init
-                0x000000000002fe50       0x54 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002fe64       0x54 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.gap_params_init
-                0x000000000002fea4       0xa0 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002feb8       0xa0 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.nrf_qwr_error_handler
-                0x000000000002ff44       0x1c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002ff58       0x1c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.nus_data_handler
-                0x000000000002ff60       0xb0 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000002ff74       0xb0 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.services_init
-                0x0000000000030010      0x104 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030024      0x104 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.on_conn_params_evt
-                0x0000000000030114       0x44 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030128       0x44 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.conn_params_error_handler
-                0x0000000000030158       0x20 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000003016c       0x20 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.conn_params_init
-                0x0000000000030178       0x70 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.sleep_mode_enter
-                0x00000000000301e8       0x80 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.on_adv_evt
-                0x0000000000030268       0x4c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.ble_evt_handler
-                0x00000000000302b4      0x2cc Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.ble_stack_init
-                0x0000000000030580       0x74 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.gatt_evt_handler
-                0x00000000000305f4       0x68 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x00000000000305f4                gatt_evt_handler
- .text.gatt_init
-                0x000000000003065c       0x58 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x000000000003065c                gatt_init
- .text.bsp_event_handler
-                0x00000000000306b4       0x9c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x00000000000306b4                bsp_event_handler
- .text.uart_event_handle
-                0x0000000000030750      0x100 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000030750                uart_event_handle
- .text.uart_init
-                0x0000000000030850       0x68 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.advertising_init
-                0x00000000000308b8       0x84 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.buttons_leds_init
-                0x000000000003093c       0x6c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.log_init
-                0x00000000000309a8       0x38 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.power_management_init
-                0x00000000000309e0       0x2c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.idle_state_handle
-                0x0000000000030a0c        0xe Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- *fill*         0x0000000000030a1a        0x2 
- .text.advertising_start
-                0x0000000000030a1c       0x34 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.timer_handler
-                0x0000000000030a50       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000030a50                timer_handler
- .text.saadc_sampling_event_init
-                0x0000000000030a60       0xf4 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000030a60                saadc_sampling_event_init
- .text.saadc_sampling_event_enable
-                0x0000000000030b54       0x38 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000030b54                saadc_sampling_event_enable
- .text.saadc_callback
-                0x0000000000030b8c       0xfc Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000030b8c                saadc_callback
- .text.saadc_init
-                0x0000000000030c88      0x120 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000030c88                saadc_init
- .text.battery_level_meas_timeout_handler
-                0x0000000000030da8       0x44 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.battery_level_update
-                0x0000000000030dec       0x84 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.application_timers_start
-                0x0000000000030e70       0x3c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .text.start_bat
-                0x0000000000030eac        0xe Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000030eac                start_bat
- *fill*         0x0000000000030eba        0x2 
- .text.stop_bat
-                0x0000000000030ebc       0x5c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000030ebc                stop_bat
- .text.start_adc
-                0x0000000000030f18       0x12 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000030f18                start_adc
- *fill*         0x0000000000030f2a        0x2 
- .text.stop_adc
-                0x0000000000030f2c       0x48 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000030f2c                stop_adc
- .text.saadc_write_handler
-                0x0000000000030f74       0xc8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000003018c       0x70 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .text.LPCOMP_init
-                0x000000000003103c       0x48 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x000000000003103c                LPCOMP_init
+                0x00000000000301fc       0x48 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x00000000000301fc                LPCOMP_init
  .text.COMP_LPCOMP_IRQHandler
-                0x0000000000031084       0x18 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000031084                COMP_LPCOMP_IRQHandler
- .text.main     0x000000000003109c       0x78 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x000000000003109c                main
- .text._DoInit  0x0000000000031114       0x9c Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+                0x0000000000030244       0x18 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030244                COMP_LPCOMP_IRQHandler
+ .text.sleep_mode_enter
+                0x000000000003025c       0x84 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.on_adv_evt
+                0x00000000000302e0       0x4c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.ble_evt_handler
+                0x000000000003032c      0x2cc Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.ble_stack_init
+                0x00000000000305f8       0x74 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.gatt_evt_handler
+                0x000000000003066c       0x68 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000003066c                gatt_evt_handler
+ .text.gatt_init
+                0x00000000000306d4       0x58 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x00000000000306d4                gatt_init
+ .text.bsp_event_handler
+                0x000000000003072c       0x9c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000003072c                bsp_event_handler
+ .text.uart_event_handle
+                0x00000000000307c8      0x100 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x00000000000307c8                uart_event_handle
+ .text.uart_init
+                0x00000000000308c8       0x68 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.advertising_init
+                0x0000000000030930       0x84 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.buttons_leds_init
+                0x00000000000309b4       0x6c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.log_init
+                0x0000000000030a20       0x38 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.power_management_init
+                0x0000000000030a58       0x2c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.idle_state_handle
+                0x0000000000030a84        0xe Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ *fill*         0x0000000000030a92        0x2 
+ .text.advertising_start
+                0x0000000000030a94       0x34 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.timer_handler
+                0x0000000000030ac8       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030ac8                timer_handler
+ .text.saadc_sampling_event_init
+                0x0000000000030ad8       0xf4 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030ad8                saadc_sampling_event_init
+ .text.saadc_sampling_event_enable
+                0x0000000000030bcc       0x38 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030bcc                saadc_sampling_event_enable
+ .text.saadc_callback
+                0x0000000000030c04       0xfc Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030c04                saadc_callback
+ .text.saadc_init
+                0x0000000000030d00      0x120 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030d00                saadc_init
+ .text.battery_level_meas_timeout_handler
+                0x0000000000030e20       0x44 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.battery_level_update
+                0x0000000000030e64       0x94 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.application_timers_start
+                0x0000000000030ef8       0x3c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.start_bat
+                0x0000000000030f34        0xe Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030f34                start_bat
+ *fill*         0x0000000000030f42        0x2 
+ .text.stop_bat
+                0x0000000000030f44       0x5c Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030f44                stop_bat
+ .text.start_adc
+                0x0000000000030fa0       0x12 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030fa0                start_adc
+ *fill*         0x0000000000030fb2        0x2 
+ .text.stop_adc
+                0x0000000000030fb4       0x48 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000030fb4                stop_adc
+ .text.saadc_write_handler
+                0x0000000000030ffc       0xc8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .text.main     0x00000000000310c4       0x74 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x00000000000310c4                main
+ .text._DoInit  0x0000000000031138       0x9c Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
  .text._WriteBlocking
-                0x00000000000311b0       0xb2 Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+                0x00000000000311d4       0xb2 Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
  .text._WriteNoCheck
-                0x0000000000031262       0x7e Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+                0x0000000000031286       0x7e Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
  .text._GetAvailWriteSpace
-                0x00000000000312e0       0x3c Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+                0x0000000000031304       0x3c Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
  .text.SEGGER_RTT_WriteNoLock
-                0x000000000003131c       0x9c Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
-                0x000000000003131c                SEGGER_RTT_WriteNoLock
+                0x0000000000031340       0x9c Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+                0x0000000000031340                SEGGER_RTT_WriteNoLock
  .text.SEGGER_RTT_Init
-                0x00000000000313b8        0xa Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
-                0x00000000000313b8                SEGGER_RTT_Init
+                0x00000000000313dc        0xa Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+                0x00000000000313dc                SEGGER_RTT_Init
  .text.sd_ble_gap_addr_get
-                0x00000000000313c2        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x00000000000313e6        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.sd_ble_gap_appearance_get
-                0x00000000000313ca        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x00000000000313ee        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.sd_ble_gap_device_name_get
-                0x00000000000313d2        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x00000000000313f6        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.sd_ble_uuid_encode
-                0x00000000000313da        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x00000000000313fe        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.uint16_encode
-                0x00000000000313e2       0x2c Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031406       0x2c Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.ble_device_addr_encode
-                0x000000000003140e       0xd2 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031432       0xd2 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.name_encode
-                0x00000000000314e0      0x150 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031504      0x150 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.appearance_encode
-                0x0000000000031630       0xa0 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031654       0xa0 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.flags_encode
-                0x00000000000316d0       0x7e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x00000000000316f4       0x7e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.tx_power_level_encode
-                0x000000000003174e       0x7e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031772       0x7e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.uuid_list_sized_encode
-                0x00000000000317cc      0x158 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x00000000000317f0      0x158 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.uuid_list_encode
-                0x0000000000031924       0x6e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031948       0x6e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.conn_int_check
-                0x0000000000031992       0x78 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x00000000000319b6       0x78 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.conn_int_encode
-                0x0000000000031a0a       0xc4 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031a2e       0xc4 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.manuf_specific_data_encode
-                0x0000000000031ace       0xe0 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031af2       0xe0 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.service_data_encode
-                0x0000000000031bae      0x108 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031bd2      0x108 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
  .text.ble_advdata_encode
-                0x0000000000031cb6      0x1fe Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
-                0x0000000000031cb6                ble_advdata_encode
+                0x0000000000031cda      0x1fe Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031cda                ble_advdata_encode
  .text.ble_advdata_search
-                0x0000000000031eb4       0xa4 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
-                0x0000000000031eb4                ble_advdata_search
+                0x0000000000031ed8       0xa4 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031ed8                ble_advdata_search
  .text.ble_advdata_parse
-                0x0000000000031f58       0x4c Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
-                0x0000000000031f58                ble_advdata_parse
+                0x0000000000031f7c       0x4c Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+                0x0000000000031f7c                ble_advdata_parse
  .text.sd_ble_gap_adv_set_configure
-                0x0000000000031fa4        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000031fc8        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.sd_ble_gap_adv_start
-                0x0000000000031fac        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000031fd0        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.sd_ble_gap_adv_stop
-                0x0000000000031fb4        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000031fd8        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.whitelist_has_entries
-                0x0000000000031fbc       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000031fe0       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.addr_is_valid
-                0x0000000000031fcc       0x2e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
- *fill*         0x0000000000031ffa        0x2 
+                0x0000000000031ff0       0x2e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+ *fill*         0x000000000003201e        0x2 
  .text.adv_mode_next_get
-                0x0000000000031ffc       0x30 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000032020       0x30 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.on_connected
-                0x000000000003202c       0x1e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000032050       0x1e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.on_disconnected
-                0x000000000003204a       0x54 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x000000000003206e       0x54 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.on_terminated
-                0x000000000003209e       0x56 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x00000000000320c2       0x56 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.adv_mode_next_avail_get
-                0x00000000000320f4       0x9c Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000032118       0x9c Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.set_adv_mode_directed_high_duty
-                0x0000000000032190       0x3a Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x00000000000321b4       0x3a Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.set_adv_mode_directed
-                0x00000000000321ca       0x52 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x00000000000321ee       0x52 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.use_whitelist
-                0x000000000003221c       0x3e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000032240       0x3e Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.flags_set
-                0x000000000003225a       0x50 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x000000000003227e       0x50 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.set_adv_mode_fast
-                0x00000000000322aa       0x88 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x00000000000322ce       0x88 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.set_adv_mode_slow
-                0x0000000000032332       0x88 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000032356       0x88 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.config_is_valid
-                0x00000000000323ba       0x22 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x00000000000323de       0x22 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
  .text.ble_advertising_conn_cfg_tag_set
-                0x00000000000323dc       0x1a Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
-                0x00000000000323dc                ble_advertising_conn_cfg_tag_set
+                0x0000000000032400       0x1a Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000032400                ble_advertising_conn_cfg_tag_set
  .text.ble_advertising_init
-                0x00000000000323f6      0x1c0 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
-                0x00000000000323f6                ble_advertising_init
+                0x000000000003241a      0x1c0 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x000000000003241a                ble_advertising_init
  .text.phy_is_valid
-                0x00000000000325b6       0x28 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
- *fill*         0x00000000000325de        0x2 
+                0x00000000000325da       0x28 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+ *fill*         0x0000000000032602        0x2 
  .text.ble_advertising_start
-                0x00000000000325e0      0x23c Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
-                0x00000000000325e0                ble_advertising_start
+                0x0000000000032604      0x23c Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000032604                ble_advertising_start
  .text.ble_advertising_on_ble_evt
-                0x000000000003281c       0x44 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
-                0x000000000003281c                ble_advertising_on_ble_evt
+                0x0000000000032840       0x44 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000032840                ble_advertising_on_ble_evt
  .text.ble_advertising_on_sys_evt
-                0x0000000000032860        0xc Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
-                0x0000000000032860                ble_advertising_on_sys_evt
+                0x0000000000032884        0xc Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000032884                ble_advertising_on_sys_evt
  .text.ble_advertising_restart_without_whitelist
-                0x000000000003286c       0x70 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
-                0x000000000003286c                ble_advertising_restart_without_whitelist
+                0x0000000000032890       0x70 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+                0x0000000000032890                ble_advertising_restart_without_whitelist
  .text.sd_ble_gap_conn_param_update
-                0x00000000000328dc        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032900        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.sd_ble_gap_disconnect
-                0x00000000000328e4        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032908        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.sd_ble_gap_ppcp_set
-                0x00000000000328ec        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032910        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.sd_ble_gap_ppcp_get
-                0x00000000000328f4        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032918        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.instance_get
-                0x00000000000328fc       0x50 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032920       0x50 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.instance_claim
-                0x000000000003294c       0x34 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032970       0x34 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.instance_free
-                0x0000000000032980       0x12 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x00000000000329a4       0x12 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.is_conn_params_ok
-                0x0000000000032992       0xca Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x00000000000329b6       0xca Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.send_error_evt
-                0x0000000000032a5c       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032a80       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.send_update_request
-                0x0000000000032a80       0x40 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032aa4       0x40 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.update_timeout_handler
-                0x0000000000032ac0       0xb0 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032ae4       0xb0 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.ble_conn_params_init
-                0x0000000000032b70       0xd4 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
-                0x0000000000032b70                ble_conn_params_init
+                0x0000000000032b94       0xd4 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032b94                ble_conn_params_init
  .text.conn_params_negotiation
-                0x0000000000032c44       0x7c Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032c68       0x7c Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.on_connect
-                0x0000000000032cc0       0x84 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032ce4       0x84 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.on_disconnect
-                0x0000000000032d44       0x46 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
- *fill*         0x0000000000032d8a        0x2 
+                0x0000000000032d68       0x46 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+ *fill*         0x0000000000032dae        0x2 
  .text.on_write
-                0x0000000000032d8c       0x7c Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032db0       0x7c Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.on_conn_params_update
-                0x0000000000032e08       0x54 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032e2c       0x54 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.ble_evt_handler
-                0x0000000000032e5c       0x4c Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000032e80       0x4c Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .text.conn_handle_list_get
-                0x0000000000032ea8       0x64 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
-                0x0000000000032ea8                conn_handle_list_get
+                0x0000000000032ecc       0x64 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x0000000000032ecc                conn_handle_list_get
  .text.record_activate
-                0x0000000000032f0c       0x40 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x0000000000032f30       0x40 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
  .text.record_invalidate
-                0x0000000000032f4c       0x40 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x0000000000032f70       0x40 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
  .text.record_set_disconnected
-                0x0000000000032f8c       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x0000000000032fb0       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
  .text.record_purge_disconnected
-                0x0000000000032fb0       0x6c Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x0000000000032fd4       0x6c Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
  .text.ble_evt_handler
-                0x000000000003301c      0x104 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x0000000000033040      0x104 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
  .text.ble_conn_state_valid
-                0x0000000000033120       0x30 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
-                0x0000000000033120                ble_conn_state_valid
+                0x0000000000033144       0x30 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x0000000000033144                ble_conn_state_valid
  .text.ble_conn_state_status
-                0x0000000000033150       0x54 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
-                0x0000000000033150                ble_conn_state_status
+                0x0000000000033174       0x54 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x0000000000033174                ble_conn_state_status
  .text.ble_conn_state_conn_handles
-                0x00000000000331a4       0x20 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
-                0x00000000000331a4                ble_conn_state_conn_handles
+                0x00000000000331c8       0x20 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x00000000000331c8                ble_conn_state_conn_handles
  .text.ble_conn_state_conn_idx
-                0x00000000000331c4       0x2a Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
-                0x00000000000331c4                ble_conn_state_conn_idx
+                0x00000000000331e8       0x2a Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x00000000000331e8                ble_conn_state_conn_idx
  .text.blcm_link_ctx_get
-                0x00000000000331ee       0x92 Output/ble_puck_pca10056_s140 Debug/Obj/ble_link_ctx_manager.o
-                0x00000000000331ee                blcm_link_ctx_get
+                0x0000000000033212       0x92 Output/ble_puck_pca10056_s140 Debug/Obj/ble_link_ctx_manager.o
+                0x0000000000033212                blcm_link_ctx_get
  .text.uint16_decode
-                0x0000000000033280       0x20 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
+                0x00000000000332a4       0x20 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
  .text.sd_ble_gatts_characteristic_add
-                0x00000000000332a0        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
+                0x00000000000332c4        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
  .text.sd_ble_gatts_descriptor_add
-                0x00000000000332a8        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
+                0x00000000000332cc        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
  .text.ble_srv_is_notification_enabled
-                0x00000000000332b0       0x2c Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
-                0x00000000000332b0                ble_srv_is_notification_enabled
+                0x00000000000332d4       0x2c Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
+                0x00000000000332d4                ble_srv_is_notification_enabled
  .text.ble_srv_report_ref_encode
-                0x00000000000332dc       0x6c Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
-                0x00000000000332dc                ble_srv_report_ref_encode
+                0x0000000000033300       0x6c Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
+                0x0000000000033300                ble_srv_report_ref_encode
  .text.set_security_req
-                0x0000000000033348       0xe4 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
+                0x000000000003336c       0xe4 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
  .text.characteristic_add
-                0x000000000003342c      0x224 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
-                0x000000000003342c                characteristic_add
+                0x0000000000033450      0x224 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
+                0x0000000000033450                characteristic_add
  .text.descriptor_add
-                0x0000000000033650       0xe0 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
-                0x0000000000033650                descriptor_add
+                0x0000000000033674       0xe0 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
+                0x0000000000033674                descriptor_add
  .text.sd_ble_gap_data_length_update
-                0x0000000000033730        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x0000000000033754        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
  .text.sd_ble_gattc_exchange_mtu_request
-                0x0000000000033738        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x000000000003375c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
  .text.sd_ble_gatts_exchange_mtu_reply
-                0x0000000000033740        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x0000000000033764        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
  .text.link_init
-                0x0000000000033748       0x2e Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
- *fill*         0x0000000000033776        0x2 
+                0x000000000003376c       0x2e Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+ *fill*         0x000000000003379a        0x2 
  .text.data_length_update
-                0x0000000000033778       0xdc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x000000000003379c       0xdc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
  .text.on_connected_evt
-                0x0000000000033854       0xd4 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x0000000000033878       0xd4 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
  .text.on_disconnected_evt
-                0x0000000000033928       0x22 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x000000000003394c       0x22 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
  .text.on_exchange_mtu_rsp_evt
-                0x000000000003394a       0x92 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x000000000003396e       0x92 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
  .text.on_exchange_mtu_request_evt
-                0x00000000000339dc       0xd0 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x0000000000033a00       0xd0 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
  .text.on_data_length_update_evt
-                0x0000000000033aac       0x7c Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x0000000000033ad0       0x7c Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
  .text.on_data_length_update_request_evt
-                0x0000000000033b28       0x50 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x0000000000033b4c       0x50 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
  .text.nrf_ble_gatt_init
-                0x0000000000033b78       0x56 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
-                0x0000000000033b78                nrf_ble_gatt_init
+                0x0000000000033b9c       0x56 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x0000000000033b9c                nrf_ble_gatt_init
  .text.nrf_ble_gatt_att_mtu_periph_set
-                0x0000000000033bce       0x38 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
-                0x0000000000033bce                nrf_ble_gatt_att_mtu_periph_set
- *fill*         0x0000000000033c06        0x2 
+                0x0000000000033bf2       0x38 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x0000000000033bf2                nrf_ble_gatt_att_mtu_periph_set
+ *fill*         0x0000000000033c2a        0x2 
  .text.nrf_ble_gatt_on_ble_evt
-                0x0000000000033c08      0x104 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
-                0x0000000000033c08                nrf_ble_gatt_on_ble_evt
+                0x0000000000033c2c      0x104 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x0000000000033c2c                nrf_ble_gatt_on_ble_evt
  .text.sd_ble_gatts_rw_authorize_reply
-                0x0000000000033d0c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
+                0x0000000000033d30        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
  .text.sd_ble_user_mem_reply
-                0x0000000000033d14        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
+                0x0000000000033d38        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
  .text.nrf_ble_qwr_init
-                0x0000000000033d1c       0x44 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
-                0x0000000000033d1c                nrf_ble_qwr_init
+                0x0000000000033d40       0x44 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
+                0x0000000000033d40                nrf_ble_qwr_init
  .text.nrf_ble_qwr_conn_handle_assign
-                0x0000000000033d60       0x30 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
-                0x0000000000033d60                nrf_ble_qwr_conn_handle_assign
+                0x0000000000033d84       0x30 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
+                0x0000000000033d84                nrf_ble_qwr_conn_handle_assign
  .text.user_mem_reply
-                0x0000000000033d90       0x48 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
+                0x0000000000033db4       0x48 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
  .text.on_user_mem_request
-                0x0000000000033dd8       0x30 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
+                0x0000000000033dfc       0x30 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
  .text.on_user_mem_release
-                0x0000000000033e08        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
+                0x0000000000033e2c        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
  .text.on_rw_authorize_request
-                0x0000000000033e14       0x92 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
+                0x0000000000033e38       0x92 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
  .text.nrf_ble_qwr_on_ble_evt
-                0x0000000000033ea6       0xa2 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
-                0x0000000000033ea6                nrf_ble_qwr_on_ble_evt
+                0x0000000000033eca       0xa2 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
+                0x0000000000033eca                nrf_ble_qwr_on_ble_evt
  .text.sd_ble_gatts_service_add
-                0x0000000000033f48        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+                0x0000000000033f6c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
  .text.sd_ble_gatts_value_set
-                0x0000000000033f50        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+                0x0000000000033f74        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
  .text.sd_ble_gatts_hvx
-                0x0000000000033f58        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+                0x0000000000033f7c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
  .text.on_write
-                0x0000000000033f60       0x78 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+                0x0000000000033f84       0x78 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
  .text.ble_bas_on_ble_evt
-                0x0000000000033fd8       0x34 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
-                0x0000000000033fd8                ble_bas_on_ble_evt
+                0x0000000000033ffc       0x34 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+                0x0000000000033ffc                ble_bas_on_ble_evt
  .text.battery_level_char_add
-                0x000000000003400c       0xf4 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+                0x0000000000034030       0xf4 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
  .text.ble_bas_init
-                0x0000000000034100       0x6e Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
-                0x0000000000034100                ble_bas_init
+                0x0000000000034124       0x6e Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+                0x0000000000034124                ble_bas_init
  .text.battery_notification_send
-                0x000000000003416e       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+                0x0000000000034192       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
  .text.ble_bas_battery_level_update
-                0x0000000000034192      0x13c Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
-                0x0000000000034192                ble_bas_battery_level_update
+                0x00000000000341b6      0x13c Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+                0x00000000000341b6                ble_bas_battery_level_update
  .text.sd_ble_gatts_service_add
-                0x00000000000342ce        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x00000000000342f2        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
  .text.sd_ble_gatts_value_get
-                0x00000000000342d6        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x00000000000342fa        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
  .text.sd_ble_gatts_hvx
-                0x00000000000342de        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x0000000000034302        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
  .text.sd_ble_uuid_vs_add
-                0x00000000000342e6        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x000000000003430a        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
  .text.on_connect
-                0x00000000000342ee       0xa8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x0000000000034312       0xa8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
  .text.on_write
-                0x0000000000034396       0xd2 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x00000000000343ba       0xd2 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
  .text.on_hvx_tx_complete
-                0x0000000000034468       0x5e Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x000000000003448c       0x5e Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
  .text.ble_nus_on_ble_evt
-                0x00000000000344c6       0x50 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
-                0x00000000000344c6                ble_nus_on_ble_evt
- *fill*         0x0000000000034516        0x2 
+                0x00000000000344ea       0x50 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x00000000000344ea                ble_nus_on_ble_evt
+ *fill*         0x000000000003453a        0x2 
  .text.ble_nus_init
-                0x0000000000034518      0x14c Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
-                0x0000000000034518                ble_nus_init
+                0x000000000003453c      0x14c Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x000000000003453c                ble_nus_init
  .text.ble_nus_data_send
-                0x0000000000034664       0xa6 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
-                0x0000000000034664                ble_nus_data_send
- *fill*         0x000000000003470a        0x2 
+                0x0000000000034688       0xa6 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x0000000000034688                ble_nus_data_send
+ *fill*         0x000000000003472e        0x2 
  .text.NVIC_EnableIRQ
-                0x000000000003470c       0x2c Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000000034730       0x2c Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .text.NVIC_GetPriority
-                0x0000000000034738       0x48 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x000000000003475c       0x48 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .text.nrf_section_iter_get
-                0x0000000000034780       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x00000000000347a4       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .text.sd_softdevice_enable
-                0x00000000000347a4        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x00000000000347c8        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .text.__sd_nvic_app_accessible_irq
-                0x00000000000347ac       0x58 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x00000000000347d0       0x58 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .text.__sd_nvic_is_app_accessible_priority
-                0x0000000000034804       0x26 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
- *fill*         0x000000000003482a        0x2 
+                0x0000000000034828       0x26 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+ *fill*         0x000000000003484e        0x2 
  .text.sd_nvic_EnableIRQ
-                0x000000000003482c       0x8c Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000000034850       0x8c Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .text.sdh_request_observer_notify
-                0x00000000000348b8       0x64 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x00000000000348dc       0x64 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .text.sdh_state_observer_notify
-                0x000000000003491c       0x58 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000000034940       0x58 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .text.softdevices_evt_irq_enable
-                0x0000000000034974       0x2c Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000000034998       0x2c Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .text.nrf_sdh_enable_request
-                0x00000000000349a0       0xa8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
-                0x00000000000349a0                nrf_sdh_enable_request
+                0x00000000000349c4       0xa8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x00000000000349c4                nrf_sdh_enable_request
  .text.nrf_sdh_is_enabled
-                0x0000000000034a48        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
-                0x0000000000034a48                nrf_sdh_is_enabled
+                0x0000000000034a6c        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000000034a6c                nrf_sdh_is_enabled
  .text.nrf_sdh_evts_poll
-                0x0000000000034a54       0x4c Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
-                0x0000000000034a54                nrf_sdh_evts_poll
+                0x0000000000034a78       0x4c Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000000034a78                nrf_sdh_evts_poll
  .text.SWI2_EGU2_IRQHandler
-                0x0000000000034aa0        0xa Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
-                0x0000000000034aa0                SWI2_EGU2_IRQHandler
+                0x0000000000034ac4        0xa Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000000034ac4                SWI2_EGU2_IRQHandler
  .text.sd_ble_enable
-                0x0000000000034aaa        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+                0x0000000000034ace        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
  .text.sd_ble_cfg_set
-                0x0000000000034ab2        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+                0x0000000000034ad6        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
  .text.sd_ble_evt_get
-                0x0000000000034aba        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
- *fill*         0x0000000000034ac2        0x2 
+                0x0000000000034ade        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+ *fill*         0x0000000000034ae6        0x2 
  .text.nrf_section_iter_get
-                0x0000000000034ac4       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
- .text.nrf_sdh_ble_app_ram_start_get
                 0x0000000000034ae8       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
-                0x0000000000034ae8                nrf_sdh_ble_app_ram_start_get
+ .text.nrf_sdh_ble_app_ram_start_get
+                0x0000000000034b0c       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+                0x0000000000034b0c                nrf_sdh_ble_app_ram_start_get
  .text.nrf_sdh_ble_default_cfg_set
-                0x0000000000034b0c      0x220 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
-                0x0000000000034b0c                nrf_sdh_ble_default_cfg_set
+                0x0000000000034b30      0x220 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+                0x0000000000034b30                nrf_sdh_ble_default_cfg_set
  .text.ram_end_address_get
-                0x0000000000034d2c       0x1a Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
- *fill*         0x0000000000034d46        0x2 
+                0x0000000000034d50       0x1a Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+ *fill*         0x0000000000034d6a        0x2 
  .text.nrf_sdh_ble_enable
-                0x0000000000034d48       0xc4 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
-                0x0000000000034d48                nrf_sdh_ble_enable
+                0x0000000000034d6c       0xc4 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+                0x0000000000034d6c                nrf_sdh_ble_enable
  .text.nrf_sdh_ble_evts_poll
-                0x0000000000034e0c       0xa8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+                0x0000000000034e30       0xa8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
  .text.nrf_section_iter_get
-                0x0000000000034eb4       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
+                0x0000000000034ed8       0x24 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
  .text.sd_evt_get
-                0x0000000000034ed8        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
+                0x0000000000034efc        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
  .text.nrf_sdh_soc_evts_poll
-                0x0000000000034ee0       0x78 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
+                0x0000000000034f04       0x78 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
  .text.sd_ble_gatts_service_add
-                0x0000000000034f58        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+                0x0000000000034f7c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
  .text.sd_ble_gatts_characteristic_add
-                0x0000000000034f60        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+                0x0000000000034f84        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
  .text.sd_ble_uuid_vs_add
-                0x0000000000034f68        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+                0x0000000000034f8c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
  .text.on_connect
-                0x0000000000034f70       0x14 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
-                0x0000000000034f70                on_connect
+                0x0000000000034f94       0x14 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+                0x0000000000034f94                on_connect
  .text.on_disconnect
-                0x0000000000034f84       0x14 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
-                0x0000000000034f84                on_disconnect
+                0x0000000000034fa8       0x14 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+                0x0000000000034fa8                on_disconnect
  .text.on_write
-                0x0000000000034f98       0x42 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
-                0x0000000000034f98                on_write
- *fill*         0x0000000000034fda        0x2 
+                0x0000000000034fbc       0x42 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+                0x0000000000034fbc                on_write
+ *fill*         0x0000000000034ffe        0x2 
  .text.saadc_values_char_add
-                0x0000000000034fdc      0x118 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+                0x0000000000035000      0x118 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
  .text.ble_saadc_service_init
-                0x00000000000350f4       0x84 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
-                0x00000000000350f4                ble_saadc_service_init
+                0x0000000000035118       0x84 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+                0x0000000000035118                ble_saadc_service_init
  .text.ble_saadc_service_on_ble_evt
-                0x0000000000035178       0x44 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
-                0x0000000000035178                ble_saadc_service_on_ble_evt
+                0x000000000003519c       0x44 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+                0x000000000003519c                ble_saadc_service_on_ble_evt
  .text.nrf_drv_saadc_init
-                0x00000000000351bc       0x28 Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
+                0x00000000000351e0       0x28 Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
  .text.saadc_event_handler
-                0x00000000000351e4       0x78 Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
+                0x0000000000035208       0x78 Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
  .text.battery_voltage_init
-                0x000000000003525c       0x9c Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
-                0x000000000003525c                battery_voltage_init
+                0x0000000000035280       0x9c Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
+                0x0000000000035280                battery_voltage_init
  .text.battery_voltage_get
-                0x00000000000352f8       0x74 Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
-                0x00000000000352f8                battery_voltage_get
+                0x000000000003531c       0x74 Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
+                0x000000000003531c                battery_voltage_get
  .text.libc.__int64_udivmod
-                0x000000000003536c       0xce C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc_asm.o)
-                0x000000000003536c                __aeabi_uldivmod
-                0x000000000003536c                __int64_udiv
-                0x000000000003536c                __udivdi3
-                0x000000000003536c                __int64_udivmod
- *fill*         0x000000000003543a        0x2 
+                0x0000000000035390       0xce C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc_asm.o)
+                0x0000000000035390                __aeabi_uldivmod
+                0x0000000000035390                __int64_udiv
+                0x0000000000035390                __udivdi3
+                0x0000000000035390                __int64_udivmod
+ *fill*         0x000000000003545e        0x2 
  .text.libc.__RAL_ascii_isctype
-                0x000000000003543c       0x1c C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000035460       0x1c C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
  .text.libc.__RAL_ascii_toupper
-                0x0000000000035458        0xc C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x000000000003547c        0xc C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
  .text.libc.__RAL_ascii_tolower
-                0x0000000000035464        0xc C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000035488        0xc C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
  .text.libc.__RAL_ascii_iswctype
-                0x0000000000035470       0x1c C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000035494       0x1c C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
  .text.libc.__RAL_ascii_towupper
-                0x000000000003548c        0xc C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000354b0        0xc C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
  .text.libc.__RAL_ascii_towlower
-                0x0000000000035498        0xc C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000354bc        0xc C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
  .text.libc.__RAL_ascii_wctomb
-                0x00000000000354a4        0xe C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x00000000000354a4                __RAL_ascii_wctomb
+                0x00000000000354c8        0xe C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000354c8                __RAL_ascii_wctomb
  .text.libc.__RAL_ascii_mbtowc
-                0x00000000000354b2       0x24 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x00000000000354b2                __RAL_ascii_mbtowc
+                0x00000000000354d6       0x24 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000354d6                __RAL_ascii_mbtowc
  .text.libc.__putc
-                0x00000000000354d6       0x34 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x00000000000354d6                __putc
+                0x00000000000354fa       0x34 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000354fa                __putc
  .text.libc.__RAL_print_padding
-                0x000000000003550a       0x1c C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x000000000003550a                __RAL_print_padding
+                0x000000000003552e       0x1c C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x000000000003552e                __RAL_print_padding
  .text.libc.__RAL_pre_padding
-                0x0000000000035526       0x1c C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000035526                __RAL_pre_padding
- *fill*         0x0000000000035542        0x2 
+                0x000000000003554a       0x1c C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x000000000003554a                __RAL_pre_padding
+ *fill*         0x0000000000035566        0x2 
  .text.libc.__RAL_isctype
-                0x0000000000035544       0x14 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000035544                __RAL_isctype
+                0x0000000000035568       0x14 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000035568                __RAL_isctype
  .text.libc.isprint
-                0x0000000000035558        0xa C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000035558                isprint
- *fill*         0x0000000000035562        0x2 
+                0x000000000003557c        0xa C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x000000000003557c                isprint
+ *fill*         0x0000000000035586        0x2 
  .text.libc.printf
-                0x0000000000035564       0x40 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000035564                printf
+                0x0000000000035588       0x40 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000035588                printf
  .text.libc.strnlen
-                0x00000000000355a4       0x20 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x00000000000355a4                strnlen
+                0x00000000000355c8       0x20 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x00000000000355c8                strnlen
  .text.libc.memcpy
-                0x00000000000355c4       0x52 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x00000000000355c4                __aeabi_memcpy
-                0x00000000000355c4                memcpy
-                0x00000000000355d0                __aeabi_memcpy8
-                0x00000000000355d0                __aeabi_memcpy4
+                0x00000000000355e8       0x52 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x00000000000355e8                __aeabi_memcpy
+                0x00000000000355e8                memcpy
+                0x00000000000355f4                __aeabi_memcpy8
+                0x00000000000355f4                __aeabi_memcpy4
  .text.libc.memset
-                0x0000000000035616       0x66 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x0000000000035616                memset
+                0x000000000003563a       0x66 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x000000000003563a                memset
  .text.libc.strcpy
-                0x000000000003567c       0x44 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x000000000003567c                strcpy
+                0x00000000000356a0       0x44 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x00000000000356a0                strcpy
  .text.libc.strlen
-                0x00000000000356c0       0x60 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x00000000000356c0                strlen
+                0x00000000000356e4       0x60 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x00000000000356e4                strlen
  .text.libc.__printf_lock
-                0x0000000000035720        0x2 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
-                0x0000000000035720                __printf_lock
+                0x0000000000035744        0x2 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
+                0x0000000000035744                __printf_lock
  .text.libc.__printf_unlock
-                0x0000000000035722        0x2 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
-                0x0000000000035722                __printf_unlock
+                0x0000000000035746        0x2 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
+                0x0000000000035746                __printf_unlock
  .text.libc.__vfprintf_long
-                0x0000000000035724      0x730 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libvfprintf_v7em_fpv4_sp_d16_hard_t_le_eabi.o
-                0x0000000000035724                __vfprintf_long
-                0x0000000000035e54                __text_end__ = (__text_start__ + SIZEOF (.text))
-                0x000000000000fa7c                __text_size__ = SIZEOF (.text)
-                0x0000000000035e54                __text_load_end__ = __text_end__
+                0x0000000000035748      0x730 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libvfprintf_v7em_fpv4_sp_d16_hard_t_le_eabi.o
+                0x0000000000035748                __vfprintf_long
+                0x0000000000035e78                __text_end__ = (__text_start__ + SIZEOF (.text))
+                0x000000000000faa0                __text_size__ = SIZEOF (.text)
+                0x0000000000035e78                __text_load_end__ = __text_end__
 
 .vfp11_veneer   0x0000000100000000        0x0
  .vfp11_veneer  0x0000000100000000        0x0 linker stubs
@@ -15769,239 +15769,239 @@ Linker script and memory map
 .iplt           0x0000000100000000        0x0
  .iplt          0x0000000100000000        0x0 Output/ble_puck_pca10056_s140 Debug/Obj/thumb_crt0.o
                 0x0000000000000001                . = ASSERT (((__text_start__ == __text_end__) || ((__text_end__ >= __FLASH_segment_start__) && (__text_end__ <= __FLASH_segment_end__))), error: .text is too large to fit in FLASH memory segment)
-                0x0000000000035e54                __sdh_soc_observers_load_start__ = ALIGN (__text_end__, 0x4)
+                0x0000000000035e78                __sdh_soc_observers_load_start__ = ALIGN (__text_end__, 0x4)
 
 .sdh_soc_observers
-                0x0000000000035e54       0x10
-                0x0000000000035e54                __sdh_soc_observers_start__ = .
-                0x0000000000035e54                __start_sdh_soc_observers = __sdh_soc_observers_start__
+                0x0000000000035e78       0x10
+                0x0000000000035e78                __sdh_soc_observers_start__ = .
+                0x0000000000035e78                __start_sdh_soc_observers = __sdh_soc_observers_start__
  *(SORT_BY_NAME(.sdh_soc_observers*))
  .sdh_soc_observers0
-                0x0000000000035e54        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_drv_clock.o
+                0x0000000000035e78        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_drv_clock.o
  .sdh_soc_observers1
-                0x0000000000035e5c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000035e64                __sdh_soc_observers_end__ = (__sdh_soc_observers_start__ + SIZEOF (.sdh_soc_observers))
+                0x0000000000035e80        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000035e88                __sdh_soc_observers_end__ = (__sdh_soc_observers_start__ + SIZEOF (.sdh_soc_observers))
                 0x0000000000000010                __sdh_soc_observers_size__ = SIZEOF (.sdh_soc_observers)
-                0x0000000000035e64                __stop_sdh_soc_observers = __sdh_soc_observers_end__
-                0x0000000000035e64                __sdh_soc_observers_load_end__ = __sdh_soc_observers_end__
+                0x0000000000035e88                __stop_sdh_soc_observers = __sdh_soc_observers_end__
+                0x0000000000035e88                __sdh_soc_observers_load_end__ = __sdh_soc_observers_end__
                 0x0000000000000001                . = ASSERT (((__sdh_soc_observers_start__ == __sdh_soc_observers_end__) || ((__sdh_soc_observers_end__ >= __FLASH_segment_start__) && (__sdh_soc_observers_end__ <= __FLASH_segment_end__))), error: .sdh_soc_observers is too large to fit in FLASH memory segment)
-                0x0000000000035e64                __sdh_ble_observers_load_start__ = ALIGN (__sdh_soc_observers_end__, 0x4)
+                0x0000000000035e88                __sdh_ble_observers_load_start__ = ALIGN (__sdh_soc_observers_end__, 0x4)
 
 .sdh_ble_observers
-                0x0000000000035e64       0x50
-                0x0000000000035e64                __sdh_ble_observers_start__ = .
-                0x0000000000035e64                __start_sdh_ble_observers = __sdh_ble_observers_start__
+                0x0000000000035e88       0x50
+                0x0000000000035e88                __sdh_ble_observers_start__ = .
+                0x0000000000035e88                __start_sdh_ble_observers = __sdh_ble_observers_start__
  *(SORT_BY_NAME(.sdh_ble_observers*))
  .sdh_ble_observers0
-                0x0000000000035e64        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+                0x0000000000035e88        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
  .sdh_ble_observers1
-                0x0000000000035e6c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/bsp_btn_ble.o
+                0x0000000000035e90        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/bsp_btn_ble.o
  .sdh_ble_observers1
-                0x0000000000035e74       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000035e98       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .sdh_ble_observers1
-                0x0000000000035e84        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+                0x0000000000035ea8        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
  .sdh_ble_observers2
-                0x0000000000035e8c       0x20 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000035eb0       0x20 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .sdh_ble_observers3
-                0x0000000000035eac        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
-                0x0000000000035eb4                __sdh_ble_observers_end__ = (__sdh_ble_observers_start__ + SIZEOF (.sdh_ble_observers))
+                0x0000000000035ed0        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000035ed8                __sdh_ble_observers_end__ = (__sdh_ble_observers_start__ + SIZEOF (.sdh_ble_observers))
                 0x0000000000000050                __sdh_ble_observers_size__ = SIZEOF (.sdh_ble_observers)
-                0x0000000000035eb4                __stop_sdh_ble_observers = __sdh_ble_observers_end__
-                0x0000000000035eb4                __sdh_ble_observers_load_end__ = __sdh_ble_observers_end__
+                0x0000000000035ed8                __stop_sdh_ble_observers = __sdh_ble_observers_end__
+                0x0000000000035ed8                __sdh_ble_observers_load_end__ = __sdh_ble_observers_end__
                 0x0000000000000001                . = ASSERT (((__sdh_ble_observers_start__ == __sdh_ble_observers_end__) || ((__sdh_ble_observers_end__ >= __FLASH_segment_start__) && (__sdh_ble_observers_end__ <= __FLASH_segment_end__))), error: .sdh_ble_observers is too large to fit in FLASH memory segment)
-                0x0000000000035eb4                __pwr_mgmt_data_load_start__ = ALIGN (__sdh_ble_observers_end__, 0x4)
+                0x0000000000035ed8                __pwr_mgmt_data_load_start__ = ALIGN (__sdh_ble_observers_end__, 0x4)
 
-.pwr_mgmt_data  0x0000000000035eb4        0x0
-                0x0000000000035eb4                __pwr_mgmt_data_start__ = .
-                0x0000000000035eb4                __start_pwr_mgmt_data = __pwr_mgmt_data_start__
+.pwr_mgmt_data  0x0000000000035ed8        0x0
+                0x0000000000035ed8                __pwr_mgmt_data_start__ = .
+                0x0000000000035ed8                __start_pwr_mgmt_data = __pwr_mgmt_data_start__
  *(SORT_BY_NAME(.pwr_mgmt_data*))
-                0x0000000000035eb4                __pwr_mgmt_data_end__ = (__pwr_mgmt_data_start__ + SIZEOF (.pwr_mgmt_data))
+                0x0000000000035ed8                __pwr_mgmt_data_end__ = (__pwr_mgmt_data_start__ + SIZEOF (.pwr_mgmt_data))
                 0x0000000000000000                __pwr_mgmt_data_size__ = SIZEOF (.pwr_mgmt_data)
-                0x0000000000035eb4                __stop_pwr_mgmt_data = __pwr_mgmt_data_end__
-                0x0000000000035eb4                __pwr_mgmt_data_load_end__ = __pwr_mgmt_data_end__
+                0x0000000000035ed8                __stop_pwr_mgmt_data = __pwr_mgmt_data_end__
+                0x0000000000035ed8                __pwr_mgmt_data_load_end__ = __pwr_mgmt_data_end__
                 0x0000000000000001                . = ASSERT (((__pwr_mgmt_data_start__ == __pwr_mgmt_data_end__) || ((__pwr_mgmt_data_end__ >= __FLASH_segment_start__) && (__pwr_mgmt_data_end__ <= __FLASH_segment_end__))), error: .pwr_mgmt_data is too large to fit in FLASH memory segment)
-                0x0000000000035eb4                __sdh_stack_observers_load_start__ = ALIGN (__pwr_mgmt_data_end__, 0x4)
+                0x0000000000035ed8                __sdh_stack_observers_load_start__ = ALIGN (__pwr_mgmt_data_end__, 0x4)
 
 .sdh_stack_observers
-                0x0000000000035eb4       0x10
-                0x0000000000035eb4                __sdh_stack_observers_start__ = .
-                0x0000000000035eb4                __start_sdh_stack_observers = __sdh_stack_observers_start__
+                0x0000000000035ed8       0x10
+                0x0000000000035ed8                __sdh_stack_observers_start__ = .
+                0x0000000000035ed8                __start_sdh_stack_observers = __sdh_stack_observers_start__
  *(SORT_BY_NAME(.sdh_stack_observers*))
  .sdh_stack_observers0
-                0x0000000000035eb4        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+                0x0000000000035ed8        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
  .sdh_stack_observers0
-                0x0000000000035ebc        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
-                0x0000000000035ec4                __sdh_stack_observers_end__ = (__sdh_stack_observers_start__ + SIZEOF (.sdh_stack_observers))
+                0x0000000000035ee0        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
+                0x0000000000035ee8                __sdh_stack_observers_end__ = (__sdh_stack_observers_start__ + SIZEOF (.sdh_stack_observers))
                 0x0000000000000010                __sdh_stack_observers_size__ = SIZEOF (.sdh_stack_observers)
-                0x0000000000035ec4                __stop_sdh_stack_observers = __sdh_stack_observers_end__
-                0x0000000000035ec4                __sdh_stack_observers_load_end__ = __sdh_stack_observers_end__
+                0x0000000000035ee8                __stop_sdh_stack_observers = __sdh_stack_observers_end__
+                0x0000000000035ee8                __sdh_stack_observers_load_end__ = __sdh_stack_observers_end__
                 0x0000000000000001                . = ASSERT (((__sdh_stack_observers_start__ == __sdh_stack_observers_end__) || ((__sdh_stack_observers_end__ >= __FLASH_segment_start__) && (__sdh_stack_observers_end__ <= __FLASH_segment_end__))), error: .sdh_stack_observers is too large to fit in FLASH memory segment)
-                0x0000000000035ec4                __sdh_req_observers_load_start__ = ALIGN (__sdh_stack_observers_end__, 0x4)
+                0x0000000000035ee8                __sdh_req_observers_load_start__ = ALIGN (__sdh_stack_observers_end__, 0x4)
 
 .sdh_req_observers
-                0x0000000000035ec4        0x0
-                0x0000000000035ec4                __sdh_req_observers_start__ = .
-                0x0000000000035ec4                __start_sdh_req_observers = __sdh_req_observers_start__
+                0x0000000000035ee8        0x0
+                0x0000000000035ee8                __sdh_req_observers_start__ = .
+                0x0000000000035ee8                __start_sdh_req_observers = __sdh_req_observers_start__
  *(SORT_BY_NAME(.sdh_req_observers*))
-                0x0000000000035ec4                __sdh_req_observers_end__ = (__sdh_req_observers_start__ + SIZEOF (.sdh_req_observers))
+                0x0000000000035ee8                __sdh_req_observers_end__ = (__sdh_req_observers_start__ + SIZEOF (.sdh_req_observers))
                 0x0000000000000000                __sdh_req_observers_size__ = SIZEOF (.sdh_req_observers)
-                0x0000000000035ec4                __stop_sdh_req_observers = __sdh_req_observers_end__
-                0x0000000000035ec4                __sdh_req_observers_load_end__ = __sdh_req_observers_end__
+                0x0000000000035ee8                __stop_sdh_req_observers = __sdh_req_observers_end__
+                0x0000000000035ee8                __sdh_req_observers_load_end__ = __sdh_req_observers_end__
                 0x0000000000000001                . = ASSERT (((__sdh_req_observers_start__ == __sdh_req_observers_end__) || ((__sdh_req_observers_end__ >= __FLASH_segment_start__) && (__sdh_req_observers_end__ <= __FLASH_segment_end__))), error: .sdh_req_observers is too large to fit in FLASH memory segment)
-                0x0000000000035ec4                __sdh_state_observers_load_start__ = ALIGN (__sdh_req_observers_end__, 0x4)
+                0x0000000000035ee8                __sdh_state_observers_load_start__ = ALIGN (__sdh_req_observers_end__, 0x4)
 
 .sdh_state_observers
-                0x0000000000035ec4        0x8
-                0x0000000000035ec4                __sdh_state_observers_start__ = .
-                0x0000000000035ec4                __start_sdh_state_observers = __sdh_state_observers_start__
+                0x0000000000035ee8        0x8
+                0x0000000000035ee8                __sdh_state_observers_start__ = .
+                0x0000000000035ee8                __start_sdh_state_observers = __sdh_state_observers_start__
  *(SORT_BY_NAME(.sdh_state_observers*))
  .sdh_state_observers0
-                0x0000000000035ec4        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_drv_clock.o
-                0x0000000000035ecc                __sdh_state_observers_end__ = (__sdh_state_observers_start__ + SIZEOF (.sdh_state_observers))
+                0x0000000000035ee8        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_drv_clock.o
+                0x0000000000035ef0                __sdh_state_observers_end__ = (__sdh_state_observers_start__ + SIZEOF (.sdh_state_observers))
                 0x0000000000000008                __sdh_state_observers_size__ = SIZEOF (.sdh_state_observers)
-                0x0000000000035ecc                __stop_sdh_state_observers = __sdh_state_observers_end__
-                0x0000000000035ecc                __sdh_state_observers_load_end__ = __sdh_state_observers_end__
+                0x0000000000035ef0                __stop_sdh_state_observers = __sdh_state_observers_end__
+                0x0000000000035ef0                __sdh_state_observers_load_end__ = __sdh_state_observers_end__
                 0x0000000000000001                . = ASSERT (((__sdh_state_observers_start__ == __sdh_state_observers_end__) || ((__sdh_state_observers_end__ >= __FLASH_segment_start__) && (__sdh_state_observers_end__ <= __FLASH_segment_end__))), error: .sdh_state_observers is too large to fit in FLASH memory segment)
-                0x0000000000035ecc                __nrf_queue_load_start__ = ALIGN (__sdh_state_observers_end__, 0x4)
+                0x0000000000035ef0                __nrf_queue_load_start__ = ALIGN (__sdh_state_observers_end__, 0x4)
 
-.nrf_queue      0x0000000000035ecc        0x0
-                0x0000000000035ecc                __nrf_queue_start__ = .
-                0x0000000000035ecc                __start_nrf_queue = __nrf_queue_start__
+.nrf_queue      0x0000000000035ef0        0x0
+                0x0000000000035ef0                __nrf_queue_start__ = .
+                0x0000000000035ef0                __start_nrf_queue = __nrf_queue_start__
  *(.nrf_queue*)
-                0x0000000000035ecc                __nrf_queue_end__ = (__nrf_queue_start__ + SIZEOF (.nrf_queue))
+                0x0000000000035ef0                __nrf_queue_end__ = (__nrf_queue_start__ + SIZEOF (.nrf_queue))
                 0x0000000000000000                __nrf_queue_size__ = SIZEOF (.nrf_queue)
-                0x0000000000035ecc                __stop_nrf_queue = __nrf_queue_end__
-                0x0000000000035ecc                __nrf_queue_load_end__ = __nrf_queue_end__
+                0x0000000000035ef0                __stop_nrf_queue = __nrf_queue_end__
+                0x0000000000035ef0                __nrf_queue_load_end__ = __nrf_queue_end__
                 0x0000000000000001                . = ASSERT (((__nrf_queue_start__ == __nrf_queue_end__) || ((__nrf_queue_end__ >= __FLASH_segment_start__) && (__nrf_queue_end__ <= __FLASH_segment_end__))), error: .nrf_queue is too large to fit in FLASH memory segment)
-                0x0000000000035ecc                __nrf_balloc_load_start__ = ALIGN (__nrf_queue_end__, 0x4)
+                0x0000000000035ef0                __nrf_balloc_load_start__ = ALIGN (__nrf_queue_end__, 0x4)
 
-.nrf_balloc     0x0000000000035ecc       0x14
-                0x0000000000035ecc                __nrf_balloc_start__ = .
-                0x0000000000035ecc                __start_nrf_balloc = __nrf_balloc_start__
+.nrf_balloc     0x0000000000035ef0       0x14
+                0x0000000000035ef0                __nrf_balloc_start__ = .
+                0x0000000000035ef0                __start_nrf_balloc = __nrf_balloc_start__
  *(.nrf_balloc*)
- .nrf_balloc    0x0000000000035ecc       0x14 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_frontend.o
-                0x0000000000035ecc                log_mempool
-                0x0000000000035ee0                __nrf_balloc_end__ = (__nrf_balloc_start__ + SIZEOF (.nrf_balloc))
+ .nrf_balloc    0x0000000000035ef0       0x14 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_frontend.o
+                0x0000000000035ef0                log_mempool
+                0x0000000000035f04                __nrf_balloc_end__ = (__nrf_balloc_start__ + SIZEOF (.nrf_balloc))
                 0x0000000000000014                __nrf_balloc_size__ = SIZEOF (.nrf_balloc)
-                0x0000000000035ee0                __stop_nrf_balloc = __nrf_balloc_end__
-                0x0000000000035ee0                __nrf_balloc_load_end__ = __nrf_balloc_end__
+                0x0000000000035f04                __stop_nrf_balloc = __nrf_balloc_end__
+                0x0000000000035f04                __nrf_balloc_load_end__ = __nrf_balloc_end__
                 0x0000000000000001                . = ASSERT (((__nrf_balloc_start__ == __nrf_balloc_end__) || ((__nrf_balloc_end__ >= __FLASH_segment_start__) && (__nrf_balloc_end__ <= __FLASH_segment_end__))), error: .nrf_balloc is too large to fit in FLASH memory segment)
-                0x0000000000035ee0                __cli_command_load_start__ = ALIGN (__nrf_balloc_end__, 0x4)
+                0x0000000000035f04                __cli_command_load_start__ = ALIGN (__nrf_balloc_end__, 0x4)
 
-.cli_command    0x0000000000035ee0        0x0
-                0x0000000000035ee0                __cli_command_start__ = .
-                0x0000000000035ee0                __start_cli_command = __cli_command_start__
+.cli_command    0x0000000000035f04        0x0
+                0x0000000000035f04                __cli_command_start__ = .
+                0x0000000000035f04                __start_cli_command = __cli_command_start__
  *(.cli_command*)
-                0x0000000000035ee0                __cli_command_end__ = (__cli_command_start__ + SIZEOF (.cli_command))
+                0x0000000000035f04                __cli_command_end__ = (__cli_command_start__ + SIZEOF (.cli_command))
                 0x0000000000000000                __cli_command_size__ = SIZEOF (.cli_command)
-                0x0000000000035ee0                __stop_cli_command = __cli_command_end__
-                0x0000000000035ee0                __cli_command_load_end__ = __cli_command_end__
+                0x0000000000035f04                __stop_cli_command = __cli_command_end__
+                0x0000000000035f04                __cli_command_load_end__ = __cli_command_end__
                 0x0000000000000001                . = ASSERT (((__cli_command_start__ == __cli_command_end__) || ((__cli_command_end__ >= __FLASH_segment_start__) && (__cli_command_end__ <= __FLASH_segment_end__))), error: .cli_command is too large to fit in FLASH memory segment)
-                0x0000000000035ee0                __crypto_data_load_start__ = ALIGN (__cli_command_end__, 0x4)
+                0x0000000000035f04                __crypto_data_load_start__ = ALIGN (__cli_command_end__, 0x4)
 
-.crypto_data    0x0000000000035ee0        0x0
-                0x0000000000035ee0                __crypto_data_start__ = .
-                0x0000000000035ee0                __start_crypto_data = __crypto_data_start__
+.crypto_data    0x0000000000035f04        0x0
+                0x0000000000035f04                __crypto_data_start__ = .
+                0x0000000000035f04                __start_crypto_data = __crypto_data_start__
  *(SORT_BY_NAME(.crypto_data*))
-                0x0000000000035ee0                __crypto_data_end__ = (__crypto_data_start__ + SIZEOF (.crypto_data))
+                0x0000000000035f04                __crypto_data_end__ = (__crypto_data_start__ + SIZEOF (.crypto_data))
                 0x0000000000000000                __crypto_data_size__ = SIZEOF (.crypto_data)
-                0x0000000000035ee0                __stop_crypto_data = __crypto_data_end__
-                0x0000000000035ee0                __crypto_data_load_end__ = __crypto_data_end__
+                0x0000000000035f04                __stop_crypto_data = __crypto_data_end__
+                0x0000000000035f04                __crypto_data_load_end__ = __crypto_data_end__
                 0x0000000000000001                . = ASSERT (((__crypto_data_start__ == __crypto_data_end__) || ((__crypto_data_end__ >= __FLASH_segment_start__) && (__crypto_data_end__ <= __FLASH_segment_end__))), error: .crypto_data is too large to fit in FLASH memory segment)
-                0x0000000000035ee0                __log_const_data_load_start__ = ALIGN (__crypto_data_end__, 0x4)
+                0x0000000000035f04                __log_const_data_load_start__ = ALIGN (__crypto_data_end__, 0x4)
 
 .log_const_data
-                0x0000000000035ee0       0x88
-                0x0000000000035ee0                __log_const_data_start__ = .
-                0x0000000000035ee0                __start_log_const_data = __log_const_data_start__
+                0x0000000000035f04       0x88
+                0x0000000000035f04                __log_const_data_start__ = .
+                0x0000000000035f04                __start_log_const_data = __log_const_data_start__
  *(SORT_BY_NAME(.log_const_data*))
  .log_const_data_CLOCK
-                0x0000000000035ee0        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_clock.o
-                0x0000000000035ee0                m_nrf_log_CLOCK_logs_data_const
+                0x0000000000035f04        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_clock.o
+                0x0000000000035f04                m_nrf_log_CLOCK_logs_data_const
  .log_const_data_GPIOTE
-                0x0000000000035ee8        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_gpiote.o
-                0x0000000000035ee8                m_nrf_log_GPIOTE_logs_data_const
+                0x0000000000035f0c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_gpiote.o
+                0x0000000000035f0c                m_nrf_log_GPIOTE_logs_data_const
  .log_const_data_PPI
-                0x0000000000035ef0        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_ppi.o
-                0x0000000000035ef0                m_nrf_log_PPI_logs_data_const
+                0x0000000000035f14        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_ppi.o
+                0x0000000000035f14                m_nrf_log_PPI_logs_data_const
  .log_const_data_PRS
-                0x0000000000035ef8        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_prs.o
-                0x0000000000035ef8                m_nrf_log_PRS_logs_data_const
+                0x0000000000035f1c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_prs.o
+                0x0000000000035f1c                m_nrf_log_PRS_logs_data_const
  .log_const_data_SAADC
-                0x0000000000035f00        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_saadc.o
-                0x0000000000035f00                m_nrf_log_SAADC_logs_data_const
+                0x0000000000035f24        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_saadc.o
+                0x0000000000035f24                m_nrf_log_SAADC_logs_data_const
  .log_const_data_TIMER
-                0x0000000000035f08        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_timer.o
-                0x0000000000035f08                m_nrf_log_TIMER_logs_data_const
+                0x0000000000035f2c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_timer.o
+                0x0000000000035f2c                m_nrf_log_TIMER_logs_data_const
  .log_const_data_UART
-                0x0000000000035f10        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uart.o
-                0x0000000000035f10                m_nrf_log_UART_logs_data_const
+                0x0000000000035f34        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uart.o
+                0x0000000000035f34                m_nrf_log_UART_logs_data_const
  .log_const_data_UARTE
-                0x0000000000035f18        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uarte.o
-                0x0000000000035f18                m_nrf_log_UARTE_logs_data_const
+                0x0000000000035f3c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uarte.o
+                0x0000000000035f3c                m_nrf_log_UARTE_logs_data_const
  .log_const_data_app
-                0x0000000000035f20        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_frontend.o
-                0x0000000000035f20                m_nrf_log_app_logs_data_const
+                0x0000000000035f44        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_frontend.o
+                0x0000000000035f44                m_nrf_log_app_logs_data_const
  .log_const_data_ble_bas
-                0x0000000000035f28        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
-                0x0000000000035f28                m_nrf_log_ble_bas_logs_data_const
+                0x0000000000035f4c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+                0x0000000000035f4c                m_nrf_log_ble_bas_logs_data_const
  .log_const_data_ble_nus
-                0x0000000000035f30        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
-                0x0000000000035f30                m_nrf_log_ble_nus_logs_data_const
+                0x0000000000035f54        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+                0x0000000000035f54                m_nrf_log_ble_nus_logs_data_const
  .log_const_data_clock
-                0x0000000000035f38        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_drv_clock.o
-                0x0000000000035f38                m_nrf_log_clock_logs_data_const
+                0x0000000000035f5c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_drv_clock.o
+                0x0000000000035f5c                m_nrf_log_clock_logs_data_const
  .log_const_data_nrf_ble_gatt
-                0x0000000000035f40        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
-                0x0000000000035f40                m_nrf_log_nrf_ble_gatt_logs_data_const
+                0x0000000000035f64        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+                0x0000000000035f64                m_nrf_log_nrf_ble_gatt_logs_data_const
  .log_const_data_nrf_sdh
-                0x0000000000035f48        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
-                0x0000000000035f48                m_nrf_log_nrf_sdh_logs_data_const
+                0x0000000000035f6c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000000035f6c                m_nrf_log_nrf_sdh_logs_data_const
  .log_const_data_nrf_sdh_ble
-                0x0000000000035f50        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
-                0x0000000000035f50                m_nrf_log_nrf_sdh_ble_logs_data_const
+                0x0000000000035f74        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+                0x0000000000035f74                m_nrf_log_nrf_sdh_ble_logs_data_const
  .log_const_data_nrf_sdh_soc
-                0x0000000000035f58        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
-                0x0000000000035f58                m_nrf_log_nrf_sdh_soc_logs_data_const
+                0x0000000000035f7c        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
+                0x0000000000035f7c                m_nrf_log_nrf_sdh_soc_logs_data_const
  .log_const_data_pwr_mgmt
-                0x0000000000035f60        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_pwr_mgmt.o
-                0x0000000000035f60                m_nrf_log_pwr_mgmt_logs_data_const
-                0x0000000000035f68                __log_const_data_end__ = (__log_const_data_start__ + SIZEOF (.log_const_data))
+                0x0000000000035f84        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_pwr_mgmt.o
+                0x0000000000035f84                m_nrf_log_pwr_mgmt_logs_data_const
+                0x0000000000035f8c                __log_const_data_end__ = (__log_const_data_start__ + SIZEOF (.log_const_data))
                 0x0000000000000088                __log_const_data_size__ = SIZEOF (.log_const_data)
-                0x0000000000035f68                __stop_log_const_data = __log_const_data_end__
-                0x0000000000035f68                __log_const_data_load_end__ = __log_const_data_end__
+                0x0000000000035f8c                __stop_log_const_data = __log_const_data_end__
+                0x0000000000035f8c                __log_const_data_load_end__ = __log_const_data_end__
                 0x0000000000000001                . = ASSERT (((__log_const_data_start__ == __log_const_data_end__) || ((__log_const_data_end__ >= __FLASH_segment_start__) && (__log_const_data_end__ <= __FLASH_segment_end__))), error: .log_const_data is too large to fit in FLASH memory segment)
-                0x0000000000035f68                __log_backends_load_start__ = ALIGN (__log_const_data_end__, 0x4)
+                0x0000000000035f8c                __log_backends_load_start__ = ALIGN (__log_const_data_end__, 0x4)
 
-.log_backends   0x0000000000035f68       0x10
-                0x0000000000035f68                __log_backends_start__ = .
-                0x0000000000035f68                __start_log_backends = __log_backends_start__
+.log_backends   0x0000000000035f8c       0x10
+                0x0000000000035f8c                __log_backends_start__ = .
+                0x0000000000035f8c                __start_log_backends = __log_backends_start__
  *(SORT_BY_NAME(.log_backends*))
- .log_backends  0x0000000000035f68       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_default_backends.o
-                0x0000000000035f78                __log_backends_end__ = (__log_backends_start__ + SIZEOF (.log_backends))
+ .log_backends  0x0000000000035f8c       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_default_backends.o
+                0x0000000000035f9c                __log_backends_end__ = (__log_backends_start__ + SIZEOF (.log_backends))
                 0x0000000000000010                __log_backends_size__ = SIZEOF (.log_backends)
-                0x0000000000035f78                __stop_log_backends = __log_backends_end__
-                0x0000000000035f78                __log_backends_load_end__ = __log_backends_end__
+                0x0000000000035f9c                __stop_log_backends = __log_backends_end__
+                0x0000000000035f9c                __log_backends_load_end__ = __log_backends_end__
                 0x0000000000000001                . = ASSERT (((__log_backends_start__ == __log_backends_end__) || ((__log_backends_end__ >= __FLASH_segment_start__) && (__log_backends_end__ <= __FLASH_segment_end__))), error: .log_backends is too large to fit in FLASH memory segment)
-                0x0000000000035f78                __nrf_sections_load_start__ = ALIGN (__log_backends_end__, 0x4)
+                0x0000000000035f9c                __nrf_sections_load_start__ = ALIGN (__log_backends_end__, 0x4)
 
-.nrf_sections   0x0000000000035f78        0x0
-                0x0000000000035f78                __nrf_sections_start__ = .
-                0x0000000000035f78                __start_nrf_sections = __nrf_sections_start__
+.nrf_sections   0x0000000000035f9c        0x0
+                0x0000000000035f9c                __nrf_sections_start__ = .
+                0x0000000000035f9c                __start_nrf_sections = __nrf_sections_start__
  *(.nrf_sections .nrf_sections.*)
-                0x0000000000035f78                __nrf_sections_end__ = (__nrf_sections_start__ + SIZEOF (.nrf_sections))
+                0x0000000000035f9c                __nrf_sections_end__ = (__nrf_sections_start__ + SIZEOF (.nrf_sections))
                 0x0000000000000000                __nrf_sections_size__ = SIZEOF (.nrf_sections)
-                0x0000000000035f78                __nrf_sections_load_end__ = __nrf_sections_end__
+                0x0000000000035f9c                __nrf_sections_load_end__ = __nrf_sections_end__
                 0x0000000000000001                . = ASSERT (((__nrf_sections_start__ == __nrf_sections_end__) || ((__nrf_sections_end__ >= __FLASH_segment_start__) && (__nrf_sections_end__ <= __FLASH_segment_end__))), error: .nrf_sections is too large to fit in FLASH memory segment)
-                0x0000000000035f78                __cli_sorted_cmd_ptrs_load_start__ = ALIGN (__nrf_sections_end__, 0x4)
+                0x0000000000035f9c                __cli_sorted_cmd_ptrs_load_start__ = ALIGN (__nrf_sections_end__, 0x4)
 
 .cli_sorted_cmd_ptrs
-                0x0000000020002ab8        0x0 load address 0x0000000000035f78
+                0x0000000020002ab8        0x0 load address 0x0000000000035f9c
                 0x0000000020002ab8                __cli_sorted_cmd_ptrs_start__ = .
  *(.cli_sorted_cmd_ptrs*)
                 0x0000000020002ab8                __cli_sorted_cmd_ptrs_end__ = (__cli_sorted_cmd_ptrs_start__ + SIZEOF (.cli_sorted_cmd_ptrs))
                 0x0000000000000000                __cli_sorted_cmd_ptrs_size__ = SIZEOF (.cli_sorted_cmd_ptrs)
-                0x0000000000035f78                __cli_sorted_cmd_ptrs_load_end__ = (__cli_sorted_cmd_ptrs_load_start__ + SIZEOF (.cli_sorted_cmd_ptrs))
+                0x0000000000035f9c                __cli_sorted_cmd_ptrs_load_end__ = (__cli_sorted_cmd_ptrs_load_start__ + SIZEOF (.cli_sorted_cmd_ptrs))
                 0x0000000000000001                . = ASSERT (((__cli_sorted_cmd_ptrs_load_start__ == __cli_sorted_cmd_ptrs_load_end__) || ((__cli_sorted_cmd_ptrs_load_end__ >= __FLASH_segment_start__) && (__cli_sorted_cmd_ptrs_load_end__ <= __FLASH_segment_end__))), error: .cli_sorted_cmd_ptrs is too large to fit in FLASH memory segment)
 
 .cli_sorted_cmd_ptrs_run
@@ -16014,14 +16014,14 @@ Linker script and memory map
                 0x0000000020002ab8                __stop_cli_sorted_cmd_ptrs = __cli_sorted_cmd_ptrs_run_end__
                 0x0000000020002ab8                __cli_sorted_cmd_ptrs_run_load_end__ = __cli_sorted_cmd_ptrs_run_end__
                 0x0000000000000001                . = ASSERT (((__cli_sorted_cmd_ptrs_run_start__ == __cli_sorted_cmd_ptrs_run_end__) || ((__cli_sorted_cmd_ptrs_run_end__ >= __RAM_segment_start__) && (__cli_sorted_cmd_ptrs_run_end__ <= __RAM_segment_end__))), error: .cli_sorted_cmd_ptrs_run is too large to fit in RAM memory segment)
-                0x0000000000035f78                __fs_data_load_start__ = ALIGN ((__cli_sorted_cmd_ptrs_load_start__ + SIZEOF (.cli_sorted_cmd_ptrs)), 0x4)
+                0x0000000000035f9c                __fs_data_load_start__ = ALIGN ((__cli_sorted_cmd_ptrs_load_start__ + SIZEOF (.cli_sorted_cmd_ptrs)), 0x4)
 
-.fs_data        0x0000000020002ab8        0x0 load address 0x0000000000035f78
+.fs_data        0x0000000020002ab8        0x0 load address 0x0000000000035f9c
                 0x0000000020002ab8                __fs_data_start__ = .
  *(.fs_data*)
                 0x0000000020002ab8                __fs_data_end__ = (__fs_data_start__ + SIZEOF (.fs_data))
                 0x0000000000000000                __fs_data_size__ = SIZEOF (.fs_data)
-                0x0000000000035f78                __fs_data_load_end__ = (__fs_data_load_start__ + SIZEOF (.fs_data))
+                0x0000000000035f9c                __fs_data_load_end__ = (__fs_data_load_start__ + SIZEOF (.fs_data))
                 0x0000000000000001                . = ASSERT (((__fs_data_load_start__ == __fs_data_load_end__) || ((__fs_data_load_end__ >= __FLASH_segment_start__) && (__fs_data_load_end__ <= __FLASH_segment_end__))), error: .fs_data is too large to fit in FLASH memory segment)
 
 .fs_data_run    0x0000000020002ab8        0x0
@@ -16033,15 +16033,15 @@ Linker script and memory map
                 0x0000000020002ab8                __stop_fs_data = __fs_data_run_end__
                 0x0000000020002ab8                __fs_data_run_load_end__ = __fs_data_run_end__
                 0x0000000000000001                . = ASSERT (((__fs_data_run_start__ == __fs_data_run_end__) || ((__fs_data_run_end__ >= __RAM_segment_start__) && (__fs_data_run_end__ <= __RAM_segment_end__))), error: .fs_data_run is too large to fit in RAM memory segment)
-                0x0000000000035f78                __log_dynamic_data_load_start__ = ALIGN ((__fs_data_load_start__ + SIZEOF (.fs_data)), 0x4)
+                0x0000000000035f9c                __log_dynamic_data_load_start__ = ALIGN ((__fs_data_load_start__ + SIZEOF (.fs_data)), 0x4)
 
 .log_dynamic_data
-                0x0000000020002ab8        0x0 load address 0x0000000000035f78
+                0x0000000020002ab8        0x0 load address 0x0000000000035f9c
                 0x0000000020002ab8                __log_dynamic_data_start__ = .
  *(SORT_BY_NAME(.log_dynamic_data*))
                 0x0000000020002ab8                __log_dynamic_data_end__ = (__log_dynamic_data_start__ + SIZEOF (.log_dynamic_data))
                 0x0000000000000000                __log_dynamic_data_size__ = SIZEOF (.log_dynamic_data)
-                0x0000000000035f78                __log_dynamic_data_load_end__ = (__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data))
+                0x0000000000035f9c                __log_dynamic_data_load_end__ = (__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data))
                 0x0000000000000001                . = ASSERT (((__log_dynamic_data_load_start__ == __log_dynamic_data_load_end__) || ((__log_dynamic_data_load_end__ >= __FLASH_segment_start__) && (__log_dynamic_data_load_end__ <= __FLASH_segment_end__))), error: .log_dynamic_data is too large to fit in FLASH memory segment)
 
 .log_dynamic_data_run
@@ -16054,15 +16054,15 @@ Linker script and memory map
                 0x0000000020002ab8                __stop_log_dynamic_data = __log_dynamic_data_run_end__
                 0x0000000020002ab8                __log_dynamic_data_run_load_end__ = __log_dynamic_data_run_end__
                 0x0000000000000001                . = ASSERT (((__log_dynamic_data_run_start__ == __log_dynamic_data_run_end__) || ((__log_dynamic_data_run_end__ >= __RAM_segment_start__) && (__log_dynamic_data_run_end__ <= __RAM_segment_end__))), error: .log_dynamic_data_run is too large to fit in RAM memory segment)
-                0x0000000000035f78                __log_filter_data_load_start__ = ALIGN ((__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data)), 0x4)
+                0x0000000000035f9c                __log_filter_data_load_start__ = ALIGN ((__log_dynamic_data_load_start__ + SIZEOF (.log_dynamic_data)), 0x4)
 
 .log_filter_data
-                0x0000000020002ab8        0x0 load address 0x0000000000035f78
+                0x0000000020002ab8        0x0 load address 0x0000000000035f9c
                 0x0000000020002ab8                __log_filter_data_start__ = .
  *(SORT_BY_NAME(.log_filter_data*))
                 0x0000000020002ab8                __log_filter_data_end__ = (__log_filter_data_start__ + SIZEOF (.log_filter_data))
                 0x0000000000000000                __log_filter_data_size__ = SIZEOF (.log_filter_data)
-                0x0000000000035f78                __log_filter_data_load_end__ = (__log_filter_data_load_start__ + SIZEOF (.log_filter_data))
+                0x0000000000035f9c                __log_filter_data_load_end__ = (__log_filter_data_load_start__ + SIZEOF (.log_filter_data))
                 0x0000000000000001                . = ASSERT (((__log_filter_data_load_start__ == __log_filter_data_load_end__) || ((__log_filter_data_load_end__ >= __FLASH_segment_start__) && (__log_filter_data_load_end__ <= __FLASH_segment_end__))), error: .log_filter_data is too large to fit in FLASH memory segment)
 
 .log_filter_data_run
@@ -16086,253 +16086,253 @@ Linker script and memory map
                 0x0000000000000000                __nrf_sections_run_end_size__ = SIZEOF (.nrf_sections_run_end)
                 0x0000000020002ab8                __nrf_sections_run_end_load_end__ = __nrf_sections_run_end_end__
                 0x0000000000000001                . = ASSERT (((__nrf_sections_run_end_start__ == __nrf_sections_run_end_end__) || ((__nrf_sections_run_end_end__ >= __RAM_segment_start__) && (__nrf_sections_run_end_end__ <= __RAM_segment_end__))), error: .nrf_sections_run_end is too large to fit in RAM memory segment)
-                0x0000000000035f78                __dtors_load_start__ = ALIGN ((__log_filter_data_load_start__ + SIZEOF (.log_filter_data)), 0x4)
+                0x0000000000035f9c                __dtors_load_start__ = ALIGN ((__log_filter_data_load_start__ + SIZEOF (.log_filter_data)), 0x4)
 
-.dtors          0x0000000000035f78        0x0
-                0x0000000000035f78                __dtors_start__ = .
+.dtors          0x0000000000035f9c        0x0
+                0x0000000000035f9c                __dtors_start__ = .
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
  *(.fini_array)
  *(SORT_BY_NAME(.fini_array.*))
-                0x0000000000035f78                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
+                0x0000000000035f9c                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
                 0x0000000000000000                __dtors_size__ = SIZEOF (.dtors)
-                0x0000000000035f78                __dtors_load_end__ = __dtors_end__
+                0x0000000000035f9c                __dtors_load_end__ = __dtors_end__
                 0x0000000000000001                . = ASSERT (((__dtors_start__ == __dtors_end__) || ((__dtors_end__ >= __FLASH_segment_start__) && (__dtors_end__ <= __FLASH_segment_end__))), error: .dtors is too large to fit in FLASH memory segment)
-                0x0000000000035f78                __ctors_load_start__ = ALIGN (__dtors_end__, 0x4)
+                0x0000000000035f9c                __ctors_load_start__ = ALIGN (__dtors_end__, 0x4)
 
-.ctors          0x0000000000035f78        0x0
-                0x0000000000035f78                __ctors_start__ = .
+.ctors          0x0000000000035f9c        0x0
+                0x0000000000035f9c                __ctors_start__ = .
  *(SORT_BY_NAME(.ctors.*))
  *(.ctors)
  *(.init_array)
  *(SORT_BY_NAME(.init_array.*))
-                0x0000000000035f78                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
+                0x0000000000035f9c                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
                 0x0000000000000000                __ctors_size__ = SIZEOF (.ctors)
-                0x0000000000035f78                __ctors_load_end__ = __ctors_end__
+                0x0000000000035f9c                __ctors_load_end__ = __ctors_end__
                 0x0000000000000001                . = ASSERT (((__ctors_start__ == __ctors_end__) || ((__ctors_end__ >= __FLASH_segment_start__) && (__ctors_end__ <= __FLASH_segment_end__))), error: .ctors is too large to fit in FLASH memory segment)
-                0x0000000000035f78                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
+                0x0000000000035f9c                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
 
-.rodata         0x0000000000035f78     0x2050
-                0x0000000000035f78                __rodata_start__ = .
+.rodata         0x0000000000035f9c     0x206c
+                0x0000000000035f9c                __rodata_start__ = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.nrf_log_backend_rtt_api
-                0x0000000000035f78        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_backend_rtt.o
-                0x0000000000035f78                nrf_log_backend_rtt_api
- *fill*         0x0000000000035f84        0xc 
+                0x0000000000035f9c        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_backend_rtt.o
+                0x0000000000035f9c                nrf_log_backend_rtt_api
+ *fill*         0x0000000000035fa8        0x8 
  .rodata.delay_bytecode.8780
-                0x0000000000035f90        0x6 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_backend_rtt.o
- *fill*         0x0000000000035f96        0x2 
- .rodata        0x0000000000035f98       0x86 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_default_backends.o
- *fill*         0x000000000003601e        0x2 
+                0x0000000000035fb0        0x6 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_backend_rtt.o
+ *fill*         0x0000000000035fb6        0x2 
+ .rodata        0x0000000000035fb8       0x86 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_default_backends.o
+ *fill*         0x000000000003603e        0x2 
  .rodata.m_log_push_ringbuf
-                0x0000000000036020        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_frontend.o
- .rodata        0x000000000003602c       0x85 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_frontend.o
- *fill*         0x00000000000360b1        0x3 
- .rodata        0x00000000000360b4       0xaa Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_str_formatter.o
- *fill*         0x000000000003615e        0x2 
+                0x0000000000036040        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_frontend.o
+ .rodata        0x000000000003604c       0x85 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_frontend.o
+ *fill*         0x00000000000360d1        0x3 
+ .rodata        0x00000000000360d4       0xaa Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_str_formatter.o
+ *fill*         0x000000000003617e        0x2 
  .rodata.m_detection_delay_timer_id
-                0x0000000000036160        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/app_button.o
- .rodata        0x0000000000036164       0x67 Output/ble_puck_pca10056_s140 Debug/Obj/app_button.o
- *fill*         0x00000000000361cb        0x1 
- .rodata        0x00000000000361cc       0xb4 Output/ble_puck_pca10056_s140 Debug/Obj/app_error_weak.o
+                0x0000000000036180        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/app_button.o
+ .rodata        0x0000000000036184       0x67 Output/ble_puck_pca10056_s140 Debug/Obj/app_button.o
+ *fill*         0x00000000000361eb        0x1 
+ .rodata        0x00000000000361ec       0xb4 Output/ble_puck_pca10056_s140 Debug/Obj/app_error_weak.o
  .rodata.delay_bytecode.8504
-                0x0000000000036280        0x6 Output/ble_puck_pca10056_s140 Debug/Obj/app_timer.o
- *fill*         0x0000000000036286        0x2 
- .rodata        0x0000000000036288       0x88 Output/ble_puck_pca10056_s140 Debug/Obj/app_uart_fifo.o
- .rodata        0x0000000000036310       0x6c Output/ble_puck_pca10056_s140 Debug/Obj/app_util_platform.o
- .rodata        0x000000000003637c       0x67 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_balloc.o
- *fill*         0x00000000000363e3        0x1 
- .rodata        0x00000000000363e4       0x5d Output/ble_puck_pca10056_s140 Debug/Obj/nrf_fprintf.o
- *fill*         0x0000000000036441        0x3 
- .rodata        0x0000000000036444       0x64 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_fprintf_format.o
+                0x00000000000362a0        0x6 Output/ble_puck_pca10056_s140 Debug/Obj/app_timer.o
+ *fill*         0x00000000000362a6        0x2 
+ .rodata        0x00000000000362a8       0x88 Output/ble_puck_pca10056_s140 Debug/Obj/app_uart_fifo.o
+ .rodata        0x0000000000036330       0x6c Output/ble_puck_pca10056_s140 Debug/Obj/app_util_platform.o
+ .rodata        0x000000000003639c       0x67 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_balloc.o
+ *fill*         0x0000000000036403        0x1 
+ .rodata        0x0000000000036404       0x5d Output/ble_puck_pca10056_s140 Debug/Obj/nrf_fprintf.o
+ *fill*         0x0000000000036461        0x3 
+ .rodata        0x0000000000036464       0x64 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_fprintf_format.o
  .rodata._aV2C.7683
-                0x00000000000364a8       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_fprintf_format.o
- .rodata        0x00000000000364b8       0x67 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_memobj.o
- *fill*         0x000000000003651f        0x1 
- .rodata        0x0000000000036520      0x10b Output/ble_puck_pca10056_s140 Debug/Obj/nrf_pwr_mgmt.o
- *fill*         0x000000000003662b        0x1 
+                0x00000000000364c8       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_fprintf_format.o
+ .rodata        0x00000000000364d8       0x67 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_memobj.o
+ *fill*         0x000000000003653f        0x1 
+ .rodata        0x0000000000036540      0x10b Output/ble_puck_pca10056_s140 Debug/Obj/nrf_pwr_mgmt.o
+ *fill*         0x000000000003664b        0x1 
  .rodata.pwr_mgmt_data
-                0x000000000003662c        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_pwr_mgmt.o
- .rodata        0x0000000000036638       0x80 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_section_iter.o
+                0x000000000003664c        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_pwr_mgmt.o
+ .rodata        0x0000000000036658       0x80 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_section_iter.o
  .rodata.m_unknown_str
-                0x00000000000366b8       0x13 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_strerror.o
- *fill*         0x00000000000366cb        0x1 
- .rodata        0x00000000000366cc      0x3e9 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_strerror.o
- *fill*         0x0000000000036ab5        0x3 
+                0x00000000000366d8       0x13 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_strerror.o
+ *fill*         0x00000000000366eb        0x1 
+ .rodata        0x00000000000366ec      0x3e9 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_strerror.o
+ *fill*         0x0000000000036ad5        0x3 
  .rodata.nrf_strerror_array
-                0x0000000000036ab8      0x128 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_strerror.o
- .rodata        0x0000000000036be0       0x89 Output/ble_puck_pca10056_s140 Debug/Obj/boards.o
- *fill*         0x0000000000036c69        0x3 
+                0x0000000000036ad8      0x128 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_strerror.o
+ .rodata        0x0000000000036c00       0x89 Output/ble_puck_pca10056_s140 Debug/Obj/boards.o
+ *fill*         0x0000000000036c89        0x3 
  .rodata.m_board_led_list
-                0x0000000000036c6c        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/boards.o
+                0x0000000000036c8c        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/boards.o
  .rodata.m_board_btn_list
-                0x0000000000036c70        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/boards.o
- .rodata        0x0000000000036c74       0x6e Output/ble_puck_pca10056_s140 Debug/Obj/nrf_drv_clock.o
- *fill*         0x0000000000036ce2        0x2 
- .rodata        0x0000000000036ce4       0x65 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_drv_uart.o
- *fill*         0x0000000000036d49        0x3 
- .rodata        0x0000000000036d4c       0xa0 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_clock.o
- .rodata        0x0000000000036dec       0xd9 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_gpiote.o
- *fill*         0x0000000000036ec5        0x3 
- .rodata        0x0000000000036ec8       0x6a Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_prs.o
- *fill*         0x0000000000036f32        0x2 
- .rodata        0x0000000000036f34       0xcf Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uart.o
- *fill*         0x0000000000037003        0x1 
+                0x0000000000036c90        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/boards.o
+ .rodata        0x0000000000036c94       0x6e Output/ble_puck_pca10056_s140 Debug/Obj/nrf_drv_clock.o
+ *fill*         0x0000000000036d02        0x2 
+ .rodata        0x0000000000036d04       0x65 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_drv_uart.o
+ *fill*         0x0000000000036d69        0x3 
+ .rodata        0x0000000000036d6c       0xa0 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_clock.o
+ .rodata        0x0000000000036e0c       0xd9 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_gpiote.o
+ *fill*         0x0000000000036ee5        0x3 
+ .rodata        0x0000000000036ee8       0x6a Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_prs.o
+ *fill*         0x0000000000036f52        0x2 
+ .rodata        0x0000000000036f54       0xcf Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uart.o
+ *fill*         0x0000000000037023        0x1 
  .rodata.irq_handlers.9049
-                0x0000000000037004        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uart.o
- .rodata        0x0000000000037008       0xd0 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uarte.o
+                0x0000000000037024        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uart.o
+ .rodata        0x0000000000037028       0xd0 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uarte.o
  .rodata.irq_handlers.9087
-                0x00000000000370d8        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uarte.o
- .rodata        0x00000000000370dc        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_ppi.o
- .rodata        0x00000000000370e0       0xa0 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_timer.o
- .rodata        0x0000000000037180       0xd4 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_saadc.o
- *fill*         0x0000000000037254        0xc 
+                0x00000000000370f8        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_uarte.o
+ .rodata        0x00000000000370fc        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_ppi.o
+ .rodata        0x0000000000037100       0xa0 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_timer.o
+ .rodata        0x00000000000371a0       0xd4 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_saadc.o
+ *fill*         0x0000000000037274        0xc 
  .rodata.delay_bytecode.8172
-                0x0000000000037260        0x6 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_saadc.o
- *fill*         0x0000000000037266        0x2 
- .rodata        0x0000000000037268       0x30 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
+                0x0000000000037280        0x6 Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_saadc.o
+ *fill*         0x0000000000037286        0x2 
+ .rodata        0x0000000000037288       0x30 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
  .rodata.m_bsp_leds_tmr
-                0x0000000000037298        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
+                0x00000000000372b8        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
  .rodata.m_bsp_alert_tmr
-                0x000000000003729c        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
+                0x00000000000372bc        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
  .rodata.m_bsp_button_tmr
-                0x00000000000372a0        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
+                0x00000000000372c0        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
  .rodata.app_buttons
-                0x00000000000372a4       0x20 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
- .rodata        0x00000000000372c4      0x24d Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- *fill*         0x0000000000037511        0x3 
+                0x00000000000372c4       0x20 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
+ .rodata        0x00000000000372e4      0x26d Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ *fill*         0x0000000000037551        0x3 
  .rodata.m_timer
-                0x0000000000037514        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x0000000000037554        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .rodata.m_battery_timer_id
-                0x000000000003751c        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+                0x000000000003755c        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .rodata.default_config.12010
-                0x0000000000037520        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .rodata        0x0000000000037524       0x17 Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
- *fill*         0x000000000003753b        0x1 
- .rodata        0x000000000003753c       0x65 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
- *fill*         0x00000000000375a1        0x3 
- .rodata        0x00000000000375a4       0x65 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
- *fill*         0x0000000000037609        0x3 
- .rodata        0x000000000003760c      0x157 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
- *fill*         0x0000000000037763        0x1 
- .rodata        0x0000000000037764        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
- .rodata        0x000000000003776c       0x18 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
- .rodata        0x0000000000037784       0xcc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000000037560        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .rodata        0x0000000000037564       0x17 Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+ *fill*         0x000000000003757b        0x1 
+ .rodata        0x000000000003757c       0x65 Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+ *fill*         0x00000000000375e1        0x3 
+ .rodata        0x00000000000375e4       0x65 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
+ *fill*         0x0000000000037649        0x3 
+ .rodata        0x000000000003764c      0x157 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+ *fill*         0x00000000000377a3        0x1 
+ .rodata        0x00000000000377a4        0x8 Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+ .rodata        0x00000000000377ac       0x18 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+ .rodata        0x00000000000377c4       0xcc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .rodata.sdh_req_observers
-                0x0000000000037850        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x0000000000037890        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .rodata.sdh_state_observers
-                0x000000000003785c        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+                0x000000000003789c        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
  .rodata.sdh_stack_observers
-                0x0000000000037868        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
- .rodata        0x0000000000037874      0x34d Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
- *fill*         0x0000000000037bc1        0x3 
+                0x00000000000378a8        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+ .rodata        0x00000000000378b4      0x34d Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+ *fill*         0x0000000000037c01        0x3 
  .rodata.sdh_ble_observers
-                0x0000000000037bc4        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
- .rodata        0x0000000000037bd0       0xcd Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
- *fill*         0x0000000000037c9d        0x3 
+                0x0000000000037c04        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+ .rodata        0x0000000000037c10       0xcd Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
+ *fill*         0x0000000000037cdd        0x3 
  .rodata.sdh_soc_observers
-                0x0000000000037ca0        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
+                0x0000000000037ce0        0xc Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
  .rodata.SAADCValuesCharName
-                0x0000000000037cac        0xd Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
- *fill*         0x0000000000037cb9        0x3 
- .rodata        0x0000000000037cbc       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
- .rodata        0x0000000000037ccc       0x8d Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
- *fill*         0x0000000000037d59        0x3 
+                0x0000000000037cec        0xd Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+ *fill*         0x0000000000037cf9        0x3 
+ .rodata        0x0000000000037cfc       0x10 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+ .rodata        0x0000000000037d0c       0x8d Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
+ *fill*         0x0000000000037d99        0x3 
  .rodata.default_config.8479
-                0x0000000000037d5c        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
+                0x0000000000037d9c        0x4 Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
  .rodata.libc.__RAL_ascii_ctype_map
-                0x0000000000037d60       0x80 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037d60                __RAL_ascii_ctype_map
+                0x0000000000037da0       0x80 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037da0                __RAL_ascii_ctype_map
  .rodata.libc.__RAL_ascii_ctype_mask
-                0x0000000000037de0        0xd C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
- *fill*         0x0000000000037ded        0x3 
+                0x0000000000037e20        0xd C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+ *fill*         0x0000000000037e2d        0x3 
  .rodata.libc.__RAL_c_locale
-                0x0000000000037df0        0xc C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037df0                __RAL_c_locale
+                0x0000000000037e30        0xc C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037e30                __RAL_c_locale
  .rodata.libc.__RAL_c_locale_abbrev_day_names
-                0x0000000000037dfc       0x1d C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037dfc                __RAL_c_locale_abbrev_day_names
- *fill*         0x0000000000037e19        0x3 
+                0x0000000000037e3c       0x1d C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037e3c                __RAL_c_locale_abbrev_day_names
+ *fill*         0x0000000000037e59        0x3 
  .rodata.libc.__RAL_c_locale_abbrev_month_names
-                0x0000000000037e1c       0x31 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037e1c                __RAL_c_locale_abbrev_month_names
- *fill*         0x0000000000037e4d        0x3 
+                0x0000000000037e5c       0x31 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037e5c                __RAL_c_locale_abbrev_month_names
+ *fill*         0x0000000000037e8d        0x3 
  .rodata.libc.__RAL_c_locale_am_pm_indicator
-                0x0000000000037e50        0x7 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037e50                __RAL_c_locale_am_pm_indicator
- *fill*         0x0000000000037e57        0x1 
+                0x0000000000037e90        0x7 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037e90                __RAL_c_locale_am_pm_indicator
+ *fill*         0x0000000000037e97        0x1 
  .rodata.libc.__RAL_c_locale_data
-                0x0000000000037e58       0x58 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037e58                __RAL_c_locale_data
+                0x0000000000037e98       0x58 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037e98                __RAL_c_locale_data
  .rodata.libc.__RAL_c_locale_date_format
-                0x0000000000037eb0        0x9 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037eb0                __RAL_c_locale_date_format
- *fill*         0x0000000000037eb9        0x3 
+                0x0000000000037ef0        0x9 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037ef0                __RAL_c_locale_date_format
+ *fill*         0x0000000000037ef9        0x3 
  .rodata.libc.__RAL_c_locale_date_time_format
-                0x0000000000037ebc        0xf C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037ebc                __RAL_c_locale_date_time_format
- *fill*         0x0000000000037ecb        0x1 
+                0x0000000000037efc        0xf C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037efc                __RAL_c_locale_date_time_format
+ *fill*         0x0000000000037f0b        0x1 
  .rodata.libc.__RAL_c_locale_day_names
-                0x0000000000037ecc       0x3a C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037ecc                __RAL_c_locale_day_names
- *fill*         0x0000000000037f06        0x2 
+                0x0000000000037f0c       0x3a C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037f0c                __RAL_c_locale_day_names
+ *fill*         0x0000000000037f46        0x2 
  .rodata.libc.__RAL_c_locale_month_names
-                0x0000000000037f08       0x57 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037f08                __RAL_c_locale_month_names
- *fill*         0x0000000000037f5f        0x1 
+                0x0000000000037f48       0x57 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037f48                __RAL_c_locale_month_names
+ *fill*         0x0000000000037f9f        0x1 
  .rodata.libc.__RAL_c_locale_time_format
-                0x0000000000037f60        0x9 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037f60                __RAL_c_locale_time_format
- *fill*         0x0000000000037f69        0x3 
+                0x0000000000037fa0        0x9 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037fa0                __RAL_c_locale_time_format
+ *fill*         0x0000000000037fa9        0x3 
  .rodata.libc.__RAL_codeset_ascii
-                0x0000000000037f6c       0x20 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037f6c                __RAL_codeset_ascii
+                0x0000000000037fac       0x20 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037fac                __RAL_codeset_ascii
  .rodata.libc.__RAL_data_empty_string
-                0x0000000000037f8c        0x1 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037f8c                __RAL_data_empty_string
- *fill*         0x0000000000037f8d        0x3 
+                0x0000000000037fcc        0x1 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037fcc                __RAL_data_empty_string
+ *fill*         0x0000000000037fcd        0x3 
  .rodata.libc.__RAL_data_utf8_period
-                0x0000000000037f90        0x2 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037f90                __RAL_data_utf8_period
- *fill*         0x0000000000037f92        0x2 
+                0x0000000000037fd0        0x2 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037fd0                __RAL_data_utf8_period
+ *fill*         0x0000000000037fd2        0x2 
  .rodata.libc.__RAL_find_locale.str1.4
-                0x0000000000037f94        0xa C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
- *fill*         0x0000000000037f9e        0x2 
+                0x0000000000037fd4        0xa C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+ *fill*         0x0000000000037fde        0x2 
  .rodata.libc.__RAL_hex_lc
-                0x0000000000037fa0       0x10 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037fa0                __RAL_hex_lc
+                0x0000000000037fe0       0x10 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037fe0                __RAL_hex_lc
  .rodata.libc.__RAL_hex_uc
-                0x0000000000037fb0       0x10 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
-                0x0000000000037fb0                __RAL_hex_uc
+                0x0000000000037ff0       0x10 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2.o)
+                0x0000000000037ff0                __RAL_hex_uc
  .rodata.libc.__vfprintf_int.str1.4
-                0x0000000000037fc0        0x8 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libvfprintf_v7em_fpv4_sp_d16_hard_t_le_eabi.o
+                0x0000000000038000        0x8 C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libvfprintf_v7em_fpv4_sp_d16_hard_t_le_eabi.o
                                           0x7 (size before relaxing)
-                0x0000000000037fc8                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
-                0x0000000000002050                __rodata_size__ = SIZEOF (.rodata)
-                0x0000000000037fc8                __rodata_load_end__ = __rodata_end__
+                0x0000000000038008                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
+                0x000000000000206c                __rodata_size__ = SIZEOF (.rodata)
+                0x0000000000038008                __rodata_load_end__ = __rodata_end__
 
-.rel.dyn        0x0000000000037fc8        0x0
- .rel.iplt      0x0000000000037fc8        0x0 Output/ble_puck_pca10056_s140 Debug/Obj/thumb_crt0.o
+.rel.dyn        0x0000000000038008        0x0
+ .rel.iplt      0x0000000000038008        0x0 Output/ble_puck_pca10056_s140 Debug/Obj/thumb_crt0.o
                 0x0000000000000001                . = ASSERT (((__rodata_start__ == __rodata_end__) || ((__rodata_end__ >= __FLASH_segment_start__) && (__rodata_end__ <= __FLASH_segment_end__))), error: .rodata is too large to fit in FLASH memory segment)
-                0x0000000000037fc8                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
+                0x0000000000038008                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
 
-.ARM.exidx      0x0000000000037fc8        0x0
-                0x0000000000037fc8                __ARM.exidx_start__ = .
-                0x0000000000037fc8                __exidx_start = __ARM.exidx_start__
+.ARM.exidx      0x0000000000038008        0x0
+                0x0000000000038008                __ARM.exidx_start__ = .
+                0x0000000000038008                __exidx_start = __ARM.exidx_start__
  *(.ARM.exidx .ARM.exidx.*)
-                0x0000000000037fc8                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
+                0x0000000000038008                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
                 0x0000000000000000                __ARM.exidx_size__ = SIZEOF (.ARM.exidx)
-                0x0000000000037fc8                __exidx_end = __ARM.exidx_end__
-                0x0000000000037fc8                __ARM.exidx_load_end__ = __ARM.exidx_end__
+                0x0000000000038008                __exidx_end = __ARM.exidx_end__
+                0x0000000000038008                __ARM.exidx_load_end__ = __ARM.exidx_end__
                 0x0000000000000001                . = ASSERT (((__ARM.exidx_start__ == __ARM.exidx_end__) || ((__ARM.exidx_end__ >= __FLASH_segment_start__) && (__ARM.exidx_end__ <= __FLASH_segment_end__))), error: .ARM.exidx is too large to fit in FLASH memory segment)
-                0x0000000000037fc8                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
+                0x0000000000038008                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
 
-.fast           0x0000000020002ab8        0x0 load address 0x0000000000037fc8
+.fast           0x0000000020002ab8        0x0 load address 0x0000000000038008
                 0x0000000020002ab8                __fast_start__ = .
  *(.fast .fast.*)
                 0x0000000020002ab8                __fast_end__ = (__fast_start__ + SIZEOF (.fast))
                 0x0000000000000000                __fast_size__ = SIZEOF (.fast)
-                0x0000000000037fc8                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
+                0x0000000000038008                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
                 0x0000000000000001                . = ASSERT (((__fast_load_start__ == __fast_load_end__) || ((__fast_load_end__ >= __FLASH_segment_start__) && (__fast_load_end__ <= __FLASH_segment_end__))), error: .fast is too large to fit in FLASH memory segment)
 
 .fast_run       0x0000000020002ab8        0x0
@@ -16342,9 +16342,9 @@ Linker script and memory map
                 0x0000000000000000                __fast_run_size__ = SIZEOF (.fast_run)
                 0x0000000020002ab8                __fast_run_load_end__ = __fast_run_end__
                 0x0000000000000001                . = ASSERT (((__fast_run_start__ == __fast_run_end__) || ((__fast_run_end__ >= __RAM_segment_start__) && (__fast_run_end__ <= __RAM_segment_end__))), error: .fast_run is too large to fit in RAM memory segment)
-                0x0000000000037fc8                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
+                0x0000000000038008                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
 
-.data           0x0000000020002ab8       0x98 load address 0x0000000000037fc8
+.data           0x0000000020002ab8       0x98 load address 0x0000000000038008
                 0x0000000020002ab8                __data_start__ = .
  *(.data .data.* .gnu.linkonce.d.*)
  .data.log_backend_cb_rtt_log_backend
@@ -16372,13 +16372,13 @@ Linker script and memory map
                 0x0000000020002b3c                __RAL_global_locale
                 0x0000000020002b50                __data_end__ = (__data_start__ + SIZEOF (.data))
                 0x0000000000000098                __data_size__ = SIZEOF (.data)
-                0x0000000000038060                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
+                0x00000000000380a0                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
 
 .igot.plt       0x0000000100000000        0x0
  .igot.plt      0x0000000100000000        0x0 Output/ble_puck_pca10056_s140 Debug/Obj/thumb_crt0.o
                 0x0000000000000001                . = ASSERT (((__data_load_start__ == __data_load_end__) || ((__data_load_end__ >= __FLASH_segment_start__) && (__data_load_end__ <= __FLASH_segment_end__))), error: .data is too large to fit in FLASH memory segment)
 
-.data_run       0x0000000020002ab8       0x98 load address 0x0000000000037fc8
+.data_run       0x0000000020002ab8       0x98 load address 0x0000000000038008
                 0x0000000020002ab8                __data_run_start__ = .
                 0x0000000020002b50                . = MAX ((__data_run_start__ + SIZEOF (.data)), .)
  *fill*         0x0000000020002ab8       0x98 
@@ -16386,16 +16386,16 @@ Linker script and memory map
                 0x0000000000000098                __data_run_size__ = SIZEOF (.data_run)
                 0x0000000020002b50                __data_run_load_end__ = __data_run_end__
                 0x0000000000000001                . = ASSERT (((__data_run_start__ == __data_run_end__) || ((__data_run_end__ >= __RAM_segment_start__) && (__data_run_end__ <= __RAM_segment_end__))), error: .data_run is too large to fit in RAM memory segment)
-                0x0000000000038060                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
+                0x00000000000380a0                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
 
-.tdata          0x0000000020002b50        0x0 load address 0x0000000000038060
+.tdata          0x0000000020002b50        0x0 load address 0x00000000000380a0
                 0x0000000020002b50                __tdata_start__ = .
  *(.tdata .tdata.*)
                 0x0000000020002b50                __tdata_end__ = (__tdata_start__ + SIZEOF (.tdata))
                 0x0000000000000000                __tdata_size__ = SIZEOF (.tdata)
-                0x0000000000038060                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
-                0x0000000000038060                __FLASH_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
-                0x0000000000038060                __FLASH_segment_used_size__ = (__FLASH_segment_used_end__ - __FLASH_segment_start__)
+                0x00000000000380a0                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
+                0x00000000000380a0                __FLASH_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
+                0x00000000000380a0                __FLASH_segment_used_size__ = (__FLASH_segment_used_end__ - __FLASH_segment_start__)
                 0x0000000000000001                . = ASSERT (((__tdata_load_start__ == __tdata_load_end__) || ((__tdata_load_end__ >= __FLASH_segment_start__) && (__tdata_load_end__ <= __FLASH_segment_end__))), error: .tdata is too large to fit in FLASH memory segment)
 
 .tdata_run      0x0000000020002b50        0x0
@@ -16568,14 +16568,14 @@ Linker script and memory map
  .bss.m_saadc_service
                 0x00000000200037e0       0x14 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .bss.m_bas     0x00000000200037f4       0x14 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .bss.index.12839
+ .bss.index.12845
                 0x0000000020003808        0x1 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  *fill*         0x0000000020003809        0x3 
- .bss.data_array.12838
+ .bss.data_array.12844
                 0x000000002000380c       0xf4 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .bss.rx_buf.12856
+ .bss.rx_buf.12862
                 0x0000000020003900      0x100 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .bss.tx_buf.12857
+ .bss.tx_buf.12863
                 0x0000000020003a00      0x100 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
  .bss._SEGGER_RTT
                 0x0000000020003b00       0x78 Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
@@ -16938,7 +16938,7 @@ OUTPUT(Output/Debug/Exe/ble_puck_pca10056_s140.elf elf32-littlearm)
  .comment       0x000000000000004c       0x4d C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc.o)
  .comment       0x000000000000004c       0x4d C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/lib/libvfprintf_v7em_fpv4_sp_d16_hard_t_le_eabi.o
 
-.debug_line     0x0000000000000000    0x282cf
+.debug_line     0x0000000000000000    0x282d3
  .debug_line    0x0000000000000000      0x1e9 Output/ble_puck_pca10056_s140 Debug/Obj/thumb_crt0.o
  .debug_line    0x00000000000001e9      0xc35 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_backend_rtt.o
  .debug_line    0x0000000000000e1e      0x97a Output/ble_puck_pca10056_s140 Debug/Obj/nrf_log_backend_serial.o
@@ -16981,23 +16981,23 @@ OUTPUT(Output/Debug/Exe/ble_puck_pca10056_s140.elf elf32-littlearm)
  .debug_line    0x0000000000016530     0x105a Output/ble_puck_pca10056_s140 Debug/Obj/nrfx_saadc.o
  .debug_line    0x000000000001758a      0xc17 Output/ble_puck_pca10056_s140 Debug/Obj/bsp.o
  .debug_line    0x00000000000181a1     0x1199 Output/ble_puck_pca10056_s140 Debug/Obj/bsp_btn_ble.o
- .debug_line    0x000000000001933a     0x1edf Output/ble_puck_pca10056_s140 Debug/Obj/main.o
- .debug_line    0x000000000001b219      0xb05 Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
- .debug_line    0x000000000001bd1e      0xd92 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
- .debug_line    0x000000000001cab0     0x12e2 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
- .debug_line    0x000000000001dd92      0xd6f Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
- .debug_line    0x000000000001eb01     0x11de Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
- .debug_line    0x000000000001fcdf      0xa6b Output/ble_puck_pca10056_s140 Debug/Obj/ble_link_ctx_manager.o
- .debug_line    0x000000000002074a      0xb16 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
- .debug_line    0x0000000000021260      0xd1f Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
- .debug_line    0x0000000000021f7f      0xaf4 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
- .debug_line    0x0000000000022a73      0xcfd Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
- .debug_line    0x0000000000023770      0xd72 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
- .debug_line    0x00000000000244e2      0xbb0 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
- .debug_line    0x0000000000025092      0xc3b Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
- .debug_line    0x0000000000025ccd      0x8f2 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
- .debug_line    0x00000000000265bf     0x1211 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
- .debug_line    0x00000000000277d0      0xaff Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
+ .debug_line    0x000000000001933a     0x1ee3 Output/ble_puck_pca10056_s140 Debug/Obj/main.o
+ .debug_line    0x000000000001b21d      0xb05 Output/ble_puck_pca10056_s140 Debug/Obj/SEGGER_RTT.o
+ .debug_line    0x000000000001bd22      0xd92 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advdata.o
+ .debug_line    0x000000000001cab4     0x12e2 Output/ble_puck_pca10056_s140 Debug/Obj/ble_advertising.o
+ .debug_line    0x000000000001dd96      0xd6f Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_params.o
+ .debug_line    0x000000000001eb05     0x11de Output/ble_puck_pca10056_s140 Debug/Obj/ble_conn_state.o
+ .debug_line    0x000000000001fce3      0xa6b Output/ble_puck_pca10056_s140 Debug/Obj/ble_link_ctx_manager.o
+ .debug_line    0x000000000002074e      0xb16 Output/ble_puck_pca10056_s140 Debug/Obj/ble_srv_common.o
+ .debug_line    0x0000000000021264      0xd1f Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_gatt.o
+ .debug_line    0x0000000000021f83      0xaf4 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_ble_qwr.o
+ .debug_line    0x0000000000022a77      0xcfd Output/ble_puck_pca10056_s140 Debug/Obj/ble_bas.o
+ .debug_line    0x0000000000023774      0xd72 Output/ble_puck_pca10056_s140 Debug/Obj/ble_nus.o
+ .debug_line    0x00000000000244e6      0xbb0 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh.o
+ .debug_line    0x0000000000025096      0xc3b Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_ble.o
+ .debug_line    0x0000000000025cd1      0x8f2 Output/ble_puck_pca10056_s140 Debug/Obj/nrf_sdh_soc.o
+ .debug_line    0x00000000000265c3     0x1211 Output/ble_puck_pca10056_s140 Debug/Obj/saadc.o
+ .debug_line    0x00000000000277d4      0xaff Output/ble_puck_pca10056_s140 Debug/Obj/battery_voltage.o
 
 .debug_info     0x0000000000000000    0x86cea
  .debug_info    0x0000000000000000       0x22 Output/ble_puck_pca10056_s140 Debug/Obj/thumb_crt0.o

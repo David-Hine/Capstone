@@ -10,6 +10,11 @@
 
 'use strict';
 
+//requires for csv file
+var fs = require('fs');
+var csv = require ('fast-csv');
+
+
 const api = require('../index');
 const path = require('path');
 
@@ -29,6 +34,26 @@ const BLE_UUID_SAADC_SERVICE_UUID = 'CC1D000173764BFAAEEA1D69C99BB7F5';
 const BLE_UUID_SAADC_VALUES_CHAR_UUID = 'CC1D000273764BFAAEEA1D69C99BB7F5';
 const BLE_UUID_SAADC_CCCD = '2901';	//Different CCCD for SAADC service
 var saadc_char;
+
+
+//Function for writing data to CSV file
+var trial_no;
+var acc_data = new Array();
+
+function write_to_csv(csv_title, data){
+	var ws = fs.createWriteStream(csv_title);
+	
+	csv.
+	write([
+	
+		data
+		
+	], {headers:true})
+	.pipe(ws);
+	
+	//then clear array
+	acc_data = [];
+}
 
 
 // Function for enabling battery notifications
@@ -250,7 +275,7 @@ function addUserInputListener(adapter, characteristic) {
                 saadcEnabled[0] = 0;
                 console.log('Disabling SAADC.');
 				
-				// write 0 to characteristic to enable SAADC
+				// write 0 to characteristic to disable SAADC
 				adapter.writeCharacteristicValue(characteristic, [0], false, err => {
 					if (err) {
 						console.log(`Error disabling SAADC characteristic: ${err}.`);
@@ -259,6 +284,12 @@ function addUserInputListener(adapter, characteristic) {
 
 					console.log('SAADC toggled.');
 				});
+				
+				//when SAADC stopped, write data to csv file
+				// Figure out how to enter csv title name (1st parameter)
+				
+				write_to_csv("test.csv", acc_data);
+				
 				
 				
             } else {
@@ -412,9 +443,14 @@ function addAdapterListener(adapter) {
     adapter.on('characteristicValueChanged', attribute => {
         if (attribute.uuid === BLE_UUID_BAT_CHAR) {
             console.log(`Received battery measurement: ${attribute.value}.`);
+			
         }
 		else if(attribute.uuid === BLE_UUID_NUS_TX_CHARACTERISTIC){
 			console.log(`Received SAADC measurement: ${attribute.value}.`);
+			
+			//add to data array
+			acc_data.push(attribute.value);
+			
 		}
     });
 }
