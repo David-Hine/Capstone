@@ -7,7 +7,7 @@
  *
  * It uses 3 BLE services: 1) Nordic UART service --- for transmitting over BLE
  *                         2) Battery service ------- for monitoring battery voltage
- *                         3) SAADC service --------- for gathering data from the accelerometer and gyro
+ *                         3) SAADC service --------- for gathering data from the accelerometer
  */
 
 
@@ -72,9 +72,9 @@ static uint32_t              m_adc_evt_counter;
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms. This value corresponds to 40 ms). */
 
-#define APP_ADV_DURATION                1000                                       /**< The advertising duration (180 seconds) in units of 10 milliseconds. */
+#define APP_ADV_DURATION                12000                                       /**< The advertising duration (120 seconds) before putting MCU to sleep, in units of 10 milliseconds. */
 
-#define MIN_CONN_INTERVAL               MSEC_TO_UNITS(7.5, UNIT_1_25_MS)             /**< Minimum acceptable connection interval (20 ms), Connection interval uses 1.25 ms units. */
+#define MIN_CONN_INTERVAL               MSEC_TO_UNITS(7.5, UNIT_1_25_MS)             /**< Minimum acceptable connection interval (7.5 ms), Connection interval uses 1.25 ms units. */
 #define MAX_CONN_INTERVAL               MSEC_TO_UNITS(75, UNIT_1_25_MS)             /**< Maximum acceptable connection interval (75 ms), Connection interval uses 1.25 ms units. */
 #define SLAVE_LATENCY                   0                                           /**< Slave latency. */
 #define CONN_SUP_TIMEOUT                MSEC_TO_UNITS(4000, UNIT_10_MS)             /**< Connection supervisory timeout (4 seconds), Supervision Timeout uses 10 ms units. */
@@ -341,7 +341,7 @@ static void conn_params_init(void)
 }
 
 
-// FUNCTIONS FOR SLEEP WAKE UP
+// FUNCTIONS FOR WAKING UP FROM SLEEP
 
 /** Configures and enables the LPCOMP (for wakeup from sleep)
  */
@@ -354,7 +354,7 @@ void LPCOMP_init(void)
 	// Configure LPCOMP - set input source to AVDD*9/16
 	NRF_LPCOMP->REFSEL |= (LPCOMP_REFSEL_REFSEL_Ref9_16Vdd << LPCOMP_REFSEL_REFSEL_Pos); //if z-axis voltage=VDD*(9/16), wake up
 	// Configure LPCOMP - set reference input source to AIN pin 6, i.e. P0.5 
-	NRF_LPCOMP->PSEL |= (LPCOMP_PSEL_PSEL_AnalogInput2 << LPCOMP_PSEL_PSEL_Pos);  //AIN3/P0.05 = z-axis of acceletometer
+	NRF_LPCOMP->PSEL |= (LPCOMP_PSEL_PSEL_AnalogInput3 << LPCOMP_PSEL_PSEL_Pos);  //AIN3/P0.05 = z-axis of acceletometer
 	
 	// Enable and start the low power comparator
 	NRF_LPCOMP->ENABLE = LPCOMP_ENABLE_ENABLE_Enabled;	
@@ -374,8 +374,6 @@ void LPCOMP_COMP_IRQHandler(void)
 	//nrf_gpio_pin_write(RESULT_PIN, NRF_LPCOMP->RESULT);
 }
 
-
-
 /**@brief Function for putting the chip into sleep mode.
  *
  * @note This function will not return.
@@ -389,10 +387,10 @@ static void sleep_mode_enter(void)
     err_code = bsp_btn_ble_sleep_mode_prepare();
     APP_ERROR_CHECK(err_code);
 
-    // Initialize LPCOMP
+    // Initialize LPCOMP (sets AIN3 ready for wakeup)
     LPCOMP_init();
 
-    //Wait for LPCOMP to be ready (for wakeup)
+    // Wait for LPCOMP to be ready (for wakeup)
     while(NRF_LPCOMP->EVENTS_READY == 0);
     NRF_LPCOMP->EVENTS_READY = 0;
     
@@ -401,6 +399,8 @@ static void sleep_mode_enter(void)
     err_code = sd_power_system_off();
     APP_ERROR_CHECK(err_code);
 }
+
+
 
 
 /**@brief Function for handling advertising events.
@@ -842,8 +842,10 @@ void saadc_callback(nrf_drv_saadc_evt_t const * p_event)
         //uint16_t length = 6;
         //err_code = ble_nus_data_send(&m_nus, (uint8_t*)p_event->data.done.p_buffer, &length, m_conn_handle);
 
-        // copy 6 bytes (2 for each of 3 acc. axes) to temp buffer
-        // when temp buffer is half full (120 bytes, other 120 bytes for gyro), send all data in one notification
+        // Copy 6 bytes (2 for each of 3 accelerometer axes) to temp buffer
+        // When temp buffer is full (120 bytes), send all data in one notification
+        // Note: BLE 5 can send a maximum of 240 bytes per notification using the NRF52840 Dongle 
+        // (the remaining 120 bytes per transmission that are free have been left unsused for eventual transmission of gyro SPI data)
         memcpy(&temp_adc[temp_adc_size], (uint8_t*)p_event->data.done.p_buffer, 6);
         temp_adc_size += 6;
         if ((int)temp_adc_size == 120)
@@ -860,8 +862,6 @@ void saadc_callback(nrf_drv_saadc_evt_t const * p_event)
         }
         m_adc_evt_counter++;
         
-
-        //send_data(&temp_adc[temp_adc_size], (uint8_t*)p_event->data.done.p_buffer);
     }
 }
 
@@ -881,11 +881,6 @@ void saadc_init(void)
     nrf_saadc_channel_config_t channel_config_2 =
         NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN3);  //Z
 
-    // change acquisition times to 5us w/ max sampling rate = 1/(5+2us)=142 kHz (default is 10us)
-    channel_config.acq_time = NRF_SAADC_ACQTIME_5US;
-    channel_config_1.acq_time = NRF_SAADC_ACQTIME_5US;
-    channel_config_2.acq_time = NRF_SAADC_ACQTIME_5US;
-    
     
     err_code = nrf_drv_saadc_init(NULL, saadc_callback);
     APP_ERROR_CHECK(err_code);
@@ -1032,7 +1027,7 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
         stop_bat();
         NRF_LOG_INFO("Battery service stopped");
 
-        // Then transmit VDD value (for calculations)
+        // Then transmit VDD/battery voltage value (for calculations)
         ret_code_t err_code;
         uint16_t length = 1;
         err_code = ble_nus_data_send(&m_nus, &battery_level, &length, m_conn_handle);
@@ -1078,9 +1073,6 @@ int main(void)
     advertising_init();
     conn_params_init();
     application_timers_start();
-
-    //Initialize LPCOMP for wakeup
-    //LPCOMP_init();
 
     // Start execution.
     printf("\r\nUART started.\r\n");
