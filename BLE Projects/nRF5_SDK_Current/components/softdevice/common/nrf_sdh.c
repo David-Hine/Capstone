@@ -201,19 +201,13 @@ ret_code_t nrf_sdh_enable_request(void)
 
     nrf_clock_lf_cfg_t const clock_lf_cfg =
     {
-    /*
-        .source       = NRF_SDH_CLOCK_LF_SRC,
-        .rc_ctiv      = NRF_SDH_CLOCK_LF_RC_CTIV,
-        .rc_temp_ctiv = NRF_SDH_CLOCK_LF_RC_TEMP_CTIV,
-        .accuracy     = NRF_SDH_CLOCK_LF_ACCURACY
-    */
+    
+        // Defined in sdk_config.h                        //Recommended values from Ch.19.3.9 of product specification for RC clock:
+        .source       = NRF_SDH_CLOCK_LF_SRC,             //<0=> NRF_CLOCK_LF_SRC_RC
+        .rc_ctiv      = NRF_SDH_CLOCK_LF_RC_CTIV,         //16
+        .rc_temp_ctiv = NRF_SDH_CLOCK_LF_RC_TEMP_CTIV,    //2
+        .accuracy     = NRF_SDH_CLOCK_LF_ACCURACY         //<1=> NRF_CLOCK_LF_ACCURACY_500_PPM
 
-
-        //change clock to internal RC
-        .source       = 0,
-        .rc_ctiv      = 16,
-        .rc_temp_ctiv = 2,
-        .accuracy     = 7
     };
 
     CRITICAL_REGION_ENTER();

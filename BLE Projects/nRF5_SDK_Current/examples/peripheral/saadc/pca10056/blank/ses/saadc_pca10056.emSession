@@ -57,7 +57,7 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="30" y="166" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="1" top="50" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="176" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="1" top="164" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="93" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../integration/nrfx/legacy/nrf_drv_saadc.h" selected="0" top="82" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="311" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../modules/nrfx/drivers/src/nrfx_saadc.c" selected="0" top="300" codecName="Default"/>
  </Files>

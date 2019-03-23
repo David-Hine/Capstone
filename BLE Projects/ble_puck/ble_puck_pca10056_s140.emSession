@@ -25,6 +25,8 @@
   <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140"/>
   <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;Application"/>
   <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;Battery Level"/>
+  <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;nRF_BLE_Services"/>
+  <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;nRF_Libraries"/>
   <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;Services"/>
  </Project>
  <Register1>
@@ -58,10 +60,13 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="15" y="1063" useTextEdit="1" useBinaryEdit="0" left="0" path="main.c" selected="1" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1067" useTextEdit="1" useBinaryEdit="0" left="0" path="main.c" selected="1" top="1055" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1240" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/libraries/util/app_util.h" selected="0" top="1227" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="66" useTextEdit="1" useBinaryEdit="0" left="0" path="Battery Level/battery_voltage.c" selected="0" top="58" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="Services/saadc.c" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="49" y="67" useTextEdit="1" useBinaryEdit="0" left="0" path="Battery Level/battery_voltage.c" selected="0" top="55" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="13" useTextEdit="1" useBinaryEdit="0" left="0" path="Services/saadc.c" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="101" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/integration/nrfx/legacy/nrf_drv_saadc.h" selected="0" top="90" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="313" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/ble/ble_services/ble_nus/ble_nus.c" selected="0" top="302" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="99" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/libraries/util/app_error_weak.c" selected="0" top="87" codecName=""/>
  </Files>
- <ARMCrossStudioWindow activeProject="ble_puck_pca10056_s140" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <ARMCrossStudioWindow activeProject="ble_puck_pca10056_s140" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

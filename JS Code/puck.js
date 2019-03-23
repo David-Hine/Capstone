@@ -1,6 +1,6 @@
 /* Copyright (c) 2019, Team2
  *
-/** @example examples/puck
+/** @example puck.js
  *
  * @brief Puck Application main file.
  *
@@ -36,24 +36,126 @@ const BLE_UUID_SAADC_CCCD = '2901';	//Different CCCD for SAADC service
 var saadc_char;
 
 
-//Function for writing data to CSV file
-var trial_no;
-var acc_data = new Array();
+// Arrays for saving data transmitted in each trial
+var acc_data = [];	//raw data received over BLE
+var x = [];			//for data separated by accelerometer axis
+var y = [];
+var z = [];
+var new_x = []; 	//for updated x,y and z ADC measurements (ie in Volts)
+var new_y = [];
+var new_z = [];
+var time_arr = [];
+var resultant_acc = [];
 
-function write_to_csv(csv_title, data){
-	var ws = fs.createWriteStream(csv_title);
+
+// Function for separating received data into battery and x,y,z values. Also saves data to CSV file
+// Call after each trial
+function interpret_data_and_save(acc_data, file_name){
 	
-	csv.
-	write([
+	var csvStream = csv.createWriteStream({headers: true}),
+		writableStream = fs.createWriteStream(file_name);
+
+	//Display message when data is written to CSV file
+	writableStream.on("finish", function(){
+	console.log("DONE writing to CSV!");
+	});
+ 
+	csvStream.pipe(writableStream);
+
 	
-		data
+	var joined_values = acc_data.join();						// Put all values into one variable
+	var array_of_values = joined_values.match(/[^,]+,[^,]+/g);	// Each sample is represented by 2 bytes, so combine every 2 elements and place into an array
+	
+	
+	//Take every 3rd value of array, save into respective array for x/y/z
+	const every_nth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
+	z = every_nth(array_of_values, 3);
+
+	array_of_values.unshift('0');	//Add dummy value to 1st element of array, then get y values
+	y = every_nth(array_of_values, 3);
+
+	array_of_values.unshift('0');
+	x = every_nth(array_of_values, 3);
+	
+	// Each sample comes in bytes of 2 (in Hex). JavaScript reads each byte as an integer.
+	// So, for each array element, separate the 2 numbers by comma, combine, convert to HEX and convert back to Integer
+	for(var k=0; k < x.length; k++)
+	{
+		//For x
+		var temp_x = x[k].split(',');
+		var num1_x = temp_x[0];
+		var num2_x = temp_x[1];
+		var hex1_x = (Number(num1_x).toString(16)).slice(-2).toUpperCase();	//convert num1 and num2 to hex
+		var hex2_x = (Number(num2_x).toString(16)).slice(-2).toUpperCase();
+		hex2_x = hex2_x.concat(hex1_x);										//data comes in as [byte2, byte1] so make second number most significant byte 
+		var hex_to_decimal_x = parseInt(hex2_x, 16);						//convert back to decimal
+		new_x.push(hex_to_decimal_x);										//push correct decimal into new arrays
+	
+		//For y
+		var temp_y = y[k].split(',');
+		var num1_y = temp_y[0];
+		var num2_y = temp_y[1];
+		var hex1_y = (Number(num1_y).toString(16)).slice(-2).toUpperCase();	//convert num1 and num2 to hex
+		var hex2_y = (Number(num2_y).toString(16)).slice(-2).toUpperCase();
+		hex2_y = hex2_y.concat(hex1_y);										//data comes in as [byte2, byte1] so make second number most significant byte 
+		var hex_to_decimal_y = parseInt(hex2_y, 16);						//convert back to decimal
+		new_y.push(hex_to_decimal_y);										//push correct decimal into new arrays
+	
+		//For z
+		var temp_z = z[k].split(',');
+		var num1_z = temp_z[0];
+		var num2_z = temp_z[1];
+		var hex1_z = (Number(num1_z).toString(16)).slice(-2).toUpperCase();	//convert num1 and num2 to hex
+		var hex2_z = (Number(num2_z).toString(16)).slice(-2).toUpperCase();
+		hex2_z = hex2_z.concat(hex1_z);										//data comes in as [byte2, byte1] so make second number most significant byte 
+		var hex_to_decimal_z = parseInt(hex2_z, 16);						//convert back to decimal
+		new_z.push(hex_to_decimal_z);										//push correct decimal into new arrays
+	
+	}
+	
+	// Calculate time samples
+	var time = (x.length)/2000;		//time = (#samples per axis)/(2000 samples/sec)
+	const time_interval = 0.0005;	//sampling at 2kHz, so 1/2000s = 0.0005s
+	var current_time = 0;
+	
+	var temp_sum = 0;
+	
+	for(var i=0;i < x.length; i++){
+		//calculate time interval
+		time_arr.push(current_time);
+		current_time += (time_interval);
 		
-	], {headers:true})
-	.pipe(ws);
+		//calculate adc_result_in_volts
+		new_x[i] = new_x[i]*600/1024*6/1000;
+		new_y[i] = new_y[i]*600/1024*6/1000;
+		new_z[i] = new_z[i]*600/1024*6/1000;
+		
+		
+		// FIRST need to convert each axis to g-force, then take resultant g-force
+		
+		//calculate resultant acceleration	= sqrt(x^2 + y^2 + z^2)
+		//temp_sum = Math.sqrt(parseInt(x[i])*parseInt(x[i]) + parseInt(y[i])*parseInt(y[i]) + parseInt(z[i])*parseInt(z[i]));
+		//resultant_acc.push(temp_sum);
 	
-	//then clear array
-	acc_data = [];
+		//write time, x,y,z and resultant values to CSV file
+		csvStream.write({Time_sec: time_arr[i], X_volts: new_x[i], Y_volts: new_y[i], Z_volts: new_z[i]});
+	}
+
+	csvStream.end();
+	
+	//clear arrays for use in next trial
+	acc_data.length = 0;
+	x.length = 0;
+	y.length = 0;
+	z.length = 0;
+	new_x.length = 0;
+	new_y.length = 0;
+	new_z.length = 0;
+	time_arr.length = 0;
+	resultant_acc.length = 0;
+	
 }
+
 
 
 // Function for enabling battery notifications
@@ -266,6 +368,9 @@ function addUserInputListener(adapter, characteristic) {
                 if (err) {
                     console.log(`Error closing the adapter: ${err}.`);
                 }
+				
+				//stop ADC FIRST
+				
 
                 console.log('Exiting the application...');
                 process.exit(1);
@@ -285,10 +390,10 @@ function addUserInputListener(adapter, characteristic) {
 					console.log('SAADC toggled.');
 				});
 				
-				//when SAADC stopped, write data to csv file
-				// Figure out how to enter csv title name (1st parameter)
 				
-				write_to_csv("test.csv", acc_data);
+				//when SAADC stopped, write data to csv file
+				// Figure out how to enter csv title name (2nd parameter)
+				interpret_data_and_save(acc_data, "test.csv");
 				
 				
 				
@@ -443,6 +548,8 @@ function addAdapterListener(adapter) {
     adapter.on('characteristicValueChanged', attribute => {
         if (attribute.uuid === BLE_UUID_BAT_CHAR) {
             console.log(`Received battery measurement: ${attribute.value}.`);
+			
+			//NEED TO DISPLAY INCOMING BATTERY % SOMEWHERE IN UI
 			
         }
 		else if(attribute.uuid === BLE_UUID_NUS_TX_CHARACTERISTIC){

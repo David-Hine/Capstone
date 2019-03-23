@@ -66,7 +66,7 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
-#define SAMPLES_IN_BUFFER 5
+#define SAMPLES_IN_BUFFER 20
 volatile uint8_t state = 1;
 
 static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(0);
@@ -94,7 +94,7 @@ void saadc_sampling_event_init(void)
     APP_ERROR_CHECK(err_code);
 
     // setup m_timer for compare event every 400ms
-    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 0.5);
+    uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 400);
     nrf_drv_timer_extended_compare(&m_timer,
                                    NRF_TIMER_CC_CHANNEL0,
                                    ticks,
@@ -152,7 +152,7 @@ void saadc_init(void)
 {
     ret_code_t err_code;
     nrf_saadc_channel_config_t channel_config =
-        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN0);
+        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN1);
 
     err_code = nrf_drv_saadc_init(NULL, saadc_callback);
     APP_ERROR_CHECK(err_code);
