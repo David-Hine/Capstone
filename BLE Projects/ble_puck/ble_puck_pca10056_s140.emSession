@@ -1,6 +1,19 @@
 <!DOCTYPE CrossStudio_Session_File>
 <session>
- <Bookmarks/>
+ <Bookmarks>
+  <BookmarkItem objectName="" line="564" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="12" extra="err_code = sd_ble_gap_disconnect(m_conn_handle, BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);" color="5"/>
+  <BookmarkItem objectName="" line="292" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="1" extra="* @note All this function does is to disconnect. This could have been done by simply setting" color="5"/>
+  <BookmarkItem objectName="" line="293" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="2" extra="* the disconnect_on_fail config parameter, but instead we use the event handler" color="5"/>
+  <BookmarkItem objectName="" line="304" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="3" extra="err_code = sd_ble_gap_disconnect(m_conn_handle, BLE_HCI_CONN_INTERVAL_UNACCEPTABLE);" color="5"/>
+  <BookmarkItem objectName="" line="334" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="4" extra="cp_init.disconnect_on_fail = false;" color="5"/>
+  <BookmarkItem objectName="" line="443" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="5" extra="case BLE_GAP_EVT_DISCONNECTED:" color="5"/>
+  <BookmarkItem objectName="" line="444" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="6" extra="NRF_LOG_INFO(&quot;Disconnected&quot;);" color="5"/>
+  <BookmarkItem objectName="" line="474" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="7" extra="// Disconnect on GATT Client timeout event." color="5"/>
+  <BookmarkItem objectName="" line="475" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="8" extra="err_code = sd_ble_gap_disconnect(p_ble_evt->evt.gattc_evt.conn_handle," color="5"/>
+  <BookmarkItem objectName="" line="481" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="9" extra="// Disconnect on GATT Server timeout event." color="5"/>
+  <BookmarkItem objectName="" line="482" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="10" extra="err_code = sd_ble_gap_disconnect(p_ble_evt->evt.gatts_evt.conn_handle," color="5"/>
+  <BookmarkItem objectName="" line="563" column="-1" path="C:/Users/Leo/Documents/Capstone/BLE Projects/ble_puck/main.c" number="11" extra="case BSP_EVENT_DISCONNECT:" color="5"/>
+ </Bookmarks>
  <Breakpoints groups="Breakpoints" active_group="Breakpoints">
   <Exceptions set="MemManage;UsageFault_Coprocessor;UsageFault_CheckingError;UsageFault_StateError;BusFault;ExceptionEntryReturnFault;HardFault"/>
  </Breakpoints>
@@ -26,7 +39,9 @@
   <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;Application"/>
   <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;Battery Level"/>
   <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;nRF_BLE_Services"/>
+  <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;nRF_Drivers"/>
   <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;nRF_Libraries"/>
+  <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;nRF_SoftDevice"/>
   <ProjectSessionItem path="ble_puck_pca10056_s140;ble_puck_pca10056_s140;Services"/>
  </Project>
  <Register1>
@@ -60,13 +75,9 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1067" useTextEdit="1" useBinaryEdit="0" left="0" path="main.c" selected="1" top="1055" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="343" useTextEdit="1" useBinaryEdit="0" left="0" path="main.c" selected="1" top="399" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1240" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/libraries/util/app_util.h" selected="0" top="1227" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="49" y="67" useTextEdit="1" useBinaryEdit="0" left="0" path="Battery Level/battery_voltage.c" selected="0" top="55" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="13" useTextEdit="1" useBinaryEdit="0" left="0" path="Services/saadc.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="101" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/integration/nrfx/legacy/nrf_drv_saadc.h" selected="0" top="90" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="313" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/ble/ble_services/ble_nus/ble_nus.c" selected="0" top="302" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="99" useTextEdit="1" useBinaryEdit="0" left="0" path="../nRF5_SDK_Current/components/libraries/util/app_error_weak.c" selected="0" top="87" codecName=""/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="67" useTextEdit="1" useBinaryEdit="0" left="0" path="Battery Level/battery_voltage.c" selected="0" top="67" codecName="Default"/>
  </Files>
- <ARMCrossStudioWindow activeProject="ble_puck_pca10056_s140" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="3711"/>
+ <ARMCrossStudioWindow activeProject="ble_puck_pca10056_s140" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" debugSearchFileMap="" fileDialogInitialDirectory="" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>

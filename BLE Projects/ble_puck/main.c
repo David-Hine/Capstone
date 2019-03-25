@@ -900,7 +900,7 @@ void saadc_init(void)
     nrf_saadc_channel_config_t channel_config_2 =
         NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN3);  //Z
 
-    
+
     err_code = nrf_drv_saadc_init(NULL, saadc_callback);
     APP_ERROR_CHECK(err_code);
     
@@ -913,7 +913,7 @@ void saadc_init(void)
     err_code = nrf_drv_saadc_channel_init(1, &channel_config_1);
     APP_ERROR_CHECK(err_code);
 
-    //AIN2
+    //AIN3
     err_code = nrf_drv_saadc_channel_init(2, &channel_config_2);
     APP_ERROR_CHECK(err_code);
     

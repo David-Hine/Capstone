@@ -37,15 +37,27 @@ var saadc_char;
 
 
 // Arrays for saving data transmitted in each trial
+var bat_level_in_percent = 100;
+var bat_level_in_volts = 3.2;
 var acc_data = [];	//raw data received over BLE
 var x = [];			//for data separated by accelerometer axis
 var y = [];
 var z = [];
-var new_x = []; 	//for updated x,y and z ADC measurements (ie in Volts)
-var new_y = [];
-var new_z = [];
+var x_volts = []; 	//for updated x,y and z ADC measurements (ie in Volts)
+var y_volts = [];
+var z_volts = [];
 var time_arr = [];
-var resultant_acc = [];
+var resultant_g_force = [];
+var G_FORCE_x = [];
+var G_FORCE_y = [];
+var G_FORCE_z = [];
+var ACCELERATION_IN_MPS2 = [];
+var VELOCITY_IN_MPS = [];
+var C_TIME = [];
+var SUM_OF_A = 0;
+var length = 0;
+var PEAK_VELOCITY = -99999999999;
+var DELTA_VELOCITY = 0;
 
 
 // Function for separating received data into battery and x,y,z values. Also saves data to CSV file
@@ -89,7 +101,7 @@ function interpret_data_and_save(acc_data, file_name){
 		var hex2_x = (Number(num2_x).toString(16)).slice(-2).toUpperCase();
 		hex2_x = hex2_x.concat(hex1_x);										//data comes in as [byte2, byte1] so make second number most significant byte 
 		var hex_to_decimal_x = parseInt(hex2_x, 16);						//convert back to decimal
-		new_x.push(hex_to_decimal_x);										//push correct decimal into new arrays
+		x_volts.push(hex_to_decimal_x);										//push correct decimal into new arrays
 	
 		//For y
 		var temp_y = y[k].split(',');
@@ -99,7 +111,7 @@ function interpret_data_and_save(acc_data, file_name){
 		var hex2_y = (Number(num2_y).toString(16)).slice(-2).toUpperCase();
 		hex2_y = hex2_y.concat(hex1_y);										//data comes in as [byte2, byte1] so make second number most significant byte 
 		var hex_to_decimal_y = parseInt(hex2_y, 16);						//convert back to decimal
-		new_y.push(hex_to_decimal_y);										//push correct decimal into new arrays
+		y_volts.push(hex_to_decimal_y);										//push correct decimal into new arrays
 	
 		//For z
 		var temp_z = z[k].split(',');
@@ -109,7 +121,7 @@ function interpret_data_and_save(acc_data, file_name){
 		var hex2_z = (Number(num2_z).toString(16)).slice(-2).toUpperCase();
 		hex2_z = hex2_z.concat(hex1_z);										//data comes in as [byte2, byte1] so make second number most significant byte 
 		var hex_to_decimal_z = parseInt(hex2_z, 16);						//convert back to decimal
-		new_z.push(hex_to_decimal_z);										//push correct decimal into new arrays
+		z_volts.push(hex_to_decimal_z);										//push correct decimal into new arrays
 	
 	}
 	
@@ -120,27 +132,77 @@ function interpret_data_and_save(acc_data, file_name){
 	
 	var temp_sum = 0;
 	
-	for(var i=0;i < x.length; i++){
+	//save time array and calculate adc_result_in_volts
+	for(var j=0; j < x.length; j++){
 		//calculate time interval
 		time_arr.push(current_time);
 		current_time += (time_interval);
 		
 		//calculate adc_result_in_volts
-		new_x[i] = new_x[i]*600/1024*6/1000;
-		new_y[i] = new_y[i]*600/1024*6/1000;
-		new_z[i] = new_z[i]*600/1024*6/1000;
+		x_volts[j] = x_volts[j]*600/1024*6/1000 + 0.025;
+		y_volts[j] = y_volts[j]*600/1024*6/1000 + 0.025;
+		z_volts[j] = z_volts[j]*600/1024*6/1000 + 0.025;
 		
+		//convert voltage to g force in each direction
+		G_FORCE_x[j] = 400 * (x_volts[j] - (bat_level_in_volts/2));
+		G_FORCE_y[j] = 400 * (y_volts[j] - (bat_level_in_volts/2));
+		G_FORCE_z[j] = 400 * (z_volts[j] - (bat_level_in_volts/2));
 		
-		// FIRST need to convert each axis to g-force, then take resultant g-force
+		//calculate resultant g-force = sqrt(x^2 + y^2 + z^2)
+		temp_sum = Math.sqrt(parseInt(G_FORCE_x[j])*parseInt(G_FORCE_x[j]) + parseInt(G_FORCE_y[j])*parseInt(G_FORCE_y[j]) + parseInt(G_FORCE_z[j])*parseInt(G_FORCE_z[j]));
+		resultant_g_force.push(temp_sum);
 		
-		//calculate resultant acceleration	= sqrt(x^2 + y^2 + z^2)
-		//temp_sum = Math.sqrt(parseInt(x[i])*parseInt(x[i]) + parseInt(y[i])*parseInt(y[i]) + parseInt(z[i])*parseInt(z[i]));
-		//resultant_acc.push(temp_sum);
+	}
 	
-		//write time, x,y,z and resultant values to CSV file
-		csvStream.write({Time_sec: time_arr[i], X_volts: new_x[i], Y_volts: new_y[i], Z_volts: new_z[i]});
+	//calculate g-force 
+	for(var i=0; i < x.length; i++){
+		
+		//calculate acceleration from resultant g force
+		// = g-force*9.81
+		ACCELERATION_IN_MPS2[i] = resultant_g_force[i]*9.80665;
+		
+		//Contact time with stick (take all points over 10Gs)
+		if (resultant_g_force[i] > 10){
+			C_TIME.push(time_arr[i]);	
+		}
+		
+		//For average acceleration
+		if(ACCELERATION_IN_MPS2[i] > 0){
+			SUM_OF_A = SUM_OF_A + ACCELERATION_IN_MPS2[i];
+			length = length + 1;
+		}
+	}
+	
+	//velocity calculation loop
+	for(let v = 1 ; v < (ACCELERATION_IN_MPS2.length - 1); v++) {
+	
+		//converting acceleration to velocity
+		VELOCITY_IN_MPS[0] = ((ACCELERATION_IN_MPS2[0] + ACCELERATION_IN_MPS2[1]) / 2 ) * (time_arr[1] - time_arr[0]);
+		DELTA_VELOCITY = ((ACCELERATION_IN_MPS2[v-1] + ACCELERATION_IN_MPS2[v+1]) / 2 ) * (time_arr[v+1] - time_arr[v-1]);
+		VELOCITY_IN_MPS[v] = VELOCITY_IN_MPS[v-1] + DELTA_VELOCITY;
+	
+		//Peak velocity
+		if (VELOCITY_IN_MPS[v] > PEAK_VELOCITY) {
+			PEAK_VELOCITY = VELOCITY_IN_MPS[v];
+		}	
 	}
 
+	//OUTPUTS for displaying in GUI
+	var max_time = C_TIME.length;
+	var CONTACT_TIME = C_TIME[max_time - 1] - C_TIME[0];
+	var AVERAGE_ACCELERATION = SUM_OF_A / length;
+	
+	console.log(CONTACT_TIME)
+	console.log(AVERAGE_ACCELERATION)
+
+
+	//write values to CSV file
+	for(var n=0; n < x.length; n++){
+		//write values to CSV file
+		csvStream.write({Time_sec: time_arr[n], X_volts: x_volts[n], Y_volts: y_volts[n], Z_volts: z_volts[n], 
+							G_force_x: G_FORCE_x[n], G_force_y: G_FORCE_y[n], G_force_z: G_FORCE_z[n], Res_g_force: resultant_g_force[n], 
+							Acc_m_per_s2: ACCELERATION_IN_MPS2[n], Velocity_m_s: VELOCITY_IN_MPS[n]});		
+	}
 	csvStream.end();
 	
 	//clear arrays for use in next trial
@@ -148,11 +210,17 @@ function interpret_data_and_save(acc_data, file_name){
 	x.length = 0;
 	y.length = 0;
 	z.length = 0;
-	new_x.length = 0;
-	new_y.length = 0;
-	new_z.length = 0;
+	x_volts.length = 0;
+	y_volts.length = 0;
+	z_volts.length = 0;
 	time_arr.length = 0;
-	resultant_acc.length = 0;
+	resultant_g_force.length = 0;
+	G_FORCE_x.length = 0;
+	G_FORCE_y.length = 0;
+	G_FORCE_z.length = 0;
+	ACCELERATION_IN_MPS2.length = 0;
+	VELOCITY_IN_MPS.length = 0;
+	C_TIME.length = 0;
 	
 }
 
@@ -550,6 +618,9 @@ function addAdapterListener(adapter) {
             console.log(`Received battery measurement: ${attribute.value}.`);
 			
 			//NEED TO DISPLAY INCOMING BATTERY % SOMEWHERE IN UI
+			//save current battery value
+			bat_level_in_percent = attribute.value;
+			bat_level_in_volts = ((2800 + (5*bat_level_in_percent))/1000);
 			
         }
 		else if(attribute.uuid === BLE_UUID_NUS_TX_CHARACTERISTIC){
