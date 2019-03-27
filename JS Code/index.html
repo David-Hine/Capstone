@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -13,6 +13,10 @@
 </head>
 
 <body>
+
+    <!-- Learn Electron -->
+    
+
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -87,6 +91,13 @@
 
                     <!-- Progress bar/ connection status/ battery level -->
                     <div class="well">
+                        <input id="btnConnect" type="button" class="btn btn-primary" value="Connect" />
+                        <input id="btnDisconnect" type="button" class="btn btn-default" value="Disconnect" disabled="disabled" />
+                        <input id="btnStart" type="button" class="btn btn-default" value="Start Trial" />
+                        <input id="btnStop" type="button" class="btn btn-default" value="stop trial" />
+                        <script>
+                            require('./js/puckRenderer');
+                        </script>
                         <h4>Connection Status</h4>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
@@ -132,7 +143,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="well dash-box">
-                                    <button class="btn-primary" type="button">Save Shot</button>
+                                    <button class="btn btn-primary" type="button">Save Shot</button>
 
                                 </div>
                             </div>
@@ -211,11 +222,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="just_js.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
+    <!-- Other Scripts -->
     <script>
-        document.getElementById("intAccel").innerHTML = number;
+        document.getElementById("intAccel").innerHTML = "";
         document.getElementById("intVel").innerHTML = "";
         document.getElementById("intContact").innerHTML = "";
     </script>
