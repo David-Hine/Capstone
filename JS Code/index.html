@@ -15,7 +15,7 @@
 <body>
 
     <!-- Learn Electron -->
-    
+
 
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -32,12 +32,12 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="#">Manage Trials</a></li>
-                    <li><a href="#">Options</a></li>
+                    <!--<li><a href="#">Manage Trials</a></li>
+                    <li><a href="#">Options</a></li>-->
                     <li><a href="#">Help</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Quit</a></li>
+                    <li><a id="btnQuit">Quit</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -48,69 +48,71 @@
             <br />
             <div class="row">
                 <div class="col-md-10">
-                    <h1> Dashboard <small>Manage your site</small></h1>
+                    <!--<h1> Dashboard <small>Manage your site</small></h1>-->
+                    <h1 id="stringPlayerName">Player Trial</h1>
                 </div>
                 <div class="col-md-2">
                     <div class="dropdown create">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Manage
-                            <span class="caret"></span>
+                        <button class="btn btn-default" type="button" id="btnNewTrial" aria-expanded="true" data-toggle="modal" data-target="#addPlayer">
+                            New Trial <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a type="button" data-toggle="modal" data-target="#addPlayer">New Player</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="breadcrumb">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="active">Dashboard</li>
-            </ol>
-        </div>
-    </section>
+    <!--section id="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="active">Dashboard</li>
+        </ol>
+    </div>
+    </section>-->
 
     <section id="main">
         <div class="container">
             <div class="row">
                 <!-- Sidebar -->
                 <div class="col-md-3">
-                    <div class="list-group">
+                    <!--<div class="list-group">
                         <a href="index.html" class="list-group-item active">
                             <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Dashboard
                         </a>
                         <a href="#" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Page 1 <span class="badge">12</span></a>
                         <a href="#" class="list-group-item"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Options</a>
                         <a href="#" class="list-group-item"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Help</a>
-                    </div>
+                    </div>-->
 
                     <!-- Progress bar/ connection status/ battery level -->
                     <div class="well">
-                        <input id="btnConnect" type="button" class="btn btn-primary" value="Connect" />
-                        <input id="btnDisconnect" type="button" class="btn btn-default" value="Disconnect" disabled="disabled" />
-                        <input id="btnStart" type="button" class="btn btn-default" value="Start Trial" />
-                        <input id="btnStop" type="button" class="btn btn-default" value="stop trial" />
-                        <script>
-                            require('./js/puckRenderer');
-                        </script>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="btnConnect" type="button" class="btn btn-primary" value="Connect" />
+                            </div>
+                            <div class="col-md-6">
+                                <input id="btnDisconnect" type="button" class="btn btn-default" value="Disconnect" disabled="disabled" />
+                            </div>
+                        </div>
+
+
+                        <!--<input id="btnTest" type="button" class="btn btn-warning" value="TEST" />-->
+
+
                         <h4>Connection Status</h4>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                60%
+                            <div id="progConnection" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
                             </div>
                         </div>
+
+
                         <h4>Battery Level</h4>
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                                40%
+                            <div id="progBattery" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
                             </div>
                         </div>
-                        <h4>Connection Strength</h4>
                     </div>
                 </div>
 
@@ -131,27 +133,32 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="well dash-box">
-                                    <h2 id="intVel"></h2><h2> km/h</h2>
+                                    <h2 id="intVel"></h2><h2> m/s</h2>
                                     <h4>Velocity</h4>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="well dash-box">
-                                    <h2 id="intContact"></h2><h2> ms</h2>
+                                    <h2 id="intContact"></h2><h2> s</h2>
                                     <h4>Contact</h4>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="well dash-box">
-                                    <button class="btn btn-primary" type="button">Save Shot</button>
-
+                                    <div>
+                                        <input id="btnStart" type="button" class="btn btn-default" value="Start Trial" disabled="disabled" />
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <input id="btnStop" type="button" class="btn btn-default" value="Stop trial" disabled="disabled" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Table of last shots -->
-                    <div class="panel panel-default">
+                    <!--<div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">Last Shots</h3>
                         </div>
@@ -183,7 +190,7 @@
                                 </tr>
                             </table>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -195,7 +202,7 @@
     </footer>
 
     <!-- Modals -->
-    <!-- Add Page -->
+    <!-- new player modal -->
     <div class="modal fade" id="addPlayer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -207,12 +214,16 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>New Trial</label>
-                            <input type="text" class="form-control" placeholder="Player Name" />
+                            <p>
+                                Enter the title for a trial.
+                                The associated .csv files will use this title, so the name must respect file naming conventions (ie: no slashes, *, etc.)
+                            </p>
+                            <input id="inputTrialName" type="text" class="form-control" placeholder="Player Name" onkeyup="lettersOnly(this)" />
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button id="btnTrialSave" type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
             </div>
@@ -229,9 +240,18 @@
 
     <!-- Other Scripts -->
     <script>
-        document.getElementById("intAccel").innerHTML = "";
-        document.getElementById("intVel").innerHTML = "";
-        document.getElementById("intContact").innerHTML = "";
+        require('./js/puckRenderer');
+    </script>
+    <script>
+        //document.getElementById("intAccel").innerHTML = "";
+        //document.getElementById("intVel").innerHTML = "";
+        //document.getElementById("intContact").innerHTML = "";
+    </script>
+    <script>
+        function lettersOnly(input) {
+            var regex = /[^(a-z0-9)_-]/gi;
+            inputTrialName.value = input.value.replace(regex, "");
+        }
     </script>
 </body>
 </html>
