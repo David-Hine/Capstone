@@ -14,7 +14,7 @@
 var fs = require('fs');
 var csv = require('fast-csv');
 var csvName = '';
-var intTrialNumber = 0;
+var intTrialNumber = Math.floor(Math.random() * 100);
 
 // require electron
 const electron = require('electron');
@@ -42,6 +42,11 @@ const BLE_UUID_SAADC_VALUES_CHAR_UUID = 'CC1D000273764BFAAEEA1D69C99BB7F5';
 const BLE_UUID_SAADC_CCCD = '2901';	//Different CCCD for SAADC service
 var saadc_char;
 
+
+/************************* computer specific, check com port values **********************************************/
+const adapter = adapterFactory.createAdapter('v3', 'com10', '');
+
+// loop through com ports until one opens
 
 // Arrays for saving data transmitted in each trial
 var bat_level_in_percent = 100;
@@ -71,12 +76,9 @@ var peakVel = '';
 var contact = '';
 
 
-/************************* computer specific, check com port values **********************************************/
-const adapter = adapterFactory.createAdapter('v3', 'com3', '');
-
 const btnStart = document.getElementById('btnStart');
 const btnStop = document.getElementById('btnStop');
-const btnQuit = document.getElementById('btnQuit');
+//const btnQuit = document.getElementById('btnQuit');
 
 // display calculated values
 var intAccel = document.getElementById('intAccel');
@@ -84,6 +86,7 @@ var intVel = document.getElementById('intVel');
 var intContat = document.getElementById('intContact');
 
 var trialName = "";
+const btnNewTrial = document.getElementById('btnNewTrial');
 const btnTrialSave = document.getElementById('btnTrialSave');
 const inputTrialName = document.getElementById('inputTrialName');
 var stringPlayerName = document.getElementById('stringPlayerName');
@@ -93,15 +96,27 @@ const btnConnect = document.getElementById('btnConnect');
 const progConnection = document.getElementById('progConnection');
 const progBattery = document.getElementById('progBattery');
 
-btnQuit.addEventListener('click', function () {
-    ipc.send('window-all-closed');
-});
+//btnQuit.addEventListener('click', function () {
+//    // close adapter
+//    adapter.close(err => {
+//        if (err) {
+//            console.log(`Error closing the adapter: $(err).`)
+//        }
+//        console.log('Exiting the application...')
+//        process.exit(1);
+//    });
+
+//    // tell main process to close application
+//    ipc.send('window-all-closed');
+//});
 
 btnConnect.addEventListener('click', function () {
     console.log('connect was pressed.  Ready to start stop.');
     //check that adapter is open and ready to connect
 
     btnConnect.disabled = true;
+    btnNewTrial.disabled = true;
+
     btnConnect.value = "Scanning...";
     progConnection.classList.remove('progress-bar-danger');
     progConnection.classList.add('progress-bar-warning');
@@ -117,6 +132,7 @@ btnConnect.addEventListener('click', function () {
             alert("Error opening port. Ensure that usb dongle is inserted and driver is installed.");
             console.log('');
             console.log(error);
+            saveSomeData();
             location.reload();
             //process.exit(-1);
         });
@@ -130,7 +146,8 @@ btnDisconnect.addEventListener('click', function () {
         if (err) {
             console.log(`Error closing the adapter: $(err).`)
         }
-
+        alert("disconnect untentional reload");
+        location.reload();
         //console.log('Exiting the application...')
         //process.exit(1);
     });
@@ -146,6 +163,7 @@ btnDisconnect.addEventListener('click', function () {
     btnStart.disabled = true;
     btnStop.disabled = true;
 
+    alert("disconnect intentional reload");
     location.reload();
 });
 
@@ -156,6 +174,7 @@ btnStart.addEventListener('click', function () {
     write_saadc_char(adapter, saadc_char.instanceId, [1]);
     btnStart.disabled = true;
     btnStop.disabled = false;
+    btnNewTrial.disabled = true;
 });
 
 // press button when shot ends
@@ -164,7 +183,7 @@ btnStop.addEventListener('click', function () {
     write_saadc_char(adapter, saadc_char.instanceId, [0]);
 
     interpret_data_and_save(acc_data, csvName + intTrialNumber + ".csv");
-    intTrialNumber = intTrialNumber + 1;
+    intTrialNumber = intTrialNumber + 'a';
 
     console.log("Length of avg g" + length_of_avg_g);
     console.log("Avg g force " + AVERAGE_G_FORCE);
@@ -177,12 +196,12 @@ btnStop.addEventListener('click', function () {
     contact = '' + C_TIME;
 
     intAccel.innerHTML = avgG.slice(0, 5);
-    intVel.innerHTML = peakVel.slice(0, 5);
+    intVel.innerHTML = peakVel.slice(0, 8);
     intContact.innerHTML = contact.slice(0, 5);
 
     btnStart.disabled = false;
     btnStop.disabled = true;
-
+    btnNewTrial.disabled = false;
     
 });
 
@@ -208,6 +227,11 @@ btnTrialSave.addEventListener('click', function (e) {
 //const btnTest = document.getElementById('btnTest');
 //btnTest.addEventListener('click', function () {
 //    console.log('TEST button pressed');
+
+//    let sign = prompt("This is a prompt");
+
+//    sign = window.prompt();
+
 //    //dialog.showSaveDialog((fileName) => {
 //    //    if (fileName === undefined) {
 //    //        alert('file was NOT saved');
@@ -216,8 +240,23 @@ btnTrialSave.addEventListener('click', function (e) {
 
 //    //    // var content should be the array
 //    //    var content = "content"
-//    //});
+//    });
 
+
+
+//});
+
+//const btnCom = document.getElementById('btnCom');
+//const inputCom = document.getElementById('inputCom');
+//var comPort = '';
+//btnCom.addEventListener('submit', function (e) {
+//    e.preventDefault();
+//    console.log(inputCom.value);
+//    comPort = inputCom.value;
+//    console.log(comPort);
+//    btnTest.value = comPort;
+
+//    //$('#modalCom').modal('hide');
 //});
 
 
@@ -305,9 +344,9 @@ function interpret_data_and_save(acc_data, file_name) {
         z_volts[j] = z_volts[j] * 600 / 1024 * 6 / 1000;
 
         //convert voltage to g force in each direction
-        G_FORCE_x[j] = 400 * (x_volts[j] - (bat_level_in_volts / 2));
-        G_FORCE_y[j] = 400 * (y_volts[j] - (bat_level_in_volts / 2));
-        G_FORCE_z[j] = 400 * (z_volts[j] - (bat_level_in_volts / 2));
+        G_FORCE_x[j] = (400 * (x_volts[j] - (bat_level_in_volts / 2)) - 8.02);
+        G_FORCE_y[j] = (400 * (y_volts[j] - (bat_level_in_volts / 2)) - 12.87);
+        G_FORCE_z[j] = (400 * (z_volts[j] - (bat_level_in_volts / 2)) - 13.28);
 
         //calculate resultant g-force = sqrt(x^2 + y^2 + z^2)
         temp_sum = Math.sqrt(parseInt(G_FORCE_x[j]) * parseInt(G_FORCE_x[j]) + parseInt(G_FORCE_y[j]) * parseInt(G_FORCE_y[j]) + parseInt(G_FORCE_z[j]) * parseInt(G_FORCE_z[j]));
@@ -325,12 +364,17 @@ function interpret_data_and_save(acc_data, file_name) {
         return elmt < 10;
     }
 
+    var start_calculating = false;
+
     for (var p = 0; p < x.length; p++) {
 
         temp_g_force_samples.push(resultant_g_force[p]);	//push 50 most recent samples to get contact time
 
         //Contact time with stick (take all points over 10Gs)
-        if (resultant_g_force[p] > 10) {
+        if (resultant_g_force[p] > 10)
+        {
+            start_calculating = true;
+
             C_TIME += 0.0005;
 
             //For average g-force
@@ -340,16 +384,8 @@ function interpret_data_and_save(acc_data, file_name) {
 
 
         //if 50 samples in a row are below 10g's, stop calculating contact time
-        if (temp_g_force_samples.length == 50 && temp_g_force_samples.every(below_10_g)) {
-
-            //remove last 10 samples from SUM_OF_G
-            for (var z = 0; z < 50; z++) {
-                SUM_OF_G -= resultant_g_force[length_of_avg_g - z];
-            }
-
-            //and exit from loop
-            length_of_avg_g -= 50;
-
+        if (temp_g_force_samples.length == 50 && temp_g_force_samples.every(below_10_g) && start_calculating)
+        {
             break;
         }
 
@@ -425,8 +461,10 @@ function enable_bat_notif(adapter, device){
 				//enable battery notifications
 				adapter.writeDescriptorValue(descriptor.instanceId, [1, 0], false, err => {
 					if (err) {
-						reject(Error(`Error enabling notifications on the BATTERY characteristic: ${err}.`));
-						process.exit(1);
+                        reject(Error(`Error enabling notifications on the BATTERY characteristic: ${err}.`));
+                        alert("Error loading battery readings. Reloading page.");
+                        location.reload();
+                        //process.exit(1);
 					}
 
 					console.log('Notifications enabled on the BATTERY characteristic.');
@@ -435,8 +473,9 @@ function enable_bat_notif(adapter, device){
             });
         }).catch(error => {
             console.log(error);
-            //location.reload();
-            process.exit(1);
+            alert("Error discovering service");
+            location.reload();
+            //process.exit(1);
         });
 		
 	});
@@ -461,7 +500,8 @@ function enable_nus_notif(adapter, device){
 				adapter.writeDescriptorValue(descriptor.instanceId, [1, 0], false, err => {
 					if (err) {
 						reject(Error(`Error enabling notifications on the NUS characteristic: ${err}.`));
-						process.exit(1);
+                        location.reload();
+                        //process.exit(1);
 					}
 
 					console.log('Notifications enabled on the NUS characteristic.');
@@ -470,8 +510,9 @@ function enable_nus_notif(adapter, device){
 				
             });
         }).catch(error => {
-            console.log(error);
-            process.exit(1);
+            console.log(error + 'b');
+            location.reload();
+            //process.exit(1);
         });
 	});
 }
@@ -492,8 +533,9 @@ function find_saadc_char(adapter, device){
 				
             });
         }).catch(error => {
-            console.log(error);
-            process.exit(1);
+            console.log(error + 'd');
+            location.reload();
+            //process.exit(1);
         });
 	});
 }
@@ -505,7 +547,9 @@ function write_saadc_char(adapter, characteristic, value){
 	adapter.writeCharacteristicValue(characteristic, value, false, err => {
         if (err) {
             console.log(`Error writing to SAADC characteristic: ${err}.`);
-            process.exit(1);
+            alert("Error writing to saadc");
+            location.reload();
+            //process.exit(1);
         }
 
         console.log('Sampling started.');
@@ -701,6 +745,8 @@ function connect(adapter, connectToAddress) {
         adapter.connect(connectToAddress, options, err => {
             if (err) {
                 reject(Error(`Error connecting to target device: ${err}.`));
+                console.log(err)
+                alert("try again")
                 return;
             }
 
@@ -754,7 +800,6 @@ function addAdapterListener(adapter) {
     adapter.on('error', error => {
         console.log(`error: ${JSON.stringify(error, null, 1)}.`);
         console.log('addAdapter error');
-        console.log('2');
     });
 
     /**
@@ -775,10 +820,16 @@ function addAdapterListener(adapter) {
                     btnConnect.value = "Connected";
                     btnConnect.classList.remove('btn-primary');
                     btnConnect.classList.add('btn-success');
-                    btnConnect.disabled = true;
+                    btnConnect.disabled = true;     
 
                     progConnection.classList.remove('progress-bar-warning');
                     progConnection.classList.add('progress-bar-success');
+
+                    // initial battery reading green
+                    progBattery.classList.remove('progress-bar-primary');
+                    progBattery.classList.add('progress-bar-success');
+
+                    btnNewTrial.disabled = false;
 
                     btnDisconnect.disabled = false;
                     btnStart.disabled = false;
@@ -806,13 +857,16 @@ function addAdapterListener(adapter) {
                 // no need to do anything here
             }).catch(error => {
                 console.log(error);
-                process.exit(1);
+                alert("addAdapter connect");
+                location.reload();
+                //process.exit(1);
             });
         }
     });
 
     adapter.on('scanTimedOut', () => {
         console.log('scanTimedOut: Scanning timed-out. Exiting.');
+        alert("addAdapter scan timeout");
         location.reload();
         //process.exit(1);
     });
@@ -826,7 +880,7 @@ function addAdapterListener(adapter) {
 			bat_level_in_percent = attribute.value;
             bat_level_in_volts = ((3200 - 400 + (4 * bat_level_in_percent)) / 1000);
 
-            if (bat_level_in_percent > 100) {
+            if (bat_level_in_percent === 100) {
                 //progBattery.classList.remove('progress-bar-primary');
                 progBattery.classList.remove('progress-bar-warning');
                 progBattery.classList.add('progress-bar-success');
@@ -940,4 +994,23 @@ function initializeVariables() {
     PEAK_VELOCITY = -99999999999;
     DELTA_VELOCITY = 0;
     AVERAGE_G_FORCE = 0;		// Calculate average g-force
+}
+
+// save some stuff before closing window
+function saveSomeData() {
+    localStorage.setItem("name", $('#stringPlayerName').val());
+    //localStorage.setItem()
+}
+
+// load some stuff from saved data
+function reloadSomeData() {
+    var name = localStorage.getItem("name");
+    if (name !== null) $('#stringPlayerName').val("name");
+    csvName = name;
+}
+
+function customReload() {
+    saveSomeData();
+    location.reload();
+    reloadSomeData();
 }

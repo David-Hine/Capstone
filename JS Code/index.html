@@ -37,7 +37,7 @@
                     <li><a href="#">Help</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a id="btnQuit">Quit</a></li>
+                    <!--<li><a id="btnQuit">Quit</a></li>-->
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -97,7 +97,10 @@
 
 
                         <!--<input id="btnTest" type="button" class="btn btn-warning" value="TEST" />-->
-
+                        <!--<button id="btnTest" class="btn btn-default" type="button" aria-expanded="true" data-toggle="modal" data-target="#modalCom" hidden">
+                            TEST
+                        </button>
+                        <input id="TESTINGCOM" type="text" class="form-control" placeholder="Select COM port" />-->
 
                         <h4>Connection Status</h4>
                         <div class="progress">
@@ -230,6 +233,33 @@
         </div>
     </div>
 
+    <!-- com port modal -->
+    <div class="modal fade" id="modalCom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"> Specify COM Port</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Enter COM Port Number</label>
+                            <p>
+                                The COM port number of the USB dongle can be found in the system device settings. (input example: 'com5')
+                            </p>
+                            <input id="inputCom" type="text" class="form-control" placeholder="com#" onkeyup="lettersOnly(this)" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button id="btnCom" type="submit" class="btn btn-primary">Save Port</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -247,11 +277,14 @@
         //document.getElementById("intVel").innerHTML = "";
         //document.getElementById("intContact").innerHTML = "";
     </script>
-    <script>
+    <script type="text/javascript">
         function lettersOnly(input) {
             var regex = /[^(a-z0-9)_-]/gi;
             inputTrialName.value = input.value.replace(regex, "");
         }
+    </script>
+    <script>
+
     </script>
 </body>
 </html>
