@@ -46,6 +46,27 @@ extern "C" {
 
 #include "nrf_gpio.h"
 
+/*
+// Use the definitions below when using PCB (ie BT840F MCU module) 
+// or #include bt840f.h in boards.h by changing BOARD_PCA10056 to BOARD_BT840F in ble_puck_pca10056_s140.emProject (Project->Open Solution in Editor)
+
+// define pins for accelerometer (anaolg)
+#define ACCEL_X                     2     // pin 5 on BT840F  (AIN 0)
+#define ACCEL_Y                     3     // pin 6 on BT840F  (AIN 1)
+#define ACCEL_Z                     29    // pin A2 on BT840F (AIN 5)
+
+
+// define pins for gyroscope (digital GPIO)
+#define GYRO_SDA_SDI                NRF_GPIO_PIN_MAP(0,8)     // pin B5 on BT840F
+#define GYRO_SCLK                   NRF_GPIO_PIN_MAP(0,15)    // pin C4 on BT840F
+#define GYRO_CS                     NRF_GPIO_PIN_MAP(0,25)    // pin B1 on BT840F
+#define GYRO_ADD_SDO                NRF_GPIO_PIN_MAP(0,31)    // pin B3 on BT840F
+
+// define pins for battery charger IC (digital GPIO)
+#define CHARGER_STAT                NRF_GPIO_PIN_MAP(1,5)     // pin D6 on BT840F
+
+*/
+
 // LEDs definitions for PCA10056
 #define LEDS_NUMBER    4
 

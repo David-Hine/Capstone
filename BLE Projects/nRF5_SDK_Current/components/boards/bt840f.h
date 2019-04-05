@@ -36,7 +36,7 @@ extern "C" {
 #define CTS_PIN_NUMBER 7
 #define RTS_PIN_NUMBER 5
 #define HWFC           true
-
+/*
 #define BSP_QSPI_SCK_PIN   19
 #define BSP_QSPI_CSN_PIN   17
 #define BSP_QSPI_IO0_PIN   20
@@ -74,7 +74,7 @@ extern "C" {
 
 #define SER_CONN_CHIP_RESET_PIN     NRF_GPIO_PIN_MAP(1,1)    // Pin used to reset connectivity chip
 
-
+*/
 #ifdef __cplusplus
 }
 #endif

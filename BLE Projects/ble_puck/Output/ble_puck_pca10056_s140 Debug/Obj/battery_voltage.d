@@ -1,6 +1,6 @@
 Output/ble_puck_pca10056_s140\ Debug/Obj/battery_voltage.o: \
- C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\Battery\ Level\battery_voltage.c \
- C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\Battery\ Level\battery_voltage.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck_send_bat\Battery\ Level\battery_voltage.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck_send_bat\Battery\ Level\battery_voltage.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  ../nRF5_SDK_Current/integration/nrfx/legacy/nrf_drv_saadc.h \
  ../nRF5_SDK_Current/modules/nrfx/drivers/include/nrfx_saadc.h \

@@ -52,14 +52,18 @@
 #include "ble_bas.h"
 #include "Battery Level/battery_voltage.h"
 
+#include "nrf_delay.h"
 
-#define SAMPLES_IN_BUFFER 3         // Buffer size a multiple of number of ADC channels (3) for accelerometer
+
+#define SAMPLES_IN_BUFFER 8         // Buffer size a multiple of number of ADC channels (4: 3 for accelerometer, 1 for VDD)
 
 
 static const nrf_drv_timer_t m_timer = NRF_DRV_TIMER_INSTANCE(4);     // SoftDevice uses TIMER0 -> use TIMER4 for SAADC instead
 static nrf_saadc_value_t     m_buffer_pool[2][SAMPLES_IN_BUFFER];
 static nrf_ppi_channel_t     m_ppi_channel;
 static uint32_t              m_adc_evt_counter;
+
+bool is_adc_on = false; //Keep track of SAADC service characteristic
 
 
 
@@ -72,9 +76,9 @@ static uint32_t              m_adc_evt_counter;
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms. This value corresponds to 40 ms). */
 
-#define APP_ADV_DURATION                6000                                       /**< The advertising duration (60 seconds) before putting MCU to sleep, in units of 10 milliseconds. */
+#define APP_ADV_DURATION                6000                                        /**< The advertising duration (60 seconds) before putting MCU to sleep, in units of 10 milliseconds. */
 
-#define MIN_CONN_INTERVAL               MSEC_TO_UNITS(7.5, UNIT_1_25_MS)             /**< Minimum acceptable connection interval (15 ms), Connection interval uses 1.25 ms units. */
+#define MIN_CONN_INTERVAL               MSEC_TO_UNITS(7.5, UNIT_1_25_MS)             /**< Minimum acceptable connection interval (7.5 ms), Connection interval uses 1.25 ms units. */
 #define MAX_CONN_INTERVAL               MSEC_TO_UNITS(75, UNIT_1_25_MS)             /**< Maximum acceptable connection interval (75 ms), Connection interval uses 1.25 ms units. */
 #define SLAVE_LATENCY                   0                                           /**< Slave latency. */
 #define CONN_SUP_TIMEOUT                MSEC_TO_UNITS(4000, UNIT_10_MS)             /**< Connection supervisory timeout (4 seconds), Supervision Timeout uses 10 ms units. */
@@ -89,7 +93,7 @@ static uint32_t              m_adc_evt_counter;
 
 /**< Battery timer. */
 APP_TIMER_DEF(m_battery_timer_id);
-#define BATTERY_LEVEL_MEAS_INTERVAL     APP_TIMER_TICKS(10000)                       /**< Battery level measurement interval (ticks). Update once every 10sec (to be changed to 60sec) */
+#define BATTERY_LEVEL_MEAS_INTERVAL     APP_TIMER_TICKS(10000)                       /**< Battery level measurement interval (ticks). Update once every 10sec */
 
 
 BLE_NUS_DEF(m_nus, NRF_SDH_BLE_TOTAL_LINK_COUNT);                                   /**< BLE NUS service instance. */
@@ -105,7 +109,7 @@ static ble_uuid_t m_adv_uuids[]          =                                      
 };
 
 // array that temporarily holds ADC values
-uint8_t temp_adc[240];    //holds only accelerometer(SAADC) data...reduce temp_adc to 120 bytes if you want to send both the acc. and gyro(SPI) data
+uint8_t temp_adc[242];    //holds only accelerometer(SAADC) data...reduce temp_adc to 120 bytes if you want to send both the acc. and gyro(SPI) data
 uint16_t temp_adc_size = 0;
 
 // Battery variables
@@ -343,7 +347,7 @@ static void conn_params_init(void)
 
 // FUNCTIONS FOR WAKING UP FROM SLEEP
 
-/** Configures and enables the LPCOMP (for wakeup from sleep)
+/** Configures and enables the LPCOMP (Set pin AIN3 (z-axis of accelerometer) ready for wakeup from sleep)
  */
 void LPCOMP_init(void)
 {	
@@ -382,12 +386,13 @@ static void sleep_mode_enter(void)
     err_code = bsp_btn_ble_sleep_mode_prepare();
     APP_ERROR_CHECK(err_code);
 
+    //Initialize AIN3 (z-axis pin)
+    LPCOMP_init();
 
     // Wait for LPCOMP to be ready (for wakeup)
     while(NRF_LPCOMP->EVENTS_READY == 0);
     NRF_LPCOMP->EVENTS_READY = 0;
     
-
     // Go to system-off mode (this function will not return; wakeup will cause a reset).
     err_code = sd_power_system_off();
     APP_ERROR_CHECK(err_code);
@@ -439,12 +444,22 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
             m_conn_handle = p_ble_evt->evt.gap_evt.conn_handle;
             err_code = nrf_ble_qwr_conn_handle_assign(&m_qwr, m_conn_handle);
             APP_ERROR_CHECK(err_code);
+             
+            // Increase data tx power to 4dB (default is 0 dB)
+            err_code = sd_ble_gap_tx_power_set(BLE_GAP_TX_POWER_ROLE_CONN, m_conn_handle, 4);
+            APP_ERROR_CHECK(err_code);
+
             break;
 
         case BLE_GAP_EVT_DISCONNECTED:
             NRF_LOG_INFO("Disconnected");
             // LED indication will be changed when advertising starts.
             m_conn_handle = BLE_CONN_HANDLE_INVALID;
+            
+            //If ADC is on when disconnecting, put chip to sleep (to reset, or else gives funny behaviour)
+            if(is_adc_on)
+              sleep_mode_enter();
+
             break;
 
         case BLE_GAP_EVT_PHY_UPDATE_REQUEST:
@@ -760,6 +775,11 @@ static void idle_state_handle(void)
  */
 static void advertising_start(void)
 {
+
+    // Increase advertising tx power to 8dB (default is 0 dB)
+    //uint32_t err_code = sd_ble_gap_tx_power_set(BLE_GAP_TX_POWER_ROLE_SCAN_INIT , BLE_GAP_ADV_SET_HANDLE_NOT_SET, 8);
+    //APP_ERROR_CHECK(err_code);
+
     uint32_t err_code = ble_advertising_start(&m_advertising, BLE_ADV_MODE_FAST);
     APP_ERROR_CHECK(err_code);
 }
@@ -787,7 +807,7 @@ void saadc_sampling_event_init(void)
     
     // setup m_timer for compare event every 500us(sampling rate = 1/500us = 2kHz)
     uint32_t ticks = nrf_drv_timer_us_to_ticks(&m_timer, 500);
-    //uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 250); //every 0.25s
+    //uint32_t ticks = nrf_drv_timer_ms_to_ticks(&m_timer, 1000); //every 1s
     nrf_drv_timer_extended_compare(&m_timer,
                                    NRF_TIMER_CC_CHANNEL0,
                                    ticks,
@@ -833,30 +853,43 @@ void saadc_callback(nrf_drv_saadc_evt_t const * p_event)
             //NRF_LOG_INFO("%d", p_event->data.done.p_buffer[i]);
             printf("%d\r\n", p_event->data.done.p_buffer[i]);
         }
+          
 
         /* Copy 6 bytes (2 bytes for each of the 3 accelerometer axes) to a temp buffer
-        *  When temp buffer is full (240 bytes), send all data in one notification
+        *  When temp buffer is full (242 bytes), send all data in one notification
         *  Notes: 1) BLE 5 can send a maximum of 240 bytes per notification using the NRF52840 Dongle
         *         2) Once the gyro is implemented, we will need to transmit that data as well.
         *            In that case, we can split the buffer in 2 and send the accelerometer data in the first 120 bytes,
         *            and the remaining 120 bytes that are free can be used for eventual transmission of gyro SPI data (TBD)
         */
+
+
+        //save battery as 1st 2 bytes of each transmission
+        if(temp_adc_size == 0)
+        {
+          temp_adc[temp_adc_size] = p_event->data.done.p_buffer[3];
+          temp_adc[temp_adc_size + 1] = 0;
+          temp_adc_size += 2;
+        }
+
+
+        //only send 6 bytes for accelerometer data
         uint16_t length = 6;
 
         memcpy(&temp_adc[temp_adc_size], (uint8_t*)p_event->data.done.p_buffer, length);
 
         temp_adc_size += length;
 
-        /*
+        
         // Print what is being sent over Bluetooth
         for (i=0; i < length; i++)
         {
             printf("BLE sends this %d\r\n", temp_adc[(temp_adc_size+i) - length]);
         }
-        */
+        
 
         // Once buffer is full, send data
-        if ((int)temp_adc_size == 240)
+        if ((int)temp_adc_size == 242)
             {
                 err_code = ble_nus_data_send(&m_nus, temp_adc, &temp_adc_size, m_conn_handle);
                 
@@ -884,7 +917,7 @@ void saadc_callback(nrf_drv_saadc_evt_t const * p_event)
     }
 }
 
-// Initialize 3 channels (for 3 ADC pins)
+// Initialize 3 channels (for 3 ADC pins) and battery
 void saadc_init(void)
 {
     //AIN0 (P0.02)
@@ -900,6 +933,10 @@ void saadc_init(void)
     nrf_saadc_channel_config_t channel_config_2 =
         NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(NRF_SAADC_INPUT_AIN3);  //Z
 
+    //VDD
+    nrf_saadc_channel_config_t channel_config_3 =
+        NRF_DRV_SAADC_DEFAULT_CHANNEL_CONFIG_SE(SAADC_CH_PSELP_PSELP_VDD);
+    
 
     err_code = nrf_drv_saadc_init(NULL, saadc_callback);
     APP_ERROR_CHECK(err_code);
@@ -916,7 +953,12 @@ void saadc_init(void)
     //AIN3
     err_code = nrf_drv_saadc_channel_init(2, &channel_config_2);
     APP_ERROR_CHECK(err_code);
+
+    //VDD
+    err_code = nrf_drv_saadc_channel_init(3, &channel_config_3);
+    APP_ERROR_CHECK(err_code);
     
+
     err_code = nrf_drv_saadc_buffer_convert(m_buffer_pool[0], SAMPLES_IN_BUFFER);
     APP_ERROR_CHECK(err_code);
     
@@ -1042,6 +1084,8 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
 {
     if (saadc_state)
     {
+        is_adc_on = true;
+
         // First, stop battery timer
         stop_bat();
         NRF_LOG_INFO("Battery service stopped");
@@ -1053,6 +1097,8 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
 
     else
     {
+        is_adc_on = false;
+        
         // Stop SAADC if user sends 0
         stop_adc();
         NRF_LOG_INFO("SAADC OFF!");
@@ -1069,8 +1115,10 @@ static void saadc_write_handler(uint16_t conn_handle, ble_saadc_service_t * p_sa
 /**@brief Application main function.
  */
 int main(void)
-
 {
+
+    nrf_delay_ms(1000);   //delay start of program for 1s. If no delay, program does not always start on PCB
+
     bool erase_bonds;
 
     // Initialize.
@@ -1087,9 +1135,6 @@ int main(void)
     advertising_init();
     conn_params_init();
     application_timers_start();
-
-    // Set pin AIN3 (z-axis of accelerometer) ready for wakeup
-    LPCOMP_init();
 
     // Start execution.
     printf("\r\nUART started.\r\n");

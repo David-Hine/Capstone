@@ -1232,13 +1232,13 @@ static __INLINE uint8_t battery_level_in_percent(const uint16_t mvolts)
 {
     uint8_t battery_level;
 
-    if (mvolts >= 3300)
+    if (mvolts >= 3200)
     {
         battery_level = 100;
     }
     else if (mvolts > 2800)
     {
-        battery_level = 100 - ((3300 - mvolts) * 100) / 500;
+        battery_level = 100 - ((3200 - mvolts) * 100) / 400;
     }
     else
     {

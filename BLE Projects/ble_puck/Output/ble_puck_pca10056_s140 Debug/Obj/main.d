@@ -1,5 +1,5 @@
 Output/ble_puck_pca10056_s140\ Debug/Obj/main.o: \
- C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\main.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck_send_bat\main.c \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/stdint.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/string.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/__crossworks.h \
@@ -119,6 +119,7 @@ Output/ble_puck_pca10056_s140\ Debug/Obj/main.o: \
  ../nRF5_SDK_Current/integration/nrfx/legacy/nrf_drv_timer.h \
  ../nRF5_SDK_Current/modules/nrfx/drivers/include/nrfx_timer.h \
  ../nRF5_SDK_Current/modules/nrfx/hal/nrf_timer.h \
- C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\Services/saadc.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck_send_bat\Services/saadc.h \
  ../nRF5_SDK_Current/components/ble/ble_services/ble_bas/ble_bas.h \
- C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\Battery\ Level/battery_voltage.h
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck_send_bat\Battery\ Level/battery_voltage.h \
+ ../nRF5_SDK_Current/components/libraries/delay/nrf_delay.h

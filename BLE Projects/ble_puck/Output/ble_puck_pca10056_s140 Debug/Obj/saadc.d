@@ -1,5 +1,5 @@
 Output/ble_puck_pca10056_s140\ Debug/Obj/saadc.o: \
- C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\Services\saadc.c \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck_send_bat\Services\saadc.c \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/string.h \
  C:/SEGGER/arm_segger_embedded_studio_v414_win_x64_nordic/include/__crossworks.h \
  ../nRF5_SDK_Current/components/libraries/log/nrf_log.h \
@@ -37,7 +37,7 @@ Output/ble_puck_pca10056_s140\ Debug/Obj/saadc.o: \
  ../nRF5_SDK_Current/components/libraries/log/nrf_log_instance.h \
  ../nRF5_SDK_Current/components/libraries/log/nrf_log_types.h \
  ../nRF5_SDK_Current/components/libraries/log/nrf_log_types.h \
- C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck\Services\saadc.h \
+ C:\Users\Leo\Documents\Capstone\BLE\ Projects\ble_puck_send_bat\Services\saadc.h \
  ../nRF5_SDK_Current/components/boards/boards.h \
  ../nRF5_SDK_Current/modules/nrfx/hal/nrf_gpio.h \
  ../nRF5_SDK_Current/modules/nrfx/nrfx.h \
